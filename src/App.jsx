@@ -10,18 +10,22 @@ import PageNotFound from "./pages/PageNotFound";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route index element={<Landing />} />
-        <Route path="learn-more" element={<LearnMore />} />
-        <Route path="budgets" element={<Budgets />} />
-        <Route path="investing" element={<Investing />} />
-        <Route path="pricing" element={<Pricing />} />
-        <Route path="login" element={<Login />} />
-        <Route path="sign-up" element={<SignUp />} />
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
-    </BrowserRouter>
+    <>
+      <div className="bg-zinc-100 h-screen py-4 px-10">
+        <BrowserRouter>
+          <Routes>
+            <Route index element={<Landing />} />
+            <Route path="learn-more" element={<LearnMore />} />
+            <Route path="budgets" element={<Budgets />} />
+            <Route path="investing" element={<Investing />} />
+            <Route path="pricing" element={<Pricing />} />
+            <Route path="login" element={<Login />} />
+            <Route path="sign-up" element={<SignUp />} />
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </>
   );
 }
 
