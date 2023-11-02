@@ -8,19 +8,19 @@ import {
 } from "@mui/material";
 import Landing from "./Landing";
 import { Link } from "react-router-dom";
-import { useForm, SubmitHandler } from "react-hook-form";
+// import { useForm } from "react-hook-form";
 
 function SignUp() {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   watch,
+  //   formState: { errors },
+  // } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  // const onSubmit = (data) => console.log(data);
 
-  console.log(watch("example")); // watch input value by passing the name of it
+  // console.log(watch("example")); // watch input value by passing the name of it
 
   return (
     <>
@@ -29,18 +29,7 @@ function SignUp() {
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}
       >
-        <form onSubmit={handleSubmit(onSubmit)}>
-          {/* register your input into the hook by invoking the "register" function */}
-          <input defaultValue="test" {...register("example")} />
-
-          {/* include validation with required or other standard HTML validation rules */}
-          <input {...register("exampleRequired", { required: true })} />
-          {/* errors will return when field validation fails  */}
-          {errors.exampleRequired && <span>This field is required</span>}
-
-          <input type="submit" />
-        </form>
-        {/* <form className="bg-slate-100 p-8 rounded-3xl">
+        <form className="bg-slate-100 p-8 rounded-3xl">
           <Stack spacing={3}>
             <TextField
               fullWidth
@@ -106,7 +95,7 @@ function SignUp() {
               </Link>
             </div>
           </Stack>
-        </form> */}
+        </form>
       </Backdrop>
     </>
   );
