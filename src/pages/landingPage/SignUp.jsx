@@ -1,4 +1,5 @@
 import {
+  Alert,
   Backdrop,
   Button,
   MenuItem,
@@ -8,90 +9,97 @@ import {
 } from "@mui/material";
 import Landing from "./Landing";
 import { Link } from "react-router-dom";
-// import { useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 function SignUp() {
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   watch,
-  //   formState: { errors },
-  // } = useForm();
+  const { register, handleSubmit, formState } = useForm();
 
-  // const onSubmit = (data) => console.log(data);
+  const { errors } = formState;
 
-  // console.log(watch("example")); // watch input value by passing the name of it
+  const onSubmit = (data) => {
+    console.log(data);
+  };
 
   return (
     <>
       <Landing />
-      <Backdrop
-        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-        open={open}
-      >
-        <form className="bg-slate-100 p-8 rounded-3xl">
+      <Backdrop sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }} open={true}>
+        <form
+          className="bg-slate-100 p-8 rounded-3xl w-3/8"
+          onSubmit={handleSubmit(onSubmit)}
+        >
           <Stack spacing={3}>
             <TextField
-              fullWidth
-              id="standard-basic"
               label="Full Name"
               variant="standard"
+              type="text"
+              {...register("name", { required: "Please enter full name" })}
+              error={!!errors.name}
+              helperText={errors.name?.message}
             />
             <TextField
-              fullWidth
-              id="standard-basic"
+              type="email"
               label="Email"
               variant="standard"
+              {...register("email", { required: "Email is required" })}
+              error={!!errors.email}
+              helperText={errors.email?.message}
             />
             <TextField
-              fullWidth
-              id="standard-basic"
               label="Password"
+              type="password"
               variant="standard"
+              {...register("password1", { required: "Password is required" })}
+              error={!!errors.password1}
+              helperText={errors.password1?.message}
             />
             <TextField
-              fullWidth
-              id="standard-basic"
               label="Confirm Password"
+              type="password"
               variant="standard"
+              {...register("password2", {
+                required: "Please confirm password",
+              })}
+              error={!!errors.password2}
+              helperText={errors.password2?.message}
             />
             <div className="flex space-x-4">
-              <label id="track-budget" className="text-black text-2xl">
+              <label className="text-black text-xl">
                 Do you currently track your budget?
               </label>
               <Select
-                labelId="track-budget"
-                id="track-budget"
                 label="track-budget"
-                sx={{ width: "13.2rem", marginLeft: "3rem" }}
                 variant="standard"
+                sx={{ width: "4rem" }}
+                {...register("trackBudget")}
               >
-                <MenuItem value="yes">Yes</MenuItem>
-                <MenuItem value="no">No</MenuItem>
+                <MenuItem value="Yes">Yes</MenuItem>
+                <MenuItem value="No">No</MenuItem>
               </Select>
             </div>
-            <div className="flex space-x-8">
-              <label id="track-investments" className="text-black text-2xl">
+            <div className="flex space-x-4">
+              <label className="text-black text-xl">
                 Do you currently have an investment portfolio?
               </label>
               <Select
-                labelId="track-investments"
-                id="track-investments"
                 label="track-investments"
-                sx={{ width: "5rem" }}
                 variant="standard"
+                sx={{ width: "4rem" }}
+                {...register("trackInvestments")}
               >
-                <MenuItem value="yes">Yes</MenuItem>
-                <MenuItem value="no">No</MenuItem>
+                <MenuItem value="Yes">Yes</MenuItem>
+                <MenuItem value="No">No</MenuItem>
               </Select>
             </div>
             <div className="flex space-x-6 justify-center">
-              <Link to="/login">
-                <Button variant="outlined">Go to Login</Button>
-              </Link>
-              <Button variant="contained">Sign-up</Button>
               <Link to="/">
-                <Button>Cancel</Button>
+                <Button variant="outlined">Cancel</Button>
+              </Link>
+              <Button type="submit" variant="contained">
+                Sign-up
+              </Button>
+              <Link to="/login">
+                <Button>Login</Button>
               </Link>
             </div>
           </Stack>

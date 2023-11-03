@@ -19,21 +19,21 @@ function NavBar() {
         </NavLink>
       </div>
       <div className="flex">
-        <Link to="/sign-up">
+        <Link to="/login">
           <Button
             sx={{ fontSize: ".75rem", borderRadius: "8px" }}
             variant="outlined"
             size="large"
           >
-            Sign Up
+            Login
           </Button>
-          <Link to="/login" className="ml-8">
+          <Link to="/sign-up" className="ml-8">
             <Button
               sx={{ fontSize: ".75rem", borderRadius: "8px" }}
               variant="contained"
               size="large"
             >
-              LOGIN
+              SIGN UP
             </Button>
           </Link>
         </Link>
