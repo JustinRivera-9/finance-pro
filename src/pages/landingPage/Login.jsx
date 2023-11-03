@@ -5,8 +5,7 @@ import { useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 
 function LoginPage() {
-  const { register, handleSubmit, formState, control } = useForm();
-  console.log(useForm());
+  const { register, handleSubmit, formState, control, reset } = useForm();
   const { errors } = formState;
 
   // formData ILO onSubmit

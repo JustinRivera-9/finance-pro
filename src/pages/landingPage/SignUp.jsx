@@ -10,11 +10,15 @@ import Landing from "./Landing";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
+import { useEffect } from "react";
 
 function SignUp() {
-  const { register, handleSubmit, formState, control } = useForm();
+  const { register, handleSubmit, formState, control, reset } = useForm();
+  const { errors, isSubmitSuccessful } = formState;
 
-  const { errors } = formState;
+  useEffect(() => {
+    if (isSubmitSuccessful) reset();
+  }, [isSubmitSuccessful, reset]);
 
   const onSubmit = (data) => {
     console.log(data);
