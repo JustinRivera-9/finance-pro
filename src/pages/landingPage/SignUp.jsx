@@ -1,5 +1,4 @@
 import {
-  Alert,
   Backdrop,
   Button,
   MenuItem,
@@ -10,9 +9,10 @@ import {
 import Landing from "./Landing";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { DevTool } from "@hookform/devtools";
 
 function SignUp() {
-  const { register, handleSubmit, formState } = useForm();
+  const { register, handleSubmit, formState, control } = useForm();
 
   const { errors } = formState;
 
@@ -104,6 +104,7 @@ function SignUp() {
             </div>
           </Stack>
         </form>
+        <DevTool control={control} />
       </Backdrop>
     </>
   );

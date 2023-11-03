@@ -2,15 +2,17 @@ import { Backdrop, Button, Stack, TextField } from "@mui/material";
 import Landing from "./Landing";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-// import { DevTool } from "@hookform/devtools";
+import { DevTool } from "@hookform/devtools";
 
 function LoginPage() {
-  const { register, handleSubmit, formState } = useForm();
-
+  const { register, handleSubmit, formState, control } = useForm();
+  console.log(useForm());
   const { errors } = formState;
 
   // formData ILO onSubmit
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+  };
   return (
     <>
       <Landing />
@@ -54,7 +56,7 @@ function LoginPage() {
             </div>
           </Stack>
         </form>
-        {/* <DevTool control={control} /> */}
+        <DevTool control={control} />
       </Backdrop>
     </>
   );
