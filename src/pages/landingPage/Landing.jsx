@@ -6,14 +6,15 @@ function LandingPage() {
   return (
     <>
       <NavBar />
-      <div className="w-7/12 pb-20">
+      <div className="w-8/12 pb-20">
         <div className="flex flex-col mt-16 pl-16">
-          <p className="text-7xl text-sky-800" style={{ color: "#1769aa" }}>
-            Personal Finance. <br></br>All in One Place.
+          <p className="text-6xl text-sky-500">
+            Financial Freedom<br></br>
+            <span className="text-5xl">Your Journey Starts Here</span>
           </p>
-          <p className="text-4xl mt-8 mb-12 text-slate-900">
-            Budgets, Investments and Resources all in one place. Take back
-            control of your personal finance today!
+          <p className="text-3xl mt-8 mb-12 text-slate-900">
+            Tools and Resources to give you access to a wealth of resources like
+            budget and portfilio tracking all in one place!
           </p>
           <div className="flex space-x-8">
             <Link to="/learn-more">

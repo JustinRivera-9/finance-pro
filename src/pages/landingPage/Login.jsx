@@ -3,15 +3,20 @@ import Landing from "./Landing";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
+import { useEffect } from "react";
 
 function LoginPage() {
   const { register, handleSubmit, formState, control, reset } = useForm();
-  const { errors } = formState;
+  const { errors, isSubmitSuccessful } = formState;
 
-  // formData ILO onSubmit
+  useEffect(() => {
+    if (isSubmitSuccessful) reset();
+  }, [isSubmitSuccessful, reset]);
+
   const onSubmit = (data) => {
     console.log(data);
   };
+
   return (
     <>
       <Landing />
