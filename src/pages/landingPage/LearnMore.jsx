@@ -4,7 +4,9 @@ function LearnMorePage() {
   return (
     <>
       <NavBar />
-      <div>Learn More</div>;
+      <h1 className="flex justify-center text-3xl mt-16 text-sky-500">
+        Learn More Page Coming Soon
+      </h1>
     </>
   );
 }

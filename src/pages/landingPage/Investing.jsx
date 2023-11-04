@@ -4,7 +4,9 @@ function Investing() {
   return (
     <>
       <NavBar />
-      <div>Investing</div>;
+      <h1 className="flex justify-center text-3xl mt-16 text-sky-500">
+        Investing Page Coming Soon
+      </h1>
     </>
   );
 }
