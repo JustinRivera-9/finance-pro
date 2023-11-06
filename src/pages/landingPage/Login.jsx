@@ -26,7 +26,6 @@ function LoginPage() {
       >
         <form
           onSubmit={handleSubmit(onSubmit)}
-          noValidate
           className="bg-slate-100 p-8 rounded-3xl"
         >
           <Stack spacing={3}>
