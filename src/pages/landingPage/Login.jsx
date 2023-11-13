@@ -1,25 +1,36 @@
 import { Backdrop, Button, Stack, TextField } from "@mui/material";
-import Landing from "./Landing";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
-import { useEffect } from "react";
+import useLogin from "../../hooks/useLogin.js";
+import { useEffect, useState } from "react";
 
 function LoginPage() {
+  const [userData, setUserData] = useState({ email: "", password: "" });
   const { register, handleSubmit, formState, control, reset } = useForm();
   const { errors, isSubmitSuccessful } = formState;
+  const { isLoggedIn, userID, loading, error } = useLogin(userData);
 
+  //////////////////// EFFECTS
   useEffect(() => {
     if (isSubmitSuccessful) reset();
   }, [isSubmitSuccessful, reset]);
 
+  //////////////////// EVENT HANDLER FUNCTIONS
   const onSubmit = (data) => {
-    console.log(data);
+    setUserData(data);
   };
+
+  // if(isLoggedIn) navigator(home)
+
+  // console.log("!!!!!!!!! BREAK");
+  // console.log("Logged In: ", isLoggedIn);
+  // console.log("userID: ", userID);
+  // console.log("loading: ", loading);
+  // console.log("Error: ", error);
 
   return (
     <>
-      <Landing />
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}

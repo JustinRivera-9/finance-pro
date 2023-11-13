@@ -6,7 +6,6 @@ import {
   Stack,
   TextField,
 } from "@mui/material";
-import Landing from "./Landing";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
@@ -26,7 +25,7 @@ function SignUp() {
 
   return (
     <>
-      <Landing />
+      {/* <Landing /> */}
       <Backdrop sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }} open={true}>
         <form
           className="bg-slate-100 p-8 rounded-3xl w-3/8"
