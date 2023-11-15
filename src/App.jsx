@@ -7,6 +7,15 @@ import Pricing from "./pages/landingPage/pricing";
 import Login from "./pages/landingPage/login";
 import SignUp from "./pages/landingPage/SignUp";
 import PageNotFound from "./pages/PageNotFound";
+// import Budget from "./pages/app/budget/Budget";
+// import OverviewBudget from "./pages/app/budget/OverviewBudget";
+// import OverviewPortfolio from "./pages/app/investing/OverviewPortfolio";
+// import Portfolio from "./pages/app/investing/Portfolio";
+// import News from "./pages/app/investing/News";
+// import Insights from "./pages/app/budget/Insights";
+// import Update from "./pages/app/budget/Update";
+// import Dashboard from "./pages/app/Dashboard";
+import AppLayout from "./pages/app/AppLayout";
 
 function App() {
   return (
@@ -21,6 +30,7 @@ function App() {
             <Route path="pricing" element={<Pricing />} />
             <Route path="login" element={<Login />} />
             <Route path="sign-up" element={<SignUp />} />
+            <Route path="app/*" element={<AppLayout />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </BrowserRouter>
