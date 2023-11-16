@@ -12,18 +12,22 @@ import News from "../app/resources/News";
 import CostBasisCalculator from "../app/resources/CostBasisCalculator";
 import Account from "./Account";
 import AppDashboard from "./AppDashboard";
+import InvestingLayout from "./investing/InvestingLayout";
+import BudgetLayout from "./budget/BudgetLayout";
 
 function AppLayout() {
   return (
     <>
       <Routes>
         <Route index element={<AppDashboard />} />
-        <Route path="budget-tracking" element={<OverviewBudget />}>
+        <Route path="budget-tracking" element={<BudgetLayout />}>
+          <Route index element={<OverviewBudget />} />
           <Route path="budget" element={<Budget />} />
           <Route path="update" element={<Update />} />
           <Route path="insights" element={<Insights />} />
         </Route>
-        <Route path="investments" element={<OverviewPortfolio />}>
+        <Route path="investments" element={<InvestingLayout />}>
+          <Route index element={<OverviewPortfolio />} />
           <Route path="portfolio" element={<Portfolio />} />
           <Route path="news" element={<NewsPortfolio />} />
         </Route>

@@ -3,6 +3,9 @@ import { NavLink } from "react-router-dom";
 function NavBarBudget() {
   return (
     <div className="flex justify-center space-x-8">
+      <NavLink to="/app/budget-tracking/" className="text-lg text-slate-500">
+        Overview
+      </NavLink>
       <NavLink
         to="/app/budget-tracking/budget"
         className="text-lg text-slate-500"

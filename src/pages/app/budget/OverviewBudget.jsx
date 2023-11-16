@@ -1,13 +1,7 @@
-import { Outlet } from "react-router";
-import NavBar from "../../../components/app/NavBar";
-import NavBarBudget from "../../../components/app/NavBarBudget";
-
 function OverviewBudget() {
   return (
-    <div>
-      <NavBar />
-      <NavBarBudget />
-      <Outlet />
+    <div className="flex justify-center text-3xl mt-24">
+      <h1>INSERT BUDGET OVERVIEW</h1>
     </div>
   );
 }

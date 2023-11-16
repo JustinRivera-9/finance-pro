@@ -1,13 +1,7 @@
-import { Outlet } from "react-router";
-import NavBar from "../../../components/app/NavBar";
-import NavBarInvesting from "../../../components/app/NavBarInvesting";
-
 function OverviewPortfolio() {
   return (
-    <div>
-      <NavBar />
-      <NavBarInvesting />
-      <Outlet />
+    <div className="flex justify-center text-3xl mt-24">
+      <h1>INSERT PORTFOLIO OVERVIEW</h1>
     </div>
   );
 }
