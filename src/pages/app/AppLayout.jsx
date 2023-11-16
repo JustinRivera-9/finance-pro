@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import Dashboard from "./Dashboard";
+import Dashboard from "./dashboard/Dashboard";
 import OverviewBudget from "../app/budget/OverviewBudget";
 import Budget from "../app/budget/Budget";
 import Update from "../app/budget/Update";
@@ -10,7 +10,7 @@ import NewsPortfolio from "../app/investing/NewsPortfolio";
 import OverviewResources from "../app/resources/OverviewResources";
 import News from "../app/resources/News";
 import CostBasisCalculator from "../app/resources/CostBasisCalculator";
-import Account from "./Account";
+import Account from "./account/Account";
 import InvestingLayout from "./investing/InvestingLayout";
 import BudgetLayout from "./budget/BudgetLayout";
 import NavBar from "../../components/app/NavBar";

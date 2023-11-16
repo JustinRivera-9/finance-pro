@@ -1,4 +1,4 @@
-import NavBar from "../../components/app/NavBar";
+import NavBar from "../../../components/app/NavBar";
 
 function Account() {
   return (
