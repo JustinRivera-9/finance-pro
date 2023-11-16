@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Dashboard from "./Dashboard";
 import OverviewBudget from "../app/budget/OverviewBudget";
 import Budget from "../app/budget/Budget";
@@ -11,15 +11,16 @@ import OverviewResources from "../app/resources/OverviewResources";
 import News from "../app/resources/News";
 import CostBasisCalculator from "../app/resources/CostBasisCalculator";
 import Account from "./Account";
-import AppDashboard from "./AppDashboard";
 import InvestingLayout from "./investing/InvestingLayout";
 import BudgetLayout from "./budget/BudgetLayout";
+import NavBar from "../../components/app/NavBar";
 
 function AppLayout() {
   return (
     <>
+      <NavBar />
       <Routes>
-        <Route index element={<AppDashboard />} />
+        <Route index element={<Dashboard />} />
         <Route path="budget-tracking" element={<BudgetLayout />}>
           <Route index element={<OverviewBudget />} />
           <Route path="budget" element={<Budget />} />
