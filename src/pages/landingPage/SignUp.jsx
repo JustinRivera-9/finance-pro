@@ -66,34 +66,6 @@ function SignUp() {
               error={!!errors.password2}
               helperText={errors.password2?.message}
             />
-            <div className="flex space-x-4">
-              <label className="text-black text-xl">
-                Do you currently track your budget?
-              </label>
-              <Select
-                label="track-budget"
-                variant="standard"
-                sx={{ width: "4rem" }}
-                {...register("trackBudget")}
-              >
-                <MenuItem value="Yes">Yes</MenuItem>
-                <MenuItem value="No">No</MenuItem>
-              </Select>
-            </div>
-            <div className="flex space-x-4">
-              <label className="text-black text-xl">
-                Do you currently have an investment portfolio?
-              </label>
-              <Select
-                label="track-investments"
-                variant="standard"
-                sx={{ width: "4rem" }}
-                {...register("trackInvestments")}
-              >
-                <MenuItem value="Yes">Yes</MenuItem>
-                <MenuItem value="No">No</MenuItem>
-              </Select>
-            </div>
             <div className="flex space-x-6 justify-center">
               <Link to="/">
                 <Button variant="outlined">Cancel</Button>
