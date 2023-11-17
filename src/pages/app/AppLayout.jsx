@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+// import { useState, useEffect } from "react";
 import Dashboard from "./dashboard/Dashboard";
 import OverviewBudget from "../app/budget/OverviewBudget";
 import Budget from "../app/budget/Budget";
@@ -14,9 +15,13 @@ import Account from "./account/Account";
 import InvestingLayout from "./investing/InvestingLayout";
 import BudgetLayout from "./budget/BudgetLayout";
 import NavBar from "../../components/app/NavBar";
+import useUserData from "../../hooks/useUserData";
 
-function AppLayout({ user }) {
-  // console.log(user);
+function AppLayout() {
+  const { user, isLoading } = useUserData();
+  console.log(user);
+  console.log(isLoading);
+
   return (
     <>
       <NavBar />
