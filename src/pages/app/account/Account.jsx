@@ -16,7 +16,7 @@ function Account() {
         Update settings, logout, change password, etc.
       </h1>
       <Button onClick={() => signOutUser()} size="large">
-        LOGOUT
+        Sign Out
       </Button>
     </div>
   );

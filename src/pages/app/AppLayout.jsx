@@ -16,13 +16,14 @@ import InvestingLayout from "./investing/InvestingLayout";
 import BudgetLayout from "./budget/BudgetLayout";
 import NavBar from "../../components/app/NavBar";
 import useUserData from "../../hooks/useUserData";
+import PageNotFound from "../PageNotFound";
 
 function AppLayout() {
   const { user, isLoading } = useUserData();
   console.log(user);
   console.log(isLoading);
 
-  return (
+  return Object.keys(user).length !== 0 ? (
     <>
       <NavBar />
       <Routes>
@@ -48,6 +49,12 @@ function AppLayout() {
         <Route path="account" element={<Account />} />
       </Routes>
     </>
+  ) : (
+    <PageNotFound
+      title="Uh-Oh You should not be here"
+      subHeading="Please sign back in"
+      message="You either signed out or have been inactive for too long"
+    />
   );
 }
 
