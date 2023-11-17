@@ -30,7 +30,7 @@ function LandingPage() {
                 Learn More
               </Button>
             </Link>
-            <Link to="/sign-up">
+            <Link to="/auth">
               <Button
                 variant="contained"
                 size="medium"

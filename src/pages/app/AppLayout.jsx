@@ -16,7 +16,7 @@ import BudgetLayout from "./budget/BudgetLayout";
 import NavBar from "../../components/app/NavBar";
 
 function AppLayout({ user }) {
-  console.log(user);
+  // console.log(user);
   return (
     <>
       <NavBar />
