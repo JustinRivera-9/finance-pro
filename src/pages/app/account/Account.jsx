@@ -1,4 +1,4 @@
-import NavBar from "../../../components/app/NavBar";
+import { Button } from "@mui/material";
 
 function Account() {
   return (
@@ -6,6 +6,7 @@ function Account() {
       <h1 className="flex justify-center text-3xl mt-24">
         Update settings, logout, change password, etc.
       </h1>
+      <Button size="large">LOGOUT</Button>
     </div>
   );
 }
