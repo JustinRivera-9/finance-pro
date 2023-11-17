@@ -9,9 +9,9 @@ function AuthForm() {
   supabase.auth.onAuthStateChange(async (event) => {
     console.log(event);
     if (event !== "SIGNED_OUT") {
-      // navigate("/app");
+      navigate("/app");
     } else {
-      // navigate("/");
+      navigate("/");
     }
   });
 
