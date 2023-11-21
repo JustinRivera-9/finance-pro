@@ -38,25 +38,23 @@ function UpdateForm({ formOpen, setFormOpen, onSubmit }) {
     <Backdrop open={formOpen}>
       <div className="flex flex-col bg-white p-8 rounded-xl">
         <form className="flex flex-col" onSubmit={handleForm}>
-          <FormControl required>
-            <TextField
-              required
-              id="outlined-required"
-              label="Category"
-              onChange={(e) => setCategory(e.target.value)}
-              value={category}
-            />
-          </FormControl>
-          <FormControl required sx={{ marginTop: "1.5rem" }}>
-            <TextField
-              required
-              id="outlined-required"
-              type="number"
-              label="Amount"
-              onChange={(e) => setAmount(e.target.value)}
-              value={amount}
-            />
-          </FormControl>
+          <TextField
+            sx={{ marginTop: "1.5rem" }}
+            required
+            id="outlined-required"
+            label="Category"
+            onChange={(e) => setCategory(e.target.value)}
+            value={category}
+          />
+          <TextField
+            sx={{ marginTop: "1.5rem" }}
+            required
+            id="outlined-required"
+            type="number"
+            label="Amount"
+            onChange={(e) => setAmount(e.target.value)}
+            value={amount}
+          />
           <FormControl required sx={{ marginTop: "1.5rem" }}>
             <InputLabel id="type">Type</InputLabel>
             <Select
