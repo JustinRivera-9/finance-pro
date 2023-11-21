@@ -24,22 +24,6 @@ function AppLayout() {
   const { user, isLoading } = useUserData();
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   async function googleAuth() {
-  //     const { data, error } = await supabase.auth.signInWithOAuth({
-  //       provider: "google",
-  //       options: {
-  //         queryParams: {
-  //           access_type: "offline",
-  //           prompt: "consent",
-  //         },
-  //       },
-  //     });
-  //     console.log(data, error);
-  //   }
-  //   googleAuth();
-  // }, []);
-
   // TEST DATA
   const profile = testData?.profile;
   const userFilled = profile[0];
