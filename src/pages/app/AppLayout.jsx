@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import Dashboard from "./dashboard/Dashboard";
 import OverviewBudget from "../app/budget/OverviewBudget";
 import Budget from "../app/budget/Budget";
@@ -18,50 +18,35 @@ import useUserData from "../../hooks/useUserData";
 import PageNotFound from "../PageNotFound";
 import { useState, useEffect } from "react";
 import { testData } from "../../../data/testData.js";
+import supabase from "../../config/supabaseClient.js";
+
+// Set up the listener
 
 function AppLayout() {
-  const { profile } = testData;
+  const { user, isLoading } = useUserData();
+  const navigate = useNavigate();
+
+  // TEST DATA
+  const profile = testData?.profile;
   const userFilled = profile[0];
   const userEmpty = profile[1];
-  // const { user, isLoading } = useUserData();
-  // console.log(user);
-  // console.log(isLoading);
 
-  // return Object.keys(user).length !== 0 ? (
-  //   <>
-  //     <NavBar />
-  //     <Routes>
-  //       <Route index element={<Dashboard />} />
-  //       <Route path="budget-tracking" element={<BudgetLayout />}>
-  //         <Route index element={<OverviewBudget />} />
-  //         <Route path="budget" element={<Budget />} />
-  //         <Route path="update" element={<Update />} />
-  //         <Route path="insights" element={<Insights />} />
-  //       </Route>
-  //       <Route path="investments" element={<InvestingLayout />}>
-  //         <Route index element={<OverviewPortfolio />} />
-  //         <Route path="portfolio" element={<Portfolio />} />
-  //         <Route path="news" element={<NewsPortfolio />} />
-  //       </Route>
-  //       <Route path="resources" element={<OverviewResources />}>
-  //         <Route path="news" element={<News />} />
-  //         <Route
-  //           path="cost-basis-calculator"
-  //           element={<CostBasisCalculator />}
-  //         />
-  //       </Route>
-  //       <Route path="account" element={<Account />} />
-  //     </Routes>
-  //   </>
-  // ) : (
-  //   <PageNotFound
-  //     title="Uh-Oh You should not be here"
-  //     subHeading="Please sign back in"
-  //     message="You either signed out or have been inactive for too long"
-  //   />
-  // );
+  // LISTENS FOR LOG OUT
+  const handleAuthChange = (event) => {
+    if (event === "SIGNED_IN") {
+      // User has signed in
+      navigate("/app");
+      console.log("User signed in");
+    } else if (event === "SIGNED_OUT") {
+      // User has signed out
+      navigate("/");
+      console.log("User signed out");
+    }
+  };
 
-  return (
+  const unsubscribe = supabase.auth.onAuthStateChange(handleAuthChange);
+
+  return Object.keys(user).length !== 0 ? (
     <>
       <NavBar />
       <Routes>
@@ -88,9 +73,14 @@ function AppLayout() {
           />
         </Route>
         <Route path="account" element={<Account />} />
-        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>
+  ) : (
+    <PageNotFound
+      heading="You shouldn't be here"
+      subHeading="Please sign back in"
+      message="You either signed out or have been inactive for too long"
+    />
   );
 }
 

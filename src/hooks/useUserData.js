@@ -6,6 +6,9 @@ export default function useUserData() {
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
+  console.log("User:", user);
+  console.log("Loading:", isLoading);
+
   useEffect(() => {
     async function fetchUserData() {
       setIsLoading(true);
