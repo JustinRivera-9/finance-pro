@@ -20,11 +20,25 @@ import { useState, useEffect } from "react";
 import { testData } from "../../../data/testData.js";
 import supabase from "../../config/supabaseClient.js";
 
-// Set up the listener
-
 function AppLayout() {
   const { user, isLoading } = useUserData();
   const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   async function googleAuth() {
+  //     const { data, error } = await supabase.auth.signInWithOAuth({
+  //       provider: "google",
+  //       options: {
+  //         queryParams: {
+  //           access_type: "offline",
+  //           prompt: "consent",
+  //         },
+  //       },
+  //     });
+  //     console.log(data, error);
+  //   }
+  //   googleAuth();
+  // }, []);
 
   // TEST DATA
   const profile = testData?.profile;
@@ -32,7 +46,7 @@ function AppLayout() {
   const userEmpty = profile[1];
 
   // LISTENS FOR LOG OUT
-  const handleAuthChange = (event) => {
+  supabase.auth.onAuthStateChange(async (event) => {
     if (event === "SIGNED_IN") {
       // User has signed in
       navigate("/app");
@@ -42,9 +56,7 @@ function AppLayout() {
       navigate("/");
       console.log("User signed out");
     }
-  };
-
-  const unsubscribe = supabase.auth.onAuthStateChange(handleAuthChange);
+  });
 
   return Object.keys(user).length !== 0 ? (
     <>
