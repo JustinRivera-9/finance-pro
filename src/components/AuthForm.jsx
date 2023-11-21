@@ -1,24 +1,10 @@
 import { Auth } from "@supabase/auth-ui-react";
 import supabase from "../config/supabaseClient";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
-import { useEffect } from "react";
+import useUserData from "../hooks/useUserData";
 
 function AuthForm() {
-  useEffect(() => {
-    async function googleAuth() {
-      const { data, error } = await supabase.auth.signInWithOAuth({
-        provider: "google",
-        options: {
-          queryParams: {
-            access_type: "offline",
-            prompt: "consent",
-          },
-        },
-      });
-      console.log(data, error);
-    }
-    googleAuth();
-  }, []);
+  // console.log(<Auth />);
 
   return (
     <div className="flex justif-center">

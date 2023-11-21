@@ -7,8 +7,12 @@ import Pricing from "./pages/landingPage/pricing";
 import PageNotFound from "./pages/PageNotFound";
 import AppLayout from "./pages/app/AppLayout";
 import AuthForm from "./components/AuthForm.jsx";
+import useUserData from "./hooks/useUserData.js";
 
 function App() {
+  const { user, isLoading } = useUserData();
+  const userKeys = Object.keys(user).length;
+
   return (
     <>
       <div className="bg-zinc-100 h-screen py-4 px-10">
@@ -20,7 +24,7 @@ function App() {
             <Route path="investing" element={<Investing />} />
             <Route path="pricing" element={<Pricing />} />
             <Route path="auth" element={<AuthForm />} />
-            <Route path="app/*" element={<AppLayout />} />
+            <Route path="app/*" element={<AppLayout userKeys={userKeys} />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </BrowserRouter>

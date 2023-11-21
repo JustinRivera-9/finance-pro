@@ -20,8 +20,7 @@ import { useState, useEffect } from "react";
 import { testData } from "../../../data/testData.js";
 import supabase from "../../config/supabaseClient.js";
 
-function AppLayout() {
-  const { user, isLoading } = useUserData();
+function AppLayout({ userKeys }) {
   const navigate = useNavigate();
 
   // TEST DATA
@@ -30,19 +29,8 @@ function AppLayout() {
   const userEmpty = profile[1];
 
   // LISTENS FOR LOG OUT
-  supabase.auth.onAuthStateChange(async (event) => {
-    if (event === "SIGNED_IN") {
-      // User has signed in
-      navigate("/app");
-      console.log("User signed in");
-    } else if (event === "SIGNED_OUT") {
-      // User has signed out
-      navigate("/");
-      console.log("User signed out");
-    }
-  });
 
-  return Object.keys(user).length !== 0 ? (
+  return userKeys !== 0 ? (
     <>
       <NavBar />
       <Routes>
