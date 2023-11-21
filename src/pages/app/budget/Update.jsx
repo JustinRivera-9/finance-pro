@@ -34,7 +34,7 @@ function Update({ userData }) {
           </div>
         );
       })}
-      {!formOpen || budgetSetUp ? (
+      {!formOpen && budgetSetUp ? (
         <Button onClick={() => setFormOpen(true)}>ADD</Button>
       ) : null}
     </div>
