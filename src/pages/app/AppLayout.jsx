@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Dashboard from "./dashboard/Dashboard";
 import OverviewBudget from "../app/budget/OverviewBudget";
 import Budget from "../app/budget/Budget";
@@ -14,14 +14,12 @@ import Account from "./account/Account";
 import InvestingLayout from "./investing/InvestingLayout";
 import BudgetLayout from "./budget/BudgetLayout";
 import NavBar from "../../components/app/misc/NavBar.jsx";
-import useUserData from "../../hooks/useUserData";
 import PageNotFound from "../PageNotFound";
 import { useState, useEffect } from "react";
 import { testData } from "../../../data/testData.js";
-import supabase from "../../config/supabaseClient.js";
 
 function AppLayout({ userKeys, userID }) {
-  console.log(userID);
+  // console.log(userID);
 
   // TEST DATA
   const profile = testData?.profile;
