@@ -6,7 +6,6 @@ import Investing from "./pages/landingPage/Investing";
 import Pricing from "./pages/landingPage/pricing";
 import PageNotFound from "./pages/PageNotFound";
 import AppLayout from "./pages/app/AppLayout";
-import { userObj } from "../data/testData.js";
 import AuthForm from "./components/AuthForm.jsx";
 
 function App() {

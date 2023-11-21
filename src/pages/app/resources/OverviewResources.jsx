@@ -1,5 +1,5 @@
 import { Outlet } from "react-router";
-import NavBarResources from "../../../components/app/NavBarResources";
+import NavBarResources from "../../../components/app/resources/NavBarResources";
 
 function OverviewResources() {
   return (
