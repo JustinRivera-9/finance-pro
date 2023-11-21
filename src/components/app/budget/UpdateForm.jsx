@@ -7,6 +7,7 @@ import {
   MenuItem,
   OutlinedInput,
   Select,
+  TextField,
 } from "@mui/material";
 import { useState } from "react";
 
@@ -17,40 +18,46 @@ function UpdateForm({ formOpen, setFormOpen, onSubmit }) {
 
   function handleForm(e) {
     e.preventDefault();
-    setFormOpen(false);
     onSubmit({ category, amount, type });
+    setFormOpen(false);
+    resetForm();
+  }
+
+  function handleCancel() {
+    setFormOpen(false);
+    resetForm();
+  }
+
+  function resetForm() {
+    setCategory("");
+    setAmount("");
+    setType("Expense");
   }
 
   return (
     <Backdrop open={formOpen}>
-      <div className="flex flex-col bg-white p-12 rounded-xl">
-        <form className="flex flex-col space-y-8" onSubmit={handleForm}>
+      <div className="flex flex-col bg-white p-8 rounded-xl">
+        <form className="flex flex-col" onSubmit={handleForm}>
           <FormControl required>
-            <InputLabel id="category">Category</InputLabel>
-            <Input
-              //   labelId="category"
-              label="category"
-              id="outlined-basic"
-              variant="outlined"
-              value={category}
-              input={<OutlinedInput label="category" id="category" />}
+            <TextField
+              required
+              id="outlined-required"
+              label="Category"
               onChange={(e) => setCategory(e.target.value)}
+              value={category}
             />
           </FormControl>
-          <FormControl required>
-            <InputLabel id="amount">Amount (Monthly)</InputLabel>
-            <Input
-              //   labelId="category"
-              label="amount"
-              id="outlined-basic"
-              variant="outlined"
+          <FormControl required sx={{ marginTop: "1.5rem" }}>
+            <TextField
+              required
+              id="outlined-required"
               type="number"
-              value={amount}
-              input={<OutlinedInput label="amount" id="amount" />}
+              label="Amount"
               onChange={(e) => setAmount(e.target.value)}
+              value={amount}
             />
           </FormControl>
-          <FormControl required>
+          <FormControl required sx={{ marginTop: "1.5rem" }}>
             <InputLabel id="type">Type</InputLabel>
             <Select
               //   labelId="type"
@@ -65,8 +72,15 @@ function UpdateForm({ formOpen, setFormOpen, onSubmit }) {
             </Select>
           </FormControl>
 
-          <Button variant="contained" type="submit">
+          <Button
+            variant="contained"
+            type="submit"
+            sx={{ marginTop: "1.5rem" }}
+          >
             ADD
+          </Button>
+          <Button sx={{ marginTop: ".75rem" }} onClick={handleCancel}>
+            Cancel
           </Button>
         </form>
       </div>
