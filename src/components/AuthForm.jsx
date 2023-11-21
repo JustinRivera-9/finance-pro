@@ -7,7 +7,7 @@ import { useNavigate } from "react-router";
 function AuthForm() {
   const navigate = useNavigate();
 
-  supabase.auth.onAuthStateChange((event, session) => {
+  supabase.auth.onAuthStateChange((event) => {
     if (event === "SIGNED_IN") navigate("/app");
   });
 
