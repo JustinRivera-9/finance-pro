@@ -14,6 +14,8 @@ function App() {
   const { id } = user;
   const userKeys = Object.keys(user).length;
 
+  // Add isLoading STATE
+
   return (
     <>
       <div className="bg-zinc-100 h-screen py-4 px-10">
