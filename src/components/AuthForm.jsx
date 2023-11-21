@@ -2,9 +2,14 @@ import { Auth } from "@supabase/auth-ui-react";
 import supabase from "../config/supabaseClient";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import useUserData from "../hooks/useUserData";
+import { useNavigate } from "react-router";
 
 function AuthForm() {
-  // console.log(<Auth />);
+  const navigate = useNavigate();
+
+  supabase.auth.onAuthStateChange((event, session) => {
+    if (event === "SIGNED_IN") navigate("/app");
+  });
 
   return (
     <div className="flex justif-center">
