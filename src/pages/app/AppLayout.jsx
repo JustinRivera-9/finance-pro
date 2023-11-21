@@ -20,8 +20,8 @@ import { useState, useEffect } from "react";
 import { testData } from "../../../data/testData.js";
 import supabase from "../../config/supabaseClient.js";
 
-function AppLayout({ userKeys }) {
-  const navigate = useNavigate();
+function AppLayout({ userKeys, userID }) {
+  console.log(userID);
 
   // TEST DATA
   const profile = testData?.profile;
