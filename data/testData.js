@@ -1,4 +1,4 @@
-export const userObj = {
+export const testData = {
   users: [
     {
       id: 1,
@@ -21,8 +21,8 @@ export const userObj = {
     {
       id: 1,
       userID: 123,
-      budgetSetUp: true,
       budget: {
+        budgetSetUp: true,
         totalAnticipated: 3075,
         totalActual: 0,
         categories: [
@@ -69,8 +69,38 @@ export const userObj = {
           },
         },
       },
-      portfolioSetUp: false,
-      portfolio: {},
+      portfolio: {
+        portfolioSetUp: false,
+      },
+    },
+    {
+      id: 2,
+      userID: 321,
+      budget: {
+        budgetSetUp: false,
+        totalAnticipated: 0,
+        totalActual: 0,
+        categories: [],
+        expenses: {
+          2023: {
+            january: [],
+            february: [],
+            march: [],
+            april: [],
+            may: [],
+            june: [],
+            july: [],
+            august: [],
+            september: [],
+            october: [],
+            november: [],
+            december: [],
+          },
+        },
+      },
+      portfolio: {
+        portfolioSetUp: false,
+      },
     },
   ],
 };
