@@ -1,14 +1,13 @@
 import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
-import useUserData from "../../hooks/useUserData.js";
 import { useNavigate } from "react-router";
 import supabase from "../../config/supabaseClient.js";
 
 function AuthForm() {
   const navigate = useNavigate();
 
-  supabase.auth.onAuthStateChange((event) => {
-    if (event === "SIGNED_IN") navigate("/app");
+  supabase.auth.onAuthStateChange((event, session) => {
+    if (event === "SIGNED_IN") navigate(`/app/${session?.user?.id}`);
   });
 
   return (
