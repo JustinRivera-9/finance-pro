@@ -15,18 +15,26 @@ import InvestingLayout from "./investing/InvestingLayout";
 import BudgetLayout from "./budget/BudgetLayout";
 import NavBar from "../../components/app/misc/NavBar.jsx";
 import PageNotFound from "../PageNotFound";
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import { testData } from "../../../data/testData.js";
 import useUserData from "../../hooks/useUserData.js";
+import LoadingSpinner from "../../components/app/misc/LoadingSpinner.jsx";
 
-function AppLayout({ userKeys, userID }) {
+function AppLayout() {
   const { user, isLoading } = useUserData();
-  console.log(user.id, isLoading);
+  const userKeys = Object.keys(user).length;
+
+  // Fetch user data based on user.id
 
   // TEST DATA
   const profile = testData?.profile;
   const userFilled = profile[0];
   const userEmpty = profile[1];
+
+  // checks if data is loading
+  if (isLoading) {
+    return <LoadingSpinner isLoading={isLoading} />;
+  }
 
   return userKeys !== 0 ? (
     <>
