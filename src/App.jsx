@@ -11,9 +11,7 @@ import AuthForm from "./components/landingPage/AuthForm.jsx";
 
 function App() {
   const { user, isLoading } = useUserData();
-  const { id } = user;
   const userKeys = Object.keys(user).length;
-
   // Add isLoading STATE
 
   return (
@@ -27,10 +25,7 @@ function App() {
             <Route path="investing" element={<Investing />} />
             <Route path="pricing" element={<Pricing />} />
             <Route path="auth" element={<AuthForm />} />
-            <Route
-              path="app/*"
-              element={<AppLayout userKeys={userKeys} userID={id} />}
-            />
+            <Route path="app/*" element={<AppLayout userKeys={userKeys} />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </BrowserRouter>
