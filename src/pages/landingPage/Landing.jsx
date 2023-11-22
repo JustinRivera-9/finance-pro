@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 function LandingPage({ userRole }) {
   const navigate = useNavigate();
+
   if (userRole === "authenticated") navigate("/app");
 
   return (
