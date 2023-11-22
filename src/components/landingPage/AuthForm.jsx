@@ -6,8 +6,8 @@ import supabase from "../../config/supabaseClient.js";
 function AuthForm() {
   const navigate = useNavigate();
 
-  supabase.auth.onAuthStateChange((event, session) => {
-    if (event === "SIGNED_IN") navigate(`/app/${session?.user?.id}`);
+  supabase.auth.onAuthStateChange((event) => {
+    if (event === "SIGNED_IN") navigate(`/app`);
   });
 
   return (
