@@ -1,8 +1,8 @@
 import { Auth } from "@supabase/auth-ui-react";
-import supabase from "../config/supabaseClient";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
-import useUserData from "../hooks/useUserData";
+import useUserData from "../../hooks/useUserData.js";
 import { useNavigate } from "react-router";
+import supabase from "../../config/supabaseClient.js";
 
 function AuthForm() {
   const navigate = useNavigate();

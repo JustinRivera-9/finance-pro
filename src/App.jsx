@@ -6,8 +6,8 @@ import Investing from "./pages/landingPage/Investing";
 import Pricing from "./pages/landingPage/pricing";
 import PageNotFound from "./pages/PageNotFound";
 import AppLayout from "./pages/app/AppLayout";
-import AuthForm from "./components/AuthForm.jsx";
 import useUserData from "./hooks/useUserData.js";
+import AuthForm from "./components/landingPage/AuthForm.jsx";
 
 function App() {
   const { user, isLoading } = useUserData();
