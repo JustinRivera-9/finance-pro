@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useParams } from "react-router-dom";
 import Dashboard from "./dashboard/Dashboard";
 import OverviewBudget from "../app/budget/OverviewBudget";
 import Budget from "../app/budget/Budget";
@@ -17,16 +17,16 @@ import NavBar from "../../components/app/misc/NavBar.jsx";
 import PageNotFound from "../PageNotFound";
 import { useState, useEffect } from "react";
 import { testData } from "../../../data/testData.js";
+import useUserData from "../../hooks/useUserData.js";
 
 function AppLayout({ userKeys, userID }) {
-  // console.log(userID);
+  const { user, isLoading } = useUserData();
+  console.log(user.id, isLoading);
 
   // TEST DATA
   const profile = testData?.profile;
   const userFilled = profile[0];
   const userEmpty = profile[1];
-
-  // LISTENS FOR LOG OUT
 
   return userKeys !== 0 ? (
     <>
