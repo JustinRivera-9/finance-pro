@@ -35,7 +35,7 @@ function UpdateForm({ formOpen, setFormOpen, onSubmit }) {
   }
 
   return (
-    <Backdrop open={formOpen} onClick={handleCancel}>
+    <Backdrop open={formOpen}>
       <div className="flex flex-col bg-white p-8 rounded-xl">
         <form className="flex flex-col" onSubmit={handleForm}>
           <TextField
