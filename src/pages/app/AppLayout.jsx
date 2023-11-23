@@ -19,8 +19,8 @@ import useGetUser from "../../hooks/useGetUser.js";
 import LoadingSpinner from "../../components/app/misc/LoadingSpinner.jsx";
 
 function AppLayout() {
-  const { userId, userData, isLoading } = useGetUser();
-  console.log(userId, userData);
+  const { userId, isLoading } = useGetUser();
+  // console.log(userId, userData);
 
   ////////// Checks if data is loading
   if (isLoading) {
