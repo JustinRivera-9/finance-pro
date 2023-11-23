@@ -10,7 +10,7 @@ import useUserData from "./hooks/useUserData.js";
 import AuthForm from "./components/landingPage/AuthForm.jsx";
 
 function App() {
-  const { user, isLoading } = useUserData();
+  const { userId, isLoading } = useUserData();
   // Add isLoading STATE
 
   return (
@@ -18,7 +18,7 @@ function App() {
       <div className="bg-zinc-100 h-screen py-4 px-10">
         <BrowserRouter>
           <Routes>
-            <Route index element={<Landing userRole={user.role} />} />
+            <Route index element={<Landing userId={userId} />} />
             <Route path="learn-more" element={<LearnMore />} />
             <Route path="budgets" element={<Budgets />} />
             <Route path="investing" element={<Investing />} />

@@ -2,10 +2,10 @@ import { Button } from "@mui/material";
 import NavBar from "../../components/landingPage/NavBar";
 import { Link, useNavigate } from "react-router-dom";
 
-function LandingPage({ userRole }) {
+function LandingPage({ userId }) {
   const navigate = useNavigate();
 
-  if (userRole === "authenticated") navigate("/app");
+  if (userId) navigate("/app");
 
   return (
     <>

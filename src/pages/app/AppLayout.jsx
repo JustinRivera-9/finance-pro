@@ -21,9 +21,7 @@ import useUserData from "../../hooks/useUserData.js";
 import LoadingSpinner from "../../components/app/misc/LoadingSpinner.jsx";
 
 function AppLayout() {
-  const { user, isLoading } = useUserData();
-  const userKeys = Object.keys(user).length;
-
+  const { userId, isLoading } = useUserData();
   // Fetch user data based on user.id
 
   // TEST DATA
@@ -36,7 +34,7 @@ function AppLayout() {
     return <LoadingSpinner isLoading={isLoading} />;
   }
 
-  return userKeys !== 0 ? (
+  return userId.length ? (
     <>
       <NavBar />
       <Routes>
