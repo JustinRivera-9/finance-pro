@@ -15,21 +15,13 @@ import InvestingLayout from "./investing/InvestingLayout";
 import BudgetLayout from "./budget/BudgetLayout";
 import NavBar from "../../components/app/misc/NavBar.jsx";
 import PageNotFound from "../PageNotFound";
-// import { useState, useEffect } from "react";
-import { testData } from "../../../data/testData.js";
 import useUserData from "../../hooks/useUserData.js";
 import LoadingSpinner from "../../components/app/misc/LoadingSpinner.jsx";
 
 function AppLayout() {
   const { userId, isLoading } = useUserData();
-  // Fetch user data based on user.id
 
-  // TEST DATA
-  const profile = testData?.profile;
-  const userFilled = profile[0];
-  const userEmpty = profile[1];
-
-  // checks if data is loading
+  ////////// Checks if data is loading
   if (isLoading) {
     return <LoadingSpinner isLoading={isLoading} />;
   }
@@ -42,10 +34,7 @@ function AppLayout() {
         <Route path="budget-tracking" element={<BudgetLayout />}>
           <Route index element={<OverviewBudget />} />
           <Route path="budget" element={<Budget />} />
-          <Route
-            path="update"
-            element={<Update userData={userEmpty.budget} />}
-          />
+          <Route path="update" element={<Update />} />
           <Route path="insights" element={<Insights />} />
         </Route>
         <Route path="investments" element={<InvestingLayout />}>
