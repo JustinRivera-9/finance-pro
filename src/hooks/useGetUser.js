@@ -4,13 +4,12 @@ import { useState, useEffect } from "react";
 export default function useGetUser() {
   const [userId, setUserId] = useState({});
   const [userData, setUserData] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     async function fetchUserData() {
       try {
-        setIsLoading(true);
-
         ////////// Get authenticated user's ID
         await supabase.auth.getUser().then((value) => {
           if (value.data?.user.id) {
@@ -24,17 +23,19 @@ export default function useGetUser() {
           .select("*")
           .eq("user_id", userId);
 
+        console.log(users[0]);
         setUserData(users[0]);
-        if (error) throw new Error(error.message);
+        // if (error) throw new Error(error.message);
       } catch (err) {
         console.error(err);
+        setError(err.message);
       } finally {
         setIsLoading(false);
       }
     }
 
     fetchUserData();
-  }, [userId]);
+  }, [userId, error]);
 
   return { userId, userData, isLoading };
 }

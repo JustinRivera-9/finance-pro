@@ -15,11 +15,12 @@ import InvestingLayout from "./investing/InvestingLayout";
 import BudgetLayout from "./budget/BudgetLayout";
 import NavBar from "../../components/app/misc/NavBar.jsx";
 import PageNotFound from "../PageNotFound";
-import useUserData from "../../hooks/useUserData.js";
+import useGetUser from "../../hooks/useGetUser.js";
 import LoadingSpinner from "../../components/app/misc/LoadingSpinner.jsx";
 
 function AppLayout() {
-  const { userId, isLoading } = useUserData();
+  const { userId, userData, isLoading } = useGetUser();
+  console.log(userId, userData);
 
   ////////// Checks if data is loading
   if (isLoading) {
