@@ -3,6 +3,8 @@ import supabase from "../config/supabaseClient";
 
 function useGetSettings(id) {
   const [settings, setSettings] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const fetchUserSettings = async () => {
     try {
@@ -15,6 +17,9 @@ function useGetSettings(id) {
       setSettings(data[0]);
     } catch (err) {
       console.error(err.message);
+      setError(err.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -22,7 +27,7 @@ function useGetSettings(id) {
     fetchUserSettings();
   }, []);
 
-  return { settings };
+  return { settings, isLoading, error };
 }
 
 export default useGetSettings;
