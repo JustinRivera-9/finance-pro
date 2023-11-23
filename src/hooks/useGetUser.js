@@ -1,7 +1,7 @@
 import supabase from "../config/supabaseClient";
 import { useState, useEffect } from "react";
 
-export default function useUserData() {
+export default function useGetUser() {
   const [userId, setUserId] = useState({});
   const [userData, setUserData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -24,8 +24,7 @@ export default function useUserData() {
           .select("*")
           .eq("user_id", userId);
 
-        console.log(users);
-        setUserData(users);
+        setUserData(users[0]);
         if (error) throw new Error(error.message);
       } catch (err) {
         console.error(err);
