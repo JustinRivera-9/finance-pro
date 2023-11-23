@@ -1,22 +1,4 @@
 export const testData = {
-  users: [
-    {
-      id: 1,
-      userID: 123,
-      email: "justin_rivera9@outlook.com",
-      password: "test123",
-    },
-  ],
-  settings: [
-    {
-      id: 1,
-      userID: 123,
-      firstName: "Justin",
-      lastName: "Rivera",
-      email: "jman199610@yahoo.com",
-      password: "test123",
-    },
-  ],
   profile: [
     {
       id: 1,
@@ -26,29 +8,32 @@ export const testData = {
         totalAnticipated: 3075,
         totalActual: 0,
         categories: [
-          { category: "auto", budget: 200, type: "expense" },
-          { category: "fixed", budget: 1250, type: "expense" },
-          { category: "eating out", budget: 125, type: "expense" },
-          { category: "groceries", budget: 200, type: "expense" },
-          { category: "misc", budget: 550, type: "expense" },
-          { category: "work income", budget: 750, type: "income" },
+          { id: 1, category: "auto", budget: 200, type: "expense" },
+          { id: 2, category: "fixed", budget: 1250, type: "expense" },
+          { id: 3, category: "eating out", budget: 125, type: "expense" },
+          { id: 4, category: "groceries", budget: 200, type: "expense" },
+          { id: 5, category: "misc", budget: 550, type: "expense" },
+          { id: 6, category: "work income", budget: 750, type: "income" },
         ],
         expenses: {
           2023: {
             january: [
               {
+                id: 1,
                 category: "auto",
                 amount: 50,
                 date: "INSERT DATE",
                 description: "This is an auto test expense",
               },
               {
+                id: 2,
                 category: "misc",
                 amount: 145,
                 date: "INSERT DATE",
                 description: "Misc is the best expense",
               },
               {
+                id: 3,
                 category: "fixed",
                 description: "Gotta love rent",
                 date: "INSERT DATE",
