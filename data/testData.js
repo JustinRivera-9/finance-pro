@@ -1,7 +1,6 @@
 export const testData = {
   profile: [
     {
-      id: 1,
       userID: 123,
       budget: {
         budgetSetUp: true,
@@ -19,27 +18,38 @@ export const testData = {
           2023: {
             january: [
               {
-                id: 1,
                 category: "auto",
                 amount: 50,
                 date: "INSERT DATE",
                 description: "This is an auto test expense",
               },
               {
-                id: 2,
                 category: "misc",
                 amount: 145,
                 date: "INSERT DATE",
                 description: "Misc is the best expense",
               },
               {
-                id: 3,
                 category: "fixed",
                 description: "Gotta love rent",
                 date: "INSERT DATE",
                 amount: 750,
               },
             ],
+            february: [],
+            march: [],
+            april: [],
+            may: [],
+            june: [],
+            july: [],
+            august: [],
+            september: [],
+            october: [],
+            november: [],
+            december: [],
+          },
+          2024: {
+            january: [],
             february: [],
             march: [],
             april: [],
