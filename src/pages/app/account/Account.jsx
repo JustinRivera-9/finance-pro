@@ -2,15 +2,25 @@ import { Button, Skeleton } from "@mui/material";
 import { useNavigate } from "react-router";
 import supabase from "../../../config/supabaseClient";
 import useGetSettings from "../../../hooks/useGetSettings";
+import { useState } from "react";
+import AccountForm from "../../../components/app/account/AccountForm";
 
 function Account({ userId }) {
+  const [formOpen, setFormOpen] = useState(false);
   const { settings, isLoading, error } = useGetSettings(userId);
   const { first_name, last_name, email } = settings;
   const navigate = useNavigate();
 
+  ////////// Handles user sign out
   async function signOutUser() {
     const { error } = await supabase.auth.signOut();
     navigate("/");
+  }
+
+  ////////// Handles edit form submission
+  function handleUpdate(formData) {
+    const { firstName, lastName } = formData;
+    console.log(firstName, lastName);
   }
 
   ////////// Loading animation
@@ -26,7 +36,23 @@ function Account({ userId }) {
         <Skeleton variant="rounded">
           <div>Email: Justin.rivera.cm@gmail.com</div>
         </Skeleton>
+        <Skeleton>
+          <button>Update</button>
+        </Skeleton>
+        <Skeleton>
+          <button>Sign Out</button>
+        </Skeleton>
       </div>
+    );
+  }
+
+  if (formOpen) {
+    return (
+      <AccountForm
+        formOpen={formOpen}
+        setFormOpen={setFormOpen}
+        onSubmit={handleUpdate}
+      />
     );
   }
 
@@ -45,6 +71,13 @@ function Account({ userId }) {
         <strong>Email: </strong>
         {email}
       </h1>
+      <Button
+        variant="contained"
+        onClick={() => setFormOpen(true)}
+        size="large"
+      >
+        Update
+      </Button>
       <Button onClick={() => signOutUser()} size="large">
         Sign Out
       </Button>
