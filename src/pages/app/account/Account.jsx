@@ -7,9 +7,11 @@ import AccountForm from "../../../components/app/account/AccountForm";
 
 function Account({ userId }) {
   const [formOpen, setFormOpen] = useState(false);
+  const navigate = useNavigate();
+
+  ////////// Fetches user settings from DB
   const { settings, isLoading, error } = useGetSettings(userId);
   const { first_name, last_name, email } = settings;
-  const navigate = useNavigate();
 
   ////////// Handles user sign out
   async function signOutUser() {
@@ -23,6 +25,7 @@ function Account({ userId }) {
     console.log(firstName, lastName);
   }
 
+  ////////////////////////////// VIEW LOGIC //////////////////////////////
   ////////// Loading animation
   if (isLoading) {
     return (
@@ -46,6 +49,7 @@ function Account({ userId }) {
     );
   }
 
+  ////////// Form Modal
   if (formOpen) {
     return (
       <AccountForm
