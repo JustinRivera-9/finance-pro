@@ -5,19 +5,16 @@ import { useState } from "react";
 
 function Update({ userData }) {
   const [formOpen, setFormOpen] = useState(false);
-  const [categories, setCategories] = useState(userData.categories);
-  const { budgetSetUp, totalAnticipated, totalActual } = userData;
+  const [categories, setCategories] = useState([]);
 
   function handleAddCategory(formData) {
-    userData.budgetSetUp = true;
-    setCategories((prev) => [...prev, formData]);
-    userData.categories = categories;
+    const { category, amount, type } = formData;
+    console.log(category, amount, type);
   }
-  console.log(userData.categories);
 
   return (
     <div className="flex justify-center mt-24">
-      {!budgetSetUp && <SetUpMessage openForm={setFormOpen} />}
+      {!categories.length && <SetUpMessage openForm={setFormOpen} />}
       {formOpen && (
         <UpdateForm
           formOpen={formOpen}
@@ -25,7 +22,7 @@ function Update({ userData }) {
           onSubmit={handleAddCategory}
         />
       )}
-      {userData.categories.map((el, i) => {
+      {/* {userData.categories.map((el, i) => {
         return (
           <div key={i}>
             <div>Category: {el.category}</div>
@@ -33,8 +30,8 @@ function Update({ userData }) {
             <div>Type: {el.type}</div>
           </div>
         );
-      })}
-      {!formOpen && budgetSetUp ? (
+      })} */}
+      {!formOpen && categories.length ? (
         <Button onClick={() => setFormOpen(true)}>ADD</Button>
       ) : null}
     </div>
