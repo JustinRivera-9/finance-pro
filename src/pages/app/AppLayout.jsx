@@ -50,7 +50,7 @@ function AppLayout() {
             element={<CostBasisCalculator />}
           />
         </Route>
-        <Route path="account" element={<Account />} />
+        <Route path="account" element={<Account userId={userId} />} />
       </Routes>
     </>
   ) : (
