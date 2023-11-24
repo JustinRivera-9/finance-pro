@@ -3,10 +3,8 @@ import { useNavigate } from "react-router";
 import supabase from "../../../config/supabaseClient";
 import useGetSettings from "../../../hooks/useGetSettings";
 
-function Account() {
-  const { settings, isLoading, error } = useGetSettings(
-    "090886e5-3913-48bd-8582-6aa150cf0cf2"
-  );
+function Account({ userId }) {
+  const { settings, isLoading, error } = useGetSettings(userId);
   const { first_name, last_name, email } = settings;
   const navigate = useNavigate();
 
