@@ -23,7 +23,6 @@ export default function useGetUser() {
           .select("*")
           .eq("user_id", userId);
 
-        console.log(users[0]);
         setUserData(users[0]);
         // if (error) throw new Error(error.message);
       } catch (err) {
