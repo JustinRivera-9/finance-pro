@@ -31,13 +31,13 @@ function Account({ userId }) {
     return (
       <div className="flex flex-col items-center text-3xl mt-24 space-y-8">
         <Skeleton variant="rounded">
-          <div>First Name: Justin Rivera</div>
+          <div>First Name: First Name</div>
         </Skeleton>
         <Skeleton variant="rounded">
-          <div>Last Name: Justin Rivera</div>
+          <div>Last Name: Last Name</div>
         </Skeleton>
         <Skeleton variant="rounded">
-          <div>Email: Justin.rivera.cm@gmail.com</div>
+          <div>Email: First Name_Last Name@gmail.com</div>
         </Skeleton>
         <Skeleton>
           <button>Update</button>
