@@ -10,15 +10,11 @@ function Account({ userId }) {
   const { settings, isLoading, error } = useGetSettings(userId);
   const { first_name, last_name, email } = settings;
 
-  console.log("Before State Setting: ", first_name, last_name);
-
   const [formOpen, setFormOpen] = useState(false);
   const [firstName, setFirstName] = useState(first_name);
   const [lastName, setLastName] = useState(last_name);
   const [isUpdated, setIsUpdated] = useState(false);
   const navigate = useNavigate();
-
-  console.log("After State Setting: ", firstName, lastName);
 
   ////////// Handles user sign out
   async function signOutUser() {
