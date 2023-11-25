@@ -6,12 +6,19 @@ import { useState } from "react";
 import AccountForm from "../../../components/app/account/AccountForm";
 
 function Account({ userId }) {
-  const [formOpen, setFormOpen] = useState(false);
-  const navigate = useNavigate();
-
   ////////// Fetches user settings from DB
   const { settings, isLoading, error } = useGetSettings(userId);
   const { first_name, last_name, email } = settings;
+
+  console.log("Before State Setting: ", first_name, last_name);
+
+  const [formOpen, setFormOpen] = useState(false);
+  const [firstName, setFirstName] = useState(first_name);
+  const [lastName, setLastName] = useState(last_name);
+  const [isUpdated, setIsUpdated] = useState(false);
+  const navigate = useNavigate();
+
+  console.log("After State Setting: ", firstName, lastName);
 
   ////////// Handles user sign out
   async function signOutUser() {
@@ -19,10 +26,19 @@ function Account({ userId }) {
     navigate("/");
   }
 
-  ////////// Handles edit form submission
-  function handleUpdate(formData) {
-    const { firstName, lastName } = formData;
-    console.log(firstName, lastName);
+  ////////// Handles edit form submission - If the form has been updated it will update the DB and show form data ILO re-fetching from DB
+  async function handleUpdate(formData) {
+    setFirstName(formData.firstName);
+    setLastName(formData.lastName);
+    setIsUpdated(true);
+
+    const { data, error } = await supabase
+      .from("settings")
+      .update({ first_name: formData.firstName, last_name: formData.lastName })
+      .eq("user_id", userId)
+      .select();
+
+    console.log("error", error);
   }
 
   ////////////////////////////// VIEW LOGIC //////////////////////////////
@@ -65,11 +81,11 @@ function Account({ userId }) {
     <div className="flex flex-col justify-center text-center text-3xl mt-24 space-y-8">
       <h1>
         <strong>First Name: </strong>
-        {first_name}
+        {isUpdated ? firstName : first_name}
       </h1>
       <h1>
         <strong>Last Name: </strong>
-        {last_name}
+        {isUpdated ? lastName : last_name}
       </h1>
       <h1>
         <strong>Email: </strong>
