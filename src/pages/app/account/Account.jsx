@@ -74,7 +74,7 @@ function Account({ userId }) {
 
   ////////// Content from Databse
   return (
-    <div className="flex flex-col justify-center text-center text-3xl mt-24 space-y-8">
+    <div className="flex flex-col justify-center text-center text-3xl mt-24 space-y-8 w-1/2 mx-auto">
       <h1>
         <strong>First Name: </strong>
         {isUpdated ? firstName : first_name}
@@ -87,16 +87,14 @@ function Account({ userId }) {
         <strong>Email: </strong>
         {email}
       </h1>
-      <Button
-        variant="contained"
-        onClick={() => setFormOpen(true)}
-        size="large"
-      >
-        Update
-      </Button>
-      <Button onClick={() => signOutUser()} size="large">
-        Sign Out
-      </Button>
+      <div className="flex flex-col w-fit mx-auto space-y-2">
+        <Button variant="contained" onClick={() => setFormOpen(true)}>
+          Update
+        </Button>
+        <Button onClick={() => signOutUser()} size="large">
+          Sign Out
+        </Button>
+      </div>
     </div>
   );
 }
