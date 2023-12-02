@@ -4,6 +4,7 @@ import { Button, Skeleton } from "@mui/material";
 import { useCallback, useEffect, useState } from "react";
 import useGetTargetBudget from "../../../hooks/supabase/useGetTargetBudget";
 import LoadingSpinner from "../../../components/app/misc/LoadingSpinner";
+import CardBudgetItem from "../../../components/app/budget/CardBudgetItem";
 // import readTargetBudget from "../../../config/supabase/readTargetBudget.js";
 
 function Update({ userId }) {
@@ -38,14 +39,12 @@ function Update({ userId }) {
         />
       )}
 
-      {/* Array of cards for budget items */}
+      {/* maps over array of budget items */}
       {data.categories.map((el) => {
         return (
-          <div key={el.id}>
-            <div>Category: {el.category}</div>
-            <div>Amount: ${el.amount}</div>
-            <div>Type: {el.type}</div>
-          </div>
+          <ul key={el.id}>
+            <CardBudgetItem budgetData={el} />
+          </ul>
         );
       })}
 
