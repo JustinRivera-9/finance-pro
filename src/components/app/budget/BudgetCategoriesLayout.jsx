@@ -7,26 +7,26 @@ function BudgetCategoriesLayout({ categories, setUp, openForm }) {
   const incomeArr = categories.filter((el) => el.type === "income");
   const expenseArr = categories.filter((el) => el.type === "expense");
 
-  console.log(incomeArr, expenseArr);
-
   if (!setUp) {
     return <SetUpMessage openForm={openForm} />;
   }
 
   return (
-    <div className="w-full flex justify-center">
-      <div className={boxStyles}>
-        {expenseArr.map((el) => {
-          return <BudgetCategoriesCard key={el.id} budgetData={el} />;
-        })}
-      </div>
+    <>
+      <div className="w-full flex justify-center">
+        <div className={boxStyles}>
+          {expenseArr.map((el) => {
+            return <BudgetCategoriesCard key={el.id} budgetData={el} />;
+          })}
+        </div>
 
-      <div className={boxStyles}>
-        {incomeArr.map((el) => (
-          <BudgetCategoriesCard key={el.id} budgetData={el} />
-        ))}
+        <div className={boxStyles}>
+          {incomeArr.map((el) => (
+            <BudgetCategoriesCard key={el.id} budgetData={el} />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

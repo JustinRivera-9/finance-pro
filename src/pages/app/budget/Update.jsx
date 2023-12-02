@@ -5,6 +5,7 @@ import { useState } from "react";
 import useGetTargetBudget from "../../../hooks/supabase/useGetTargetBudget";
 import LoadingSpinner from "../../../components/app/misc/LoadingSpinner";
 import BudgetCategoriesLayout from "../../../components/app/budget/BudgetCategoriesLayout";
+import BudgetCategoriesTotals from "../../../components/app/budget/BudgetCategoriesTotals";
 
 function Update({ userId }) {
   // Need to memoize useGetTargetBudget hook call
@@ -38,12 +39,10 @@ function Update({ userId }) {
     );
   }
 
-  const { budgetSetUp, totalAnticipated, categories } = data;
+  const { budgetSetUp, categories } = data;
 
   return (
     <div className="flex flex-col items-center">
-      {/* checks if form is open */}
-
       {/* UI layout for catgeories */}
       <div className="w-full flex-row justify-center my-8">
         <BudgetCategoriesLayout
@@ -62,6 +61,7 @@ function Update({ userId }) {
           ADD
         </Button>
       )}
+      <BudgetCategoriesTotals categories={categories} />
     </div>
   );
 }
