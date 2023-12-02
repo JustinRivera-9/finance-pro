@@ -26,7 +26,7 @@ function useGetTargetBudget(id) {
     fetchTargetBudget();
   }, [id]);
 
-  console.log(data);
+  // console.log(data);
 
   return { data, isLoading, error };
 }
