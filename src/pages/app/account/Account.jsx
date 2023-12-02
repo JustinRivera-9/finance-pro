@@ -34,7 +34,7 @@ function Account({ userId }) {
       .eq("user_id", userId)
       .select();
 
-    console.log("error", error);
+    if (error) console.log("error", error);
   }
 
   ////////////////////////////// VIEW LOGIC //////////////////////////////
