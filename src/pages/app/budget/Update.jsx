@@ -22,7 +22,7 @@ function Update({ userId }) {
     return <SetUpMessage openForm={setFormOpen} />;
   }
 
-  // form submit handler
+  // form submit handler - NEED TO SET DATA
   function handleAddCategory(formData) {
     const { category, amount, type } = formData;
     console.log(category, amount, type);
