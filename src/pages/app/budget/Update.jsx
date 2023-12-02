@@ -1,10 +1,10 @@
 import SetUpMessage from "../../../components/app/budget/SetUpMessage";
 import UpdateForm from "../../../components/app/budget/UpdateForm";
 import { Button, Skeleton } from "@mui/material";
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 import useGetTargetBudget from "../../../hooks/supabase/useGetTargetBudget";
 import LoadingSpinner from "../../../components/app/misc/LoadingSpinner";
-import BudgetCategoriesCard from "../../../components/app/budget/BudgetCategoriesCard";
+import BudgetCategoriesLayout from "../../../components/app/budget/BudgetCategoriesLayout";
 
 function Update({ userId }) {
   // Need to memoize useGetTargetBudget hook call
@@ -16,41 +16,53 @@ function Update({ userId }) {
     return <LoadingSpinner isLoading={isLoading} />;
   }
 
+  // Checks if budget exists. False - returns set up budget page
+  if (!data.budgetSetUp && !formOpen) {
+    return <SetUpMessage openForm={setFormOpen} />;
+  }
+
   // form submit handler
   function handleAddCategory(formData) {
     const { category, amount, type } = formData;
     console.log(category, amount, type);
   }
 
+  // Checks if budgetSetUp is false and prevents mapping through undefined
+  if (formOpen) {
+    return (
+      <UpdateForm
+        formOpen={formOpen}
+        setFormOpen={setFormOpen}
+        onSubmit={handleAddCategory}
+      />
+    );
+  }
+
   const { budgetSetUp, totalAnticipated, categories } = data;
+  console.log(data);
 
   return (
-    <div className="flex justify-center mt-24">
-      {/* Checks if anticipated budget exists */}
-      {!budgetSetUp && <SetUpMessage openForm={setFormOpen} />}
-
+    <div className="flex flex-col items-center">
       {/* checks if form is open */}
-      {formOpen && (
-        <UpdateForm
-          formOpen={formOpen}
-          setFormOpen={setFormOpen}
-          onSubmit={handleAddCategory}
-        />
-      )}
 
-      {/* maps over array of budget items */}
-      {data.categories.map((el) => {
-        return (
-          <ul key={el.id}>
-            <BudgetCategoriesCard budgetData={el} />
-          </ul>
-        );
-      })}
+      {/* UI layout for catgeories */}
+      <div className="w-full flex-row justify-center my-8">
+        <BudgetCategoriesLayout
+          setUp={budgetSetUp}
+          categories={categories}
+          openForm={setFormOpen}
+        />
+      </div>
 
       {/* Shows different button once budget is setup */}
-      {!formOpen && budgetSetUp ? (
-        <Button onClick={() => setFormOpen(true)}>ADD</Button>
-      ) : null}
+      {!formOpen && budgetSetUp && (
+        <Button
+          style={{ fontSize: "1.5rem" }}
+          onClick={() => setFormOpen(true)}
+        >
+          ADD
+        </Button>
+      )}
     </div>
   );
 }
