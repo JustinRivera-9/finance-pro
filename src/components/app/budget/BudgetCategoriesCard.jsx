@@ -7,7 +7,7 @@ function BudgetCategoriesCard({ budgetData }) {
   return (
     <ul
       key={id}
-      className="text-center text-xl border-2 border-sky-500 rounded-xl w-1/5"
+      className="text-center text-xl border-2 border-sky-500 rounded-xl w-4/12"
     >
       <li className="py-2 text-2xl font-normal bg-sky-500">
         {capitalize(type)}
