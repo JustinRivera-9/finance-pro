@@ -26,7 +26,10 @@ function Update({ userId }) {
 
   return (
     <div className="flex justify-center mt-24">
+      {/* Checks if anticipated budget exists */}
       {!budgetSetUp && <SetUpMessage openForm={setFormOpen} />}
+
+      {/* checks if form is open */}
       {formOpen && (
         <UpdateForm
           formOpen={formOpen}
@@ -34,6 +37,8 @@ function Update({ userId }) {
           onSubmit={handleAddCategory}
         />
       )}
+
+      {/* Array of cards for budget items */}
       {data.categories.map((el) => {
         return (
           <div key={el.id}>
@@ -43,6 +48,8 @@ function Update({ userId }) {
           </div>
         );
       })}
+
+      {/* Shows different button once budget is setup */}
       {!formOpen && budgetSetUp ? (
         <Button onClick={() => setFormOpen(true)}>ADD</Button>
       ) : null}
