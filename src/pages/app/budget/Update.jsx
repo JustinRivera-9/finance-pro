@@ -1,20 +1,32 @@
 import SetUpMessage from "../../../components/app/budget/SetUpMessage";
 import UpdateForm from "../../../components/app/budget/UpdateForm";
-import { Button } from "@mui/material";
-import { useState } from "react";
+import { Button, Skeleton } from "@mui/material";
+import { useCallback, useEffect, useState } from "react";
+import useGetTargetBudget from "../../../hooks/supabase/useGetTargetBudget";
+import LoadingSpinner from "../../../components/app/misc/LoadingSpinner";
+// import readTargetBudget from "../../../config/supabase/readTargetBudget.js";
 
-function Update({ userData }) {
+function Update({ userId }) {
+  // Need to memoize useGetTargetBudget hook call
+  const { data, isLoading, error } = useGetTargetBudget(userId);
   const [formOpen, setFormOpen] = useState(false);
-  const [categories, setCategories] = useState([]);
 
+  // Checks loading state. Update to be skeleton loading
+  if (isLoading) {
+    return <LoadingSpinner isLoading={isLoading} />;
+  }
+
+  // form submit handler
   function handleAddCategory(formData) {
     const { category, amount, type } = formData;
     console.log(category, amount, type);
   }
 
+  const { budgetSetUp, totalAnticipated, categories } = data;
+
   return (
     <div className="flex justify-center mt-24">
-      {!categories.length && <SetUpMessage openForm={setFormOpen} />}
+      {!budgetSetUp && <SetUpMessage openForm={setFormOpen} />}
       {formOpen && (
         <UpdateForm
           formOpen={formOpen}
@@ -22,16 +34,16 @@ function Update({ userData }) {
           onSubmit={handleAddCategory}
         />
       )}
-      {/* {userData.categories.map((el, i) => {
+      {data.categories.map((el) => {
         return (
-          <div key={i}>
+          <div key={el.id}>
             <div>Category: {el.category}</div>
             <div>Amount: ${el.amount}</div>
             <div>Type: {el.type}</div>
           </div>
         );
-      })} */}
-      {!formOpen && categories.length ? (
+      })}
+      {!formOpen && budgetSetUp ? (
         <Button onClick={() => setFormOpen(true)}>ADD</Button>
       ) : null}
     </div>

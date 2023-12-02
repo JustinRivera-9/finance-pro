@@ -20,7 +20,8 @@ import LoadingSpinner from "../../components/app/misc/LoadingSpinner.jsx";
 
 function AppLayout() {
   const { userId, isLoading } = useGetUser();
-  // console.log(userId, userData);
+
+  ///// Store userID in url to use in dashboard
 
   ////////// Checks if data is loading
   if (isLoading) {
@@ -35,7 +36,7 @@ function AppLayout() {
         <Route path="budget-tracking" element={<BudgetLayout />}>
           <Route index element={<OverviewBudget />} />
           <Route path="budget" element={<Budget />} />
-          <Route path="update" element={<Update />} />
+          <Route path="update" element={<Update userId={userId} />} />
           <Route path="insights" element={<Insights />} />
         </Route>
         <Route path="investments" element={<InvestingLayout />}>
