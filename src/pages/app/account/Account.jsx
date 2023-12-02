@@ -51,12 +51,6 @@ function Account({ userId }) {
         <Skeleton variant="rounded">
           <div>Email: First Name_Last Name@gmail.com</div>
         </Skeleton>
-        <Skeleton>
-          <button>Update</button>
-        </Skeleton>
-        <Skeleton>
-          <button>Sign Out</button>
-        </Skeleton>
       </div>
     );
   }
