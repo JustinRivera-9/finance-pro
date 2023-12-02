@@ -5,8 +5,6 @@ const boxStyles =
   "w-1/2 flex flex-wrap space-y-4 space-x-4 py-4 border-red-500 border-2";
 
 function BudgetCategoriesLayout({ categories, setUp, openForm }) {
-  console.log(categories);
-
   if (!setUp) {
     return <SetUpMessage openForm={openForm} />;
   }

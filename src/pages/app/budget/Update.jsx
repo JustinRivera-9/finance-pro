@@ -39,7 +39,6 @@ function Update({ userId }) {
   }
 
   const { budgetSetUp, totalAnticipated, categories } = data;
-  console.log(data);
 
   return (
     <div className="flex flex-col items-center">
