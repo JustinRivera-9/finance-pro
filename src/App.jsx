@@ -6,7 +6,7 @@ import Investing from "./pages/landingPage/Investing";
 import Pricing from "./pages/landingPage/pricing";
 import PageNotFound from "./pages/PageNotFound";
 import AppLayout from "./pages/app/AppLayout";
-import useGetUser from "./hooks/useGetUser.js";
+import useGetUser from "./hooks/supabase/useGetUser.js";
 import AuthForm from "./components/landingPage/AuthForm.jsx";
 
 function App() {

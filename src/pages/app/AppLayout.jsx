@@ -15,7 +15,7 @@ import InvestingLayout from "./investing/InvestingLayout";
 import BudgetLayout from "./budget/BudgetLayout";
 import NavBar from "../../components/app/misc/NavBar.jsx";
 import PageNotFound from "../PageNotFound";
-import useGetUser from "../../hooks/useGetUser.js";
+import useGetUser from "../../hooks/supabase/useGetUser.js";
 import LoadingSpinner from "../../components/app/misc/LoadingSpinner.jsx";
 
 function AppLayout() {

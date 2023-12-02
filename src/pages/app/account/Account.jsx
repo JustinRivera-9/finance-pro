@@ -1,8 +1,8 @@
 import { Button, Skeleton } from "@mui/material";
 import { useNavigate } from "react-router";
-import supabase from "../../../config/supabaseClient";
-import useGetSettings from "../../../hooks/useGetSettings";
 import { useState } from "react";
+import supabase from "../../../config/supabaseClient";
+import useGetSettings from "../../../hooks/supabase/useGetSettings";
 import AccountForm from "../../../components/app/account/AccountForm";
 
 function Account({ userId }) {
