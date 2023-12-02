@@ -2,14 +2,14 @@ import SetUpMessage from "../../../components/app/budget/SetUpMessage";
 import UpdateForm from "../../../components/app/budget/UpdateForm";
 import { Button, Skeleton } from "@mui/material";
 import { useState } from "react";
-import useGetTargetBudget from "../../../hooks/supabase/useGetTargetBudget";
+import useGetBudgetCategories from "../../../hooks/supabase/useGetBudgetCategories";
 import LoadingSpinner from "../../../components/app/misc/LoadingSpinner";
 import BudgetCategoriesLayout from "../../../components/app/budget/BudgetCategoriesLayout";
 import BudgetCategoriesTotals from "../../../components/app/budget/BudgetCategoriesTotals";
 
 function Update({ userId }) {
   // Need to memoize useGetTargetBudget hook call
-  const { data, isLoading, error } = useGetTargetBudget(userId);
+  const { data, isLoading, error } = useGetBudgetCategories(userId);
   const [formOpen, setFormOpen] = useState(false);
 
   // Checks loading state. Update to be skeleton loading
