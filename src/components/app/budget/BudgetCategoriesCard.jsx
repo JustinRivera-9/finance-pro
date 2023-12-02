@@ -1,4 +1,4 @@
-function CardBudgetItem({ budgetData }) {
+function BudgetCategoriesCard({ budgetData }) {
   const { category, amount, type, id } = budgetData;
 
   return (
@@ -10,4 +10,4 @@ function CardBudgetItem({ budgetData }) {
   );
 }
 
-export default CardBudgetItem;
+export default BudgetCategoriesCard;

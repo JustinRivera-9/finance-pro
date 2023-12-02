@@ -4,8 +4,7 @@ import { Button, Skeleton } from "@mui/material";
 import { useCallback, useEffect, useState } from "react";
 import useGetTargetBudget from "../../../hooks/supabase/useGetTargetBudget";
 import LoadingSpinner from "../../../components/app/misc/LoadingSpinner";
-import CardBudgetItem from "../../../components/app/budget/CardBudgetItem";
-// import readTargetBudget from "../../../config/supabase/readTargetBudget.js";
+import BudgetCategoriesCard from "../../../components/app/budget/BudgetCategoriesCard";
 
 function Update({ userId }) {
   // Need to memoize useGetTargetBudget hook call
@@ -43,7 +42,7 @@ function Update({ userId }) {
       {data.categories.map((el) => {
         return (
           <ul key={el.id}>
-            <CardBudgetItem budgetData={el} />
+            <BudgetCategoriesCard budgetData={el} />
           </ul>
         );
       })}
