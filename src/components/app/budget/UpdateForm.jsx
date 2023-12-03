@@ -58,7 +58,6 @@ function UpdateForm({ formOpen, setFormOpen, onSubmit }) {
           <FormControl required sx={{ marginTop: "1.5rem" }}>
             <InputLabel id="type">Type</InputLabel>
             <Select
-              //   labelId="type"
               label="type"
               id="type"
               value={type}
