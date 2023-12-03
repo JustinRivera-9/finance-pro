@@ -6,6 +6,8 @@ import useGetBudgetCategories from "../../../hooks/supabase/useGetBudgetCategori
 import LoadingSpinner from "../../../components/app/misc/LoadingSpinner";
 import BudgetCategoriesLayout from "../../../components/app/budget/BudgetCategoriesLayout";
 import BudgetCategoriesTotals from "../../../components/app/budget/BudgetCategoriesTotals";
+import { v4 as uuidv4 } from "uuid";
+import supabase from "../../../config/supabaseClient";
 
 function Update({ userId }) {
   // Need to memoize useGetTargetBudget hook call
@@ -13,16 +15,24 @@ function Update({ userId }) {
   const [formOpen, setFormOpen] = useState(false);
 
   // form submit handler - NEED TO SET DATA
-  function handleAddCategory(formData) {
+  async function handleAddCategory(formData) {
     const { category, amount, type } = formData;
 
-    const updatedCategories = [
-      ...data.categories,
-      { id: 8, category, amount, type },
-    ];
+    // Check if data is available
+    if (data && data.categories) {
+      const updatedCategories = [
+        ...data.categories,
+        { id: uuidv4(), category, amount, type },
+      ];
+      const JSONcategories = JSON.stringify(updatedCategories);
 
-    console.log(updatedCategories);
-    // stringfy object
+      // const { data, error } = await supabase
+      //   .from("budget")
+      //   .update({ categories })
+      //   .eq("user_id", userId);
+
+      // console.log(data, error);
+    }
   }
 
   // Checks loading state. Update to be skeleton loading
