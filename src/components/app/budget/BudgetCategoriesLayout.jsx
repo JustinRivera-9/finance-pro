@@ -13,7 +13,7 @@ function BudgetCategoriesLayout({ categories, setUp, openForm }) {
 
   return (
     <>
-      <div className="w-full flex justify-center">
+      <div className="flex justify-center">
         <div className={boxStyles}>
           {expenseArr.map((el) => {
             return <BudgetCategoriesCard key={el.id} budgetData={el} />;
