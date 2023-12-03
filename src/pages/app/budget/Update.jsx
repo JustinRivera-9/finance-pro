@@ -12,23 +12,30 @@ function Update({ userId }) {
   const { data, isLoading, error } = useGetBudgetCategories(userId);
   const [formOpen, setFormOpen] = useState(false);
 
+  // form submit handler - NEED TO SET DATA
+  function handleAddCategory(formData) {
+    const { category, amount, type } = formData;
+
+    const updatedCategories = [
+      ...data.categories,
+      { id: 8, category, amount, type },
+    ];
+
+    console.log(updatedCategories);
+    // stringfy object
+  }
+
   // Checks loading state. Update to be skeleton loading
   if (isLoading) {
     return <LoadingSpinner isLoading={isLoading} />;
   }
 
-  // Checks if budget exists. False - returns set up budget page
+  // Checks if budget exists & form closed. False - returns set up budget page
   if (!data.budgetSetUp && !formOpen) {
     return <SetUpMessage openForm={setFormOpen} />;
   }
 
-  // form submit handler - NEED TO SET DATA
-  function handleAddCategory(formData) {
-    const { category, amount, type } = formData;
-    console.log(category, amount, type);
-  }
-
-  // Checks if budgetSetUp is false and prevents mapping through undefined
+  // Check to prevent mapping through undefined
   if (formOpen) {
     return (
       <UpdateForm
