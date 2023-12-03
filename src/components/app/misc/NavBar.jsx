@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import { Link, NavLink } from "react-router-dom";
+import AccountMenu from "./AccountMenu";
 
 function NavBar() {
   return (
@@ -20,6 +21,7 @@ function NavBar() {
         <NavLink to="/app/account" className="text-xl">
           ACCOUNT
         </NavLink>
+        <AccountMenu />
       </div>
     </div>
   );
