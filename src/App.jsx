@@ -15,7 +15,7 @@ function App() {
 
   return (
     <>
-      <div className="bg-zinc-100 h-screen py-4 px-10">
+      <div className="bg-zinc-100 py-4 px-10">
         <BrowserRouter>
           <Routes>
             <Route index element={<Landing userId={userId} />} />

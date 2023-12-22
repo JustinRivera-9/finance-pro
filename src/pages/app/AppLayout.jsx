@@ -17,6 +17,7 @@ import NavBar from "../../components/app/misc/NavBar.jsx";
 import PageNotFound from "../PageNotFound";
 import useGetUser from "../../hooks/supabase/useGetUser.js";
 import LoadingSpinner from "../../components/app/misc/LoadingSpinner.jsx";
+import NavBarResponsive from "../../components/app/misc/NavBarResponsive.jsx";
 
 function AppLayout() {
   const { userId, isLoading } = useGetUser();
@@ -30,7 +31,6 @@ function AppLayout() {
 
   return userId.length ? (
     <>
-      <NavBar />
       <Routes>
         <Route index element={<Dashboard />} />
         <Route path="budget-tracking" element={<BudgetLayout />}>
@@ -53,6 +53,9 @@ function AppLayout() {
         </Route>
         <Route path="account" element={<Account userId={userId} />} />
       </Routes>
+      <div className="">
+        <NavBarResponsive />
+      </div>
     </>
   ) : (
     <PageNotFound
