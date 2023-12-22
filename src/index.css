@@ -6,3 +6,9 @@
   color: rgb(0, 102, 255);
   text-shadow: 1px 2px 12px rgba(0, 0, 0, 0.308);
 }
+
+@layer components {
+  .input {
+    @apply rounded-full border border-stone-200 px-4 py-2 text-sm transition-all duration-300 placeholder:text-stone-200 focus:outline-none focus:ring focus:ring-yellow-400 md:px-6 md:py-4;
+  }
+}
