@@ -4,7 +4,7 @@ import AccountMenu from "./AccountMenu";
 
 function NavBar() {
   return (
-    <div className="flex justify-between">
+    <nav className="flex justify-between">
       <Link to="/app" className="text-2xl">
         FINANCE PRO
       </Link>
@@ -23,7 +23,7 @@ function NavBar() {
         </NavLink>
         <AccountMenu />
       </div>
-    </div>
+    </nav>
   );
 }
 

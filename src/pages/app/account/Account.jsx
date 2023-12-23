@@ -41,7 +41,7 @@ function Account({ userId }) {
   ////////// Loading animation
   if (isLoading) {
     return (
-      <div className="flex flex-col items-center text-3xl mt-24 space-y-8">
+      <div className="flex flex-col items-center text-3xl mt-4 space-y-8">
         <Skeleton variant="rounded">
           <div>First Name: First Name</div>
         </Skeleton>
@@ -68,7 +68,7 @@ function Account({ userId }) {
 
   ////////// Content from Databse
   return (
-    <div className="flex flex-col justify-center text-center text-3xl mt-24 space-y-8 w-1/2 mx-auto">
+    <div className="flex flex-col justify-center text-center text-3xl mt-4 space-y-8 w-1/2 mx-auto">
       <h1>
         <strong>First Name: </strong>
         {isUpdated ? firstName : first_name}

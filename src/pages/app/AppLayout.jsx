@@ -18,8 +18,14 @@ import PageNotFound from "../PageNotFound";
 import useGetUser from "../../hooks/supabase/useGetUser.js";
 import LoadingSpinner from "../../components/app/misc/LoadingSpinner.jsx";
 import NavBarResponsive from "../../components/app/misc/NavBarResponsive.jsx";
+import { useEffect, useState } from "react";
 
 function AppLayout() {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    if (window.innerWidth < 1000) setIsMobile(true);
+    if (window.innerWidth > 1000) setIsMobile(false);
+  }, []);
   const { userId, isLoading } = useGetUser();
 
   ///// Store userID in url to use in dashboard
@@ -31,6 +37,7 @@ function AppLayout() {
 
   return userId.length ? (
     <>
+      {!isMobile && <NavBar />}
       <Routes>
         <Route index element={<Dashboard />} />
         <Route path="budget-tracking" element={<BudgetLayout />}>
@@ -53,9 +60,12 @@ function AppLayout() {
         </Route>
         <Route path="account" element={<Account userId={userId} />} />
       </Routes>
-      <div className="">
-        <NavBarResponsive />
-      </div>
+
+      {isMobile && (
+        <nav className="fixed bottom-0 left-0 w-screen">
+          <NavBarResponsive />
+        </nav>
+      )}
     </>
   ) : (
     <PageNotFound
