@@ -15,7 +15,7 @@ function App() {
 
   return (
     <>
-      <div className="pt-6 px-4">
+      <div className="pt-4 pb-[80px]">
         <BrowserRouter>
           <Routes>
             <Route index element={<Landing userId={userId} />} />
