@@ -1,4 +1,4 @@
-import { Divider } from "@mui/material";
+import { Chip, Divider } from "@mui/material";
 import BudgetCategoriesCard from "./BudgetCategoriesCard";
 import SetUpMessage from "./SetUpMessage";
 
@@ -16,13 +16,17 @@ function BudgetCategoriesLayout({ categories, setUp, openForm }) {
 
   return (
     <div className="flex flex-col justify-center md:flex-row">
-      <Divider>Expenses</Divider>
+      <h2 className="mx-auto text-stone-700 text-xl border-2 border-red-200 bg-red-200 rounded-full py-2 px-6">
+        Expenses
+      </h2>
       <ul className={boxStyles}>
         {expenseArr.map((el) => (
           <BudgetCategoriesCard key={el.id} budgetData={el} />
         ))}
       </ul>
-      <Divider>Income</Divider>
+      <h2 className="mx-auto text-stone-700 text-xl border-2 border-red-200 bg-red-200 rounded-full py-2 px-6">
+        Income
+      </h2>
       <ul className={boxStyles}>
         {incomeArr.map((el) => (
           <BudgetCategoriesCard key={el.id} budgetData={el} />
