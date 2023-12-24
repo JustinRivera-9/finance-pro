@@ -8,15 +8,13 @@ function BudgetCategoriesLayout({ categories, setUp, openForm }) {
   const incomeArr = categories.filter((el) => el.type === "income");
   const expenseArr = categories.filter((el) => el.type === "expense");
 
-  console.log(incomeArr, expenseArr);
-
   if (!setUp) {
     return <SetUpMessage openForm={openForm} />;
   }
 
   return (
     <div className="flex flex-col justify-center md:flex-row">
-      <h2 className="mx-auto text-stone-700 text-xl border-2 border-red-200 bg-red-200 rounded-full py-2 px-6">
+      <h2 className="mx-auto text-stone-700 text-xl bg-red-300 rounded-full py-2 px-10 font-semibold">
         Expenses
       </h2>
       <ul className={boxStyles}>
@@ -24,7 +22,7 @@ function BudgetCategoriesLayout({ categories, setUp, openForm }) {
           <BudgetCategoriesCard key={el.id} budgetData={el} />
         ))}
       </ul>
-      <h2 className="mx-auto text-stone-700 text-xl border-2 border-red-200 bg-red-200 rounded-full py-2 px-6">
+      <h2 className="mx-auto text-stone-700 text-xl font-semibold bg-green-400 rounded-full py-2 px-10">
         Income
       </h2>
       <ul className={boxStyles}>
