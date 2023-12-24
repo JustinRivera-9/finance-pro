@@ -11,10 +11,10 @@
     "server": "json-server --watch data/users.json --port 9000 --delay 500"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.1",
+    "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^5.14.15",
-    "@mui/material": "^5.14.15",
+    "@mui/icons-material": "^5.15.1",
+    "@mui/material": "^5.15.1",
     "@supabase/auth-ui-react": "^0.4.6",
     "@supabase/auth-ui-shared": "^0.1.8",
     "@supabase/supabase-js": "^2.38.4",
