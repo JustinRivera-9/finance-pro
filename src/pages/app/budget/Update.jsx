@@ -71,13 +71,11 @@ function Update({ userId }) {
 
       {/* Shows different button once budget is setup */}
       {!formOpen && budgetSetUp && (
-        <Button
-          style={{ fontSize: "1.5rem" }}
-          onClick={() => setFormOpen(true)}
-        >
+        <Button variant="contained" onClick={() => setFormOpen(true)}>
           ADD
         </Button>
       )}
+      <h2 className="h-[2px] my-8 bg-stone-200 w-11/12"></h2>
       <BudgetCategoriesTotals categories={categories} />
     </div>
   );
