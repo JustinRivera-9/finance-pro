@@ -1,32 +1,34 @@
+import { Divider } from "@mui/material";
 import BudgetCategoriesCard from "./BudgetCategoriesCard";
 import SetUpMessage from "./SetUpMessage";
 
-const boxStyles = "w-1/2 flex flex-wrap justify-center space-y-4 space-x-4";
+const boxStyles = "flex flex-wrap justify-center gap-4 my-8 md:w-1/2";
 
 function BudgetCategoriesLayout({ categories, setUp, openForm }) {
   const incomeArr = categories.filter((el) => el.type === "income");
   const expenseArr = categories.filter((el) => el.type === "expense");
+
+  console.log(incomeArr, expenseArr);
 
   if (!setUp) {
     return <SetUpMessage openForm={openForm} />;
   }
 
   return (
-    <>
-      <div className="flex justify-center">
-        <div className={boxStyles}>
-          {expenseArr.map((el) => {
-            return <BudgetCategoriesCard key={el.id} budgetData={el} />;
-          })}
-        </div>
-
-        <div className={boxStyles}>
-          {incomeArr.map((el) => (
-            <BudgetCategoriesCard key={el.id} budgetData={el} />
-          ))}
-        </div>
-      </div>
-    </>
+    <div className="flex flex-col justify-center md:flex-row">
+      <Divider>Expenses</Divider>
+      <ul className={boxStyles}>
+        {expenseArr.map((el) => (
+          <BudgetCategoriesCard key={el.id} budgetData={el} />
+        ))}
+      </ul>
+      <Divider>Income</Divider>
+      <ul className={boxStyles}>
+        {incomeArr.map((el) => (
+          <BudgetCategoriesCard key={el.id} budgetData={el} />
+        ))}
+      </ul>
+    </div>
   );
 }
 

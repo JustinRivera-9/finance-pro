@@ -61,7 +61,7 @@ function Update({ userId }) {
   return (
     <div className="flex flex-col items-center">
       {/* UI layout for catgeories */}
-      <div className="w-full flex-row justify-center my-8">
+      <div className="w-full mt-6">
         <BudgetCategoriesLayout
           setUp={budgetSetUp}
           categories={categories}

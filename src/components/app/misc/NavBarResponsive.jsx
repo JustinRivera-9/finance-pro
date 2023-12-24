@@ -1,9 +1,8 @@
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import ArchiveIcon from "@mui/icons-material/Archive";
-import DashboardIcon from "@mui/icons-material/Dashboard";
+import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
-import AccountBalanceOutlinedIcon from "@mui/icons-material/AccountBalanceOutlined";
+import LeaderboardRoundedIcon from "@mui/icons-material/LeaderboardRounded";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -15,7 +14,11 @@ function NavBarResponsive() {
 
   return (
     <BottomNavigation
-      sx={{ display: "flex", justifyContent: "space-between" }}
+      sx={{
+        display: "flex",
+        justifyContent: "space-between",
+        backgroundColor: "#e7e5e4",
+      }}
       value={page}
       onChange={(event, newValue) => {
         setPage(newValue);
@@ -25,11 +28,11 @@ function NavBarResponsive() {
         if (newValue === 3) navigate("/app/account");
       }}
     >
-      <BottomNavigationAction label="Dashboard" icon={<DashboardIcon />} />
+      <BottomNavigationAction label="Dashboard" icon={<HomeRoundedIcon />} />
       <BottomNavigationAction label="Budget" icon={<MonetizationOnIcon />} />
       <BottomNavigationAction
         label="Portfolio"
-        icon={<AccountBalanceOutlinedIcon />}
+        icon={<LeaderboardRoundedIcon />}
       />
       <BottomNavigationAction label="Account" icon={<AccountCircleIcon />} />
     </BottomNavigation>
