@@ -1,5 +1,5 @@
-import supabase from "../../config/supabaseClient";
 import { useState, useEffect } from "react";
+import supabase from "./supabase";
 
 export default function useGetUser() {
   const [userId, setUserId] = useState({});

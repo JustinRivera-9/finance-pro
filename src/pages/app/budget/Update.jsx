@@ -1,13 +1,12 @@
-import SetUpMessage from "../../../components/app/budget/SetUpMessage";
-import UpdateForm from "../../../components/app/budget/UpdateForm";
-import { Button, Skeleton } from "@mui/material";
+import SetUpMessage from "../../../components/budget/SetUpMessage";
+import UpdateForm from "../../../components/budget/UpdateForm";
+import { Button } from "@mui/material";
 import { useState } from "react";
-import useGetBudgetCategories from "../../../hooks/supabase/useGetBudgetCategories";
-import LoadingSpinner from "../../../components/app/misc/LoadingSpinner";
-import BudgetCategoriesLayout from "../../../components/app/budget/BudgetCategoriesLayout";
-import BudgetCategoriesTotals from "../../../components/app/budget/BudgetCategoriesTotals";
+import useGetBudgetCategories from "../../../services/useGetBudgetCategories";
+import LoadingSpinner from "../../../ui/LoadingSpinner.jsx";
+import BudgetCategoriesLayout from "../../../components/budget/BudgetCategoriesLayout";
+import BudgetCategoriesTotals from "../../../components/budget/BudgetCategoriesTotals";
 import { v4 as uuidv4 } from "uuid";
-import supabase from "../../../config/supabaseClient";
 
 function Update({ userId }) {
   // Need to memoize useGetTargetBudget hook call

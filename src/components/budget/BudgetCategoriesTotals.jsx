@@ -1,4 +1,4 @@
-import { formatCurrency } from "../../../config/helperFunctions";
+import { formatCurrency } from "../../utils/helperFunctions";
 
 function BudgetCategoriesTotals({ categories }) {
   const totalIncome = categories

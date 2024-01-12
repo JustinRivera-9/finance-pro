@@ -1,11 +1,9 @@
-import { Button } from "@mui/material";
 import { Link, NavLink } from "react-router-dom";
-import AccountMenu from "./AccountMenu";
 
-function NavBar() {
+function NavBarDesktop() {
   return (
     <nav className="flex justify-between">
-      <Link to="/app" className="text-2xl">
+      <Link to="/app" className="text-2xl tracking-widest">
         FINANCE PRO
       </Link>
       <div className="flex space-x-14">
@@ -21,10 +19,9 @@ function NavBar() {
         <NavLink to="/app/account" className="text-xl">
           ACCOUNT
         </NavLink>
-        <AccountMenu />
       </div>
     </nav>
   );
 }
 
-export default NavBar;
+export default NavBarDesktop;

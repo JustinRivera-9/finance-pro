@@ -4,10 +4,10 @@ import LearnMore from "./pages/landingPage/LearnMore";
 import Budgets from "./pages/landingPage/Budgets";
 import Investing from "./pages/landingPage/Investing";
 import Pricing from "./pages/landingPage/pricing";
-import PageNotFound from "./pages/PageNotFound";
-import AppLayout from "./pages/app/AppLayout";
-import useGetUser from "./hooks/supabase/useGetUser.js";
-import AuthForm from "./components/landingPage/AuthForm.jsx";
+import AppLayout from "./ui/layout/AppLayout";
+import useGetUser from "./services/useGetUser.js";
+import AuthForm from "./ui/AuthForm.jsx";
+import PageNotFound from "./ui/PageNotFound.jsx";
 
 function App() {
   const { userId, isLoading } = useGetUser();

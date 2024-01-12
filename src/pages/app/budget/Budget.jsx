@@ -1,6 +1,3 @@
-import { Outlet } from "react-router";
-import NavBar from "../../../components/app/misc/NavBar";
-
 function Budget() {
   return (
     <div className="flex justify-center text-3xl mt-24">

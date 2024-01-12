@@ -1,34 +1,34 @@
 import { useEffect, useState } from "react";
-import supabase from "../../config/supabaseClient";
+import supabase from "./supabase";
 
-function useGetSettings(id) {
-  const [settings, setSettings] = useState({});
+function useGetTargetBudget(id) {
+  const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchUserSettings = async () => {
+    async function fetchTargetBudget() {
       try {
-        const { data, error } = await supabase
-          .from("settings")
+        let { data: budget, error } = await supabase
+          .from("budget")
           .select("*")
           .eq("user_id", id);
 
         if (error) throw new Error(error.message);
-        setSettings(data[0]);
+        setData(budget[0]);
       } catch (err) {
         console.error(err.message);
         setError(err.message);
       } finally {
         setIsLoading(false);
       }
-    };
-
-    // useEffect(() => {
-    fetchUserSettings();
+    }
+    fetchTargetBudget();
   }, [id]);
 
-  return { settings, isLoading, error };
+  // console.log(data);
+
+  return { data, isLoading, error };
 }
 
-export default useGetSettings;
+export default useGetTargetBudget;

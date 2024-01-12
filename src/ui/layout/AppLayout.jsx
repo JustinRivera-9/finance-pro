@@ -1,23 +1,23 @@
 import { Route, Routes, useParams } from "react-router-dom";
-import Dashboard from "./dashboard/Dashboard";
-import OverviewBudget from "../app/budget/OverviewBudget";
-import Budget from "../app/budget/Budget";
-import Update from "../app/budget/Update";
-import Insights from "../app/budget/Insights";
-import OverviewPortfolio from "../app/investing/OverviewPortfolio";
-import Portfolio from "../app/investing/Portfolio";
-import NewsPortfolio from "../app/investing/NewsPortfolio";
-import OverviewResources from "../app/resources/OverviewResources";
-import News from "../app/resources/News";
-import CostBasisCalculator from "../app/resources/CostBasisCalculator";
-import Account from "./account/Account";
-import InvestingLayout from "./investing/InvestingLayout";
-import BudgetLayout from "./budget/BudgetLayout";
-import NavBar from "../../components/app/misc/NavBar.jsx";
-import PageNotFound from "../PageNotFound";
-import useGetUser from "../../hooks/supabase/useGetUser.js";
-import LoadingSpinner from "../../components/app/misc/LoadingSpinner.jsx";
-import NavBarResponsive from "../../components/app/misc/NavBarResponsive.jsx";
+import Dashboard from "../../pages/app/Dashboard.jsx";
+import OverviewBudget from "../../pages/app/budget/OverviewBudget.jsx";
+import Budget from "../../pages/app/budget/Budget.jsx";
+import Update from "../../pages/app/budget/Update.jsx";
+import Insights from "../../pages/app/budget/Insights.jsx";
+import OverviewPortfolio from "../../pages/app/investing/OverviewPortfolio.jsx";
+import Portfolio from "../../pages/app/investing/Portfolio.jsx";
+import NewsPortfolio from "../../pages/app/investing/NewsPortfolio.jsx";
+import OverviewResources from "../../pages/app/resources/OverviewResources.jsx";
+import News from "../../pages/app/resources/News.jsx";
+import CostBasisCalculator from "../../pages/app/resources/CostBasisCalculator.jsx";
+import Account from "../../pages/app/Account.jsx";
+import InvestingLayout from "../layout/InvestingLayout.jsx";
+import BudgetLayout from "../layout/BudgetLayout";
+import NavBarDesktop from "../NavBarDesktop.jsx";
+import PageNotFound from "../PageNotFound.jsx";
+import useGetUser from "../../services/useGetUser.js";
+import LoadingSpinner from "../LoadingSpinner.jsx";
+import NavBarMobile from "../NavBarMobile.jsx";
 import { useEffect, useState } from "react";
 
 function AppLayout() {
@@ -37,7 +37,7 @@ function AppLayout() {
 
   return userId.length ? (
     <>
-      {!isMobile && <NavBar />}
+      {!isMobile && <NavBarDesktop />}
       <Routes>
         <Route index element={<Dashboard />} />
         <Route path="budget-tracking" element={<BudgetLayout />}>
@@ -63,7 +63,7 @@ function AppLayout() {
 
       {isMobile && (
         <nav className="fixed bottom-0 left-0 w-screen">
-          <NavBarResponsive />
+          <NavBarMobile />
         </nav>
       )}
     </>

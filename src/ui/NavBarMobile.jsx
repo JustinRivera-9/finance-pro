@@ -7,7 +7,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function NavBarResponsive() {
+function NavBarMobile() {
   const [page, setPage] = useState();
   const navigate = useNavigate();
 
@@ -16,7 +16,6 @@ function NavBarResponsive() {
       sx={{
         display: "flex",
         justifyContent: "space-between",
-        backgroundColor: "#e7e5e4",
       }}
       value={page}
       onChange={(event, newValue) => {
@@ -37,4 +36,4 @@ function NavBarResponsive() {
     </BottomNavigation>
   );
 }
-export default NavBarResponsive;
+export default NavBarMobile;

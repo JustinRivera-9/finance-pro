@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 function NavBar() {
   return (
     <div className="flex justify-between">
-      <Link to="/" className="text-2xl">
+      <Link to="/" className="text-2xl tracking-widest">
         FINANCE PRO
       </Link>
       <div className="flex space-x-14">

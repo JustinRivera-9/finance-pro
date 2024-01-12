@@ -1,5 +1,5 @@
 import { Outlet } from "react-router";
-import NavBarInvesting from "../../../components/app/investing/NavBarInvesting";
+import NavBarInvesting from "../../components/investing/NavBarInvesting";
 
 function InvestingLayout() {
   return (

@@ -1,5 +1,5 @@
 import { Outlet } from "react-router";
-import NavBarBudget from "../../../components/app/budget/NavBarBudget";
+import NavBarBudget from "../../components/budget/NavBarBudget";
 
 function BudgetLayout() {
   return (
