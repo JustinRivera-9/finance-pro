@@ -24,7 +24,7 @@ function AccountForm({ formOpen, setFormOpen, onSubmit }) {
 
   return (
     <Backdrop open={formOpen}>
-      <div className="flex flex-col bg-white p-8 rounded-xl">
+      <div className="flex flex-col bg-[#303030] p-8 rounded-xl">
         <form className="flex flex-col" onSubmit={handleForm}>
           <TextField
             sx={{ marginTop: "1.5rem" }}

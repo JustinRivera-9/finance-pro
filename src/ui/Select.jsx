@@ -5,7 +5,7 @@ function Select({ options, children, value }) {
       <select value={value} className="bg-transparent mt-2 border-blue-700">
         {options.map((opt, i) => {
           return (
-            <option className="bg-blue-400" key={i} value={opt}>
+            <option className="bg-blue-400" key={opt} value={opt}>
               {opt}
             </option>
           );
