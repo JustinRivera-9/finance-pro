@@ -14,7 +14,7 @@ function UpdateForm({ formOpen, setFormOpen, onSubmit }) {
     setFormOpen(false);
     resetForm();
 
-    console.log(category, amount, type);
+    // console.log(category, amount, type);
   }
 
   function handleCancel() {
