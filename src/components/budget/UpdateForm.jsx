@@ -1,6 +1,7 @@
 import { Backdrop, Button, TextField } from "@mui/material";
 import { useState } from "react";
 import SelectInput from "../../ui/SelectInput";
+import TextInput from "../../ui/TextInput";
 
 function UpdateForm({ formOpen, setFormOpen, onSubmit }) {
   const [category, setCategory] = useState("");
@@ -12,6 +13,8 @@ function UpdateForm({ formOpen, setFormOpen, onSubmit }) {
     onSubmit({ category, amount, type });
     setFormOpen(false);
     resetForm();
+
+    console.log(category, amount, type);
   }
 
   function handleCancel() {
@@ -29,23 +32,12 @@ function UpdateForm({ formOpen, setFormOpen, onSubmit }) {
     <Backdrop open={formOpen}>
       <div className="flex flex-col bg-[#303030] p-8 rounded-xl">
         <form className="flex flex-col" onSubmit={handleForm}>
-          <TextField
-            sx={{ marginTop: "1.5rem" }}
-            required
-            id="outlined-required"
-            label="Category"
-            onChange={(e) => setCategory(e.target.value)}
-            value={category}
-          />
-          <TextField
-            sx={{ marginTop: "1.5rem" }}
-            required
-            id="outlined-required"
-            type="number"
-            label="Amount"
-            onChange={(e) => setAmount(e.target.value)}
-            value={amount}
-          />
+          <TextInput type="text" setValue={setCategory} isRequired={true}>
+            Category
+          </TextInput>
+          <TextInput type="number" setValue={setAmount} isRequired={true}>
+            Amount
+          </TextInput>
           <SelectInput setValue={setType} options={["expense", "income"]}>
             Type
           </SelectInput>
