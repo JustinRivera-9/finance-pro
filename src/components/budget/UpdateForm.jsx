@@ -1,15 +1,6 @@
-import {
-  Backdrop,
-  Button,
-  FormControl,
-  Input,
-  InputLabel,
-  MenuItem,
-  OutlinedInput,
-  Select,
-  TextField,
-} from "@mui/material";
+import { Backdrop, Button, TextField } from "@mui/material";
 import { useState } from "react";
+import SelectInput from "../../ui/SelectInput";
 
 function UpdateForm({ formOpen, setFormOpen, onSubmit }) {
   const [category, setCategory] = useState("");
@@ -55,20 +46,7 @@ function UpdateForm({ formOpen, setFormOpen, onSubmit }) {
             onChange={(e) => setAmount(e.target.value)}
             value={amount}
           />
-          <FormControl required sx={{ marginTop: "1.5rem" }}>
-            <InputLabel id="type">Type</InputLabel>
-            <Select
-              label="type"
-              id="type"
-              value={type}
-              input={<OutlinedInput label="type" id="type" />}
-              onChange={(e) => setType(e.target.value)}
-            >
-              <MenuItem value="Expense">Expense</MenuItem>
-              <MenuItem value="Income">Income</MenuItem>
-            </Select>
-          </FormControl>
-
+          <SelectInput options={["expense", "income"]}>Type</SelectInput>
           <Button
             variant="contained"
             type="submit"
