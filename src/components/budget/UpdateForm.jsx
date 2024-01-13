@@ -5,7 +5,7 @@ import SelectInput from "../../ui/SelectInput";
 function UpdateForm({ formOpen, setFormOpen, onSubmit }) {
   const [category, setCategory] = useState("");
   const [amount, setAmount] = useState("");
-  const [type, setType] = useState("Expense");
+  const [type, setType] = useState("");
 
   function handleForm(e) {
     e.preventDefault();
@@ -46,7 +46,9 @@ function UpdateForm({ formOpen, setFormOpen, onSubmit }) {
             onChange={(e) => setAmount(e.target.value)}
             value={amount}
           />
-          <SelectInput options={["expense", "income"]}>Type</SelectInput>
+          <SelectInput setValue={setType} options={["expense", "income"]}>
+            Type
+          </SelectInput>
           <Button
             variant="contained"
             type="submit"
