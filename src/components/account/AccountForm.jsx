@@ -1,5 +1,6 @@
 import { Backdrop, Button, TextField } from "@mui/material";
 import { useState } from "react";
+import TextInput from "../../ui/TextInput";
 
 function AccountForm({ formOpen, setFormOpen, onSubmit }) {
   const [firstName, setFirstName] = useState("");
@@ -26,20 +27,12 @@ function AccountForm({ formOpen, setFormOpen, onSubmit }) {
     <Backdrop open={formOpen}>
       <div className="flex flex-col bg-[#303030] p-8 rounded-xl">
         <form className="flex flex-col" onSubmit={handleForm}>
-          <TextField
-            sx={{ marginTop: "1.5rem" }}
-            id="outlined-required"
-            label="First Name"
-            onChange={(e) => setFirstName(e.target.value)}
-            value={firstName}
-          />
-          <TextField
-            sx={{ marginTop: "1.5rem" }}
-            id="outlined-required"
-            label="Last Name"
-            onChange={(e) => setLastName(e.target.value)}
-            value={lastName}
-          />
+          <TextInput setValue={setFirstName} type="text">
+            First Name
+          </TextInput>
+          <TextInput setValue={setLastName} type="text">
+            Last Name
+          </TextInput>
           <Button
             variant="contained"
             type="submit"
