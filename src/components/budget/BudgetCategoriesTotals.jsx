@@ -12,7 +12,7 @@ function BudgetCategoriesTotals({ categories }) {
   const net = totalIncome - totalExpenses;
 
   return (
-    <div className="flex justify-between items-center w-10/12">
+    <div className="flex my-4 justify-between items-center w-10/12 bg-[#404040] p-2 rounded-xl">
       <div className="text-center">
         <p className="text-green-300">Total Income</p>
         <p>{formatCurrency(totalIncome)}</p>

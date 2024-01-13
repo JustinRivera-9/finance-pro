@@ -59,6 +59,9 @@ function Update({ userId }) {
 
   return (
     <div className="flex flex-col items-center">
+      <BudgetCategoriesTotals categories={categories} />
+      <h2 className="h-[1px] bg-stone-500 w-11/12"></h2>
+
       {/* UI layout for catgeories */}
       <div className="w-full mt-6">
         <BudgetCategoriesLayout
@@ -74,8 +77,6 @@ function Update({ userId }) {
           ADD
         </Button>
       )}
-      <h2 className="h-[2px] my-8 bg-stone-200 w-11/12"></h2>
-      <BudgetCategoriesTotals categories={categories} />
     </div>
   );
 }
