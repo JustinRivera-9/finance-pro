@@ -5,10 +5,10 @@ function BudgetCategoriesCard({ budgetData }) {
   const { category, amount, type, id } = budgetData;
 
   return (
-    <li className="flex rounded-xl items-center justify-between p-4 text-xl font-normal bg-[#404040] text-stone-200">
-      <div className="flex justify-between space-x-12">
+    <li className="flex rounded-xl justify-between p-4 text-xl font-normal bg-[#404040] text-stone-200">
+      <div className="flex justify-around">
         <p className="capitalize">{category}</p>
-        <p>{formatCurrency(amount)}</p>
+        <p className="ml-12">{formatCurrency(amount)}</p>
       </div>
       <button onClick={() => {}}>
         <FaPen />
