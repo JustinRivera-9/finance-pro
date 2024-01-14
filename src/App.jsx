@@ -1,4 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Landing from "./pages/landingPage/Landing";
 import LearnMore from "./pages/landingPage/LearnMore";
 import Budgets from "./pages/landingPage/Budgets";
@@ -8,15 +10,20 @@ import AppLayout from "./ui/layout/AppLayout";
 import useGetUser from "./services/useGetUser.js";
 import AuthForm from "./ui/AuthForm.jsx";
 import PageNotFound from "./ui/PageNotFound.jsx";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
-  const queryClient = new QueryClient();
-
   const { userId, isLoading } = useGetUser();
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        staleTime: 60 * 1000,
+      },
+    },
+  });
 
   return (
     <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
       <div className="pt-4 pb-[80px]">
         <BrowserRouter>
           <Routes>
