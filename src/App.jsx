@@ -8,13 +8,15 @@ import AppLayout from "./ui/layout/AppLayout";
 import useGetUser from "./services/useGetUser.js";
 import AuthForm from "./ui/AuthForm.jsx";
 import PageNotFound from "./ui/PageNotFound.jsx";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
+  const queryClient = new QueryClient();
+
   const { userId, isLoading } = useGetUser();
-  // Add isLoading STATE
 
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <div className="pt-4 pb-[80px]">
         <BrowserRouter>
           <Routes>
@@ -29,7 +31,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </div>
-    </>
+    </QueryClientProvider>
   );
 }
 
