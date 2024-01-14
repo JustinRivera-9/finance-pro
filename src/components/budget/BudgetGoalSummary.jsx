@@ -1,12 +1,11 @@
 import { formatCurrency } from "../../utils/helperFunctions";
 
-function BudgetCategoriesTotals({ categories }) {
-  const totalIncome = categories
-    .filter((el) => el.type === "income")
+function BudgetGoalSummary({ income, expenses }) {
+  const totalIncome = income
     .map((el) => el.amount)
     .reduce((acc, cur) => acc + cur, 0);
-  const totalExpenses = categories
-    .filter((el) => el.type === "expense")
+
+  const totalExpenses = expenses
     .map((el) => el.amount)
     .reduce((acc, cur) => acc + cur, 0);
   const net = totalIncome - totalExpenses;
@@ -31,4 +30,4 @@ function BudgetCategoriesTotals({ categories }) {
   );
 }
 
-export default BudgetCategoriesTotals;
+export default BudgetGoalSummary;
