@@ -1,4 +1,5 @@
 import BudgetCategoriesCard from "./BudgetCategoriesCard";
+import SetUpMessage from "./SetUpMessage";
 import { Button } from "@mui/material";
 import BudgetGoalSummary from "./BudgetGoalSummary";
 
@@ -6,6 +7,8 @@ const boxStyles = "flex flex-col space-y-4 my-4";
 
 function BudgetCategoriesLayout({ budgetGoal, openForm }) {
   const categories = budgetGoal[0].budgetGoals;
+
+  if (!categories) return <SetUpMessage openForm={openForm} />;
 
   const incomeArr = categories.filter((el) => el.type === "income");
   const expenseArr = categories.filter((el) => el.type === "expense");

@@ -3,14 +3,14 @@ import { useState } from "react";
 import SelectInput from "../../ui/SelectInput";
 import TextInput from "../../ui/TextInput";
 
-function UpdateForm({ formOpen, setFormOpen, onSubmit }) {
+function UpdateForm({ formOpen, setFormOpen }) {
   const [category, setCategory] = useState("");
   const [amount, setAmount] = useState("");
   const [type, setType] = useState("");
 
-  function handleForm(e) {
+  function handleSubmit(e) {
     e.preventDefault();
-    onSubmit({ category, amount, type });
+    const formData = { category, amount, type };
     setFormOpen(false);
     resetForm();
 
@@ -31,7 +31,7 @@ function UpdateForm({ formOpen, setFormOpen, onSubmit }) {
   return (
     <Backdrop open={formOpen}>
       <div className="flex flex-col bg-[#303030] p-8 rounded-xl">
-        <form className="flex flex-col" onSubmit={handleForm}>
+        <form className="flex flex-col" onSubmit={handleSubmit}>
           <TextInput type="text" setValue={setCategory} isRequired={true}>
             Category
           </TextInput>
