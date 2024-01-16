@@ -3,14 +3,14 @@ import { useState } from "react";
 import LoadingSpinner from "../../../ui/LoadingSpinner.jsx";
 import BudgetCategoriesLayout from "../../../components/budget/BudgetCategoriesLayout";
 import { useQuery } from "@tanstack/react-query";
-import { getBudgetGoal } from "../../../services/budget/apiBudgetGoal.js";
+import { getBudgetCategories } from "../../../services/apiBudget.js";
 
 function Update({ userId }) {
   const [formOpen, setFormOpen] = useState(false);
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["budgetGoals", userId],
-    queryFn: () => getBudgetGoal(userId),
+    queryFn: () => getBudgetCategories(userId),
   });
 
   console.log(data, isLoading, error);
