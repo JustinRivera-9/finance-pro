@@ -23,7 +23,7 @@ function Update({ userId }) {
 
   return (
     <div className="w-full mt-6">
-      <BudgetCategoriesLayout openForm={setFormOpen} budgetGoal={data} />
+      <BudgetCategoriesLayout openForm={setFormOpen} categories={data} />
       {formOpen && <UpdateForm formOpen={formOpen} setFormOpen={setFormOpen} />}
     </div>
   );
