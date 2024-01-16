@@ -9,11 +9,9 @@ function Update({ userId }) {
   const [formOpen, setFormOpen] = useState(false);
 
   const { data, isLoading, error } = useQuery({
-    queryKey: ["budgetGoals", userId],
+    queryKey: ["budgetCategories", userId],
     queryFn: () => getBudgetCategories(userId),
   });
-
-  console.log(data, isLoading, error);
 
   if (isLoading) {
     return <LoadingSpinner isLoading={isLoading} />;
