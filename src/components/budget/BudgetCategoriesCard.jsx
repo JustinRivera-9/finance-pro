@@ -1,4 +1,5 @@
-import { FaPen } from "react-icons/fa";
+import { FaPen as EditIcon } from "react-icons/fa";
+import { FaTrashAlt as DeleteIcon } from "react-icons/fa";
 import { formatCurrency } from "../../utils/helperFunctions";
 
 function BudgetCategoriesCard({ budgetData }) {
@@ -6,13 +7,18 @@ function BudgetCategoriesCard({ budgetData }) {
 
   return (
     <li className="flex rounded-xl justify-between p-4 text-xl font-normal bg-[#404040] text-stone-200">
-      <div className="flex justify-around">
+      <div className="flex w-1/2 justify-around">
         <p className="capitalize">{category}</p>
-        <p className="ml-12">{formatCurrency(amount)}</p>
+        <p className="">{formatCurrency(amount)}</p>
       </div>
-      <button onClick={() => {}}>
-        <FaPen />
-      </button>
+      <div className="flex justify-around w-1/5">
+        <button onClick={() => {}}>
+          <EditIcon />
+        </button>
+        <button onClick={() => {}}>
+          <DeleteIcon />
+        </button>
+      </div>
     </li>
   );
 }
