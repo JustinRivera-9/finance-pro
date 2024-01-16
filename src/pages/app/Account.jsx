@@ -4,6 +4,7 @@ import { useState } from "react";
 import useGetSettings from "../../services/useGetSettings";
 import AccountForm from "../../components/account/AccountForm";
 import supabase from "../../services/supabase";
+import AccountLoading from "../../ui/skeletonLoading/AccountLoading";
 
 function Account({ userId }) {
   ////////// Fetches user settings from DB
@@ -39,21 +40,12 @@ function Account({ userId }) {
 
   ////////////////////////////// VIEW LOGIC //////////////////////////////
   ////////// Loading animation
-  if (isLoading) {
+  if (isLoading)
     return (
-      <div className="flex flex-col items-center text-3xl mt-4 space-y-8">
-        <Skeleton variant="rounded">
-          <div>First Name: First Name</div>
-        </Skeleton>
-        <Skeleton variant="rounded">
-          <div>Last Name: Last Name</div>
-        </Skeleton>
-        <Skeleton variant="rounded">
-          <div>Email: First Name_Last Name@gmail.com</div>
-        </Skeleton>
-      </div>
+      <AccountLoading
+        className={"flex flex-col items-center text-3xl mt-4 space-y-8"}
+      />
     );
-  }
 
   ////////// Form Modal
   if (formOpen) {
