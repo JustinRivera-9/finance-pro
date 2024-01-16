@@ -2,21 +2,22 @@ import BudgetCategoriesCard from "./BudgetCategoriesCard";
 import SetUpMessage from "./SetUpMessage";
 import { Button } from "@mui/material";
 import BudgetGoalSummary from "./BudgetGoalSummary";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 
 const boxStyles = "flex flex-col space-y-4 my-4";
 
-function BudgetCategoriesLayout({ budgetGoal, openForm }) {
-  const categories = budgetGoal[0].budgetGoals;
+function BudgetCategoriesLayout({ categories, openForm }) {
+  const { budgetCategories } = categories[0];
 
-  if (!categories) return <SetUpMessage openForm={openForm} />;
+  if (!budgetCategories) return <SetUpMessage openForm={openForm} />;
 
-  const incomeArr = categories.filter((el) => el.type === "income");
-  const expenseArr = categories.filter((el) => el.type === "expense");
+  const incomeArr = budgetCategories.filter((el) => el.type === "income");
+  const expenseArr = budgetCategories.filter((el) => el.type === "expense");
 
   return (
     <div className="flex flex-col mx-auto">
       <BudgetGoalSummary income={incomeArr} expenses={expenseArr} />
-      <div className="flex flex-col justify-center sm:flex-row sm:justify-around px-4">
+      <div className="flex flex-col sm:flex-row sm:justify-around px-4">
         <div className="sm:w-1/3">
           <h2 className="w-fit mx-auto text-stone-700 text-xl font-semibold bg-green-400 rounded-full py-2 px-14">
             Income
@@ -37,10 +38,19 @@ function BudgetCategoriesLayout({ budgetGoal, openForm }) {
             ))}
           </ul>
         </div>
-        <Button variant="contained" onClick={() => openForm(true)}>
-          ADD
-        </Button>
       </div>
+      <Button
+        style={{
+          width: "fit-content",
+          margin: "auto",
+          padding: "1rem",
+          borderRadius: "1rem",
+        }}
+        onClick={() => openForm(true)}
+      >
+        <AddCircleIcon fontSize="large" />
+        <span className="ml-2">Add Category</span>
+      </Button>
     </div>
   );
 }
