@@ -7,7 +7,7 @@ function BudgetCategoriesCard({ budgetData }) {
 
   return (
     <li className="flex rounded-xl justify-between p-4 text-xl font-normal bg-[#404040] text-stone-200">
-      <div className="flex w-1/2 justify-around">
+      <div className="flex w-1/2 sm:2/3 text-left justify-between">
         <p className="capitalize">{category}</p>
         <p className="">{formatCurrency(amount)}</p>
       </div>
