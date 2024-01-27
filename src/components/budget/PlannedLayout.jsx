@@ -12,7 +12,12 @@ function PlannedLayout({ categories, openForm }) {
   if (!budgetCategories) return <SetUpMessage openForm={openForm} />;
 
   const incomeArr = budgetCategories.filter((el) => el.type === "income");
-  const expenseArr = budgetCategories.filter((el) => el.type === "expense");
+  const expenseArr = budgetCategories.filter(
+    (el) => el.type === "expense" && el.isFixed === "false"
+  );
+  const fixedExpenseArr = budgetCategories.filter(
+    (el) => el.type === "expense" && el.isFixed === "true"
+  );
 
   return (
     <div className="flex flex-col mx-auto">
@@ -34,6 +39,16 @@ function PlannedLayout({ categories, openForm }) {
           </h2>
           <ul className={boxStyles}>
             {expenseArr.map((el) => (
+              <PlannedCard key={el.id} budgetData={el} />
+            ))}
+          </ul>
+        </div>
+        <div className="sm:w-1/3">
+          <h2 className="w-fit mx-auto text-stone-700 text-xl bg-slate-300 rounded-full py-2 px-14 font-semibold">
+            Fixed Expenses
+          </h2>
+          <ul className={boxStyles}>
+            {fixedExpenseArr.map((el) => (
               <PlannedCard key={el.id} budgetData={el} />
             ))}
           </ul>
