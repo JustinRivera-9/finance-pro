@@ -1,14 +1,40 @@
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 function NavBarBudget() {
+  const [alignment, setAlignment] = useState("overview");
+
+  const handleChange = (event, newAlignment) => {
+    setAlignment(newAlignment);
+  };
+
   return (
-    <nav className="md:flex md:justify-center md:border-none md:space-x-8 flex justify-around mx-4 text-xl md:2xl border-b pb-2 border-slate-200 text-slate-200">
-      <NavLink to="/app/budget-tracking" end>
-        Overview
-      </NavLink>
-      <NavLink to="/app/budget-tracking/planned">Planned</NavLink>
-      <NavLink to="/app/budget-tracking/spent">Spent</NavLink>
-      <NavLink to="/app/budget-tracking/calendar">Calendar</NavLink>
+    <nav className="md:flex md:justify-center md:space-x-8 flex justify-around mx-4 text-xl md:2xl pb-2">
+      <ToggleButtonGroup
+        color="primary"
+        value={alignment}
+        exclusive
+        onChange={handleChange}
+        aria-label="Platform"
+        sx={{ borderRadius: "50px" }}
+      >
+        <ToggleButton value="overview">
+          <NavLink to="/app/budget-tracking" end>
+            Overview
+          </NavLink>
+        </ToggleButton>
+        <ToggleButton value="planned">
+          <NavLink to="/app/budget-tracking/planned">Planned</NavLink>
+        </ToggleButton>
+        <ToggleButton value="spent">
+          <NavLink to="/app/budget-tracking/spent">Spent</NavLink>
+        </ToggleButton>
+        <ToggleButton value="calendar">
+          <NavLink to="/app/budget-tracking/calendar">Calendar</NavLink>
+        </ToggleButton>
+      </ToggleButtonGroup>
     </nav>
   );
 }
