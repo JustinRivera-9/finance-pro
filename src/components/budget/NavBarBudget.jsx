@@ -6,17 +6,13 @@ import { NavLink } from "react-router-dom";
 function NavBarBudget() {
   const [alignment, setAlignment] = useState("overview");
 
-  const handleChange = (event, newAlignment) => {
-    setAlignment(newAlignment);
-  };
-
   return (
     <nav className="md:flex md:justify-center md:space-x-8 flex justify-around mx-4 text-xl md:2xl pb-2">
       <ToggleButtonGroup
         color="primary"
         value={alignment}
         exclusive
-        onChange={handleChange}
+        onChange={(event, value) => setAlignment(value)}
         aria-label="Platform"
         sx={{ borderRadius: "50px" }}
       >
