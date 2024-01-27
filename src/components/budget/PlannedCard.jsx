@@ -3,10 +3,12 @@ import { FaTrashAlt as DeleteIcon } from "react-icons/fa";
 import { formatCurrency } from "../../utils/helperFunctions";
 
 function PlannedCard({ budgetData }) {
-  const { category, amount, type, id } = budgetData;
+  const { category, amount, type, id, isFixed } = budgetData;
+
+  console.log(isFixed);
 
   return (
-    <li className="flex rounded-xl justify-between p-4 text-xl font-normal bg-[#404040] text-stone-200">
+    <li className="flex flex-wrap rounded-xl justify-between p-4 text-xl font-normal bg-[#404040] text-stone-200">
       <div className="flex w-1/2 sm:2/3 text-left justify-between">
         <p className="capitalize">{category}</p>
         <p className="">{formatCurrency(amount)}</p>
@@ -19,6 +21,11 @@ function PlannedCard({ budgetData }) {
           <DeleteIcon />
         </button>
       </div>
+      {isFixed === "true" && (
+        <p className="text-[1rem] text-green-300">
+          Repeats monthly on the 23rd
+        </p>
+      )}
     </li>
   );
 }
