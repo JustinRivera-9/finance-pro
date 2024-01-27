@@ -2,20 +2,13 @@ import { NavLink } from "react-router-dom";
 
 function NavBarInvesting() {
   return (
-    <div className="flex justify-center space-x-8">
-      <NavLink to="/app/investments/" className="text-lg text-slate-500">
+    <nav className="md:flex md:justify-center md:border-none md:space-x-8 flex justify-around mx-4 text-xl md:2xl border-b pb-2 border-slate-200 text-slate-200">
+      <NavLink to="/app/investments" end>
         Overview
       </NavLink>
-      <NavLink
-        to="/app/investments/portfolio"
-        className="text-lg text-slate-500"
-      >
-        Portfolio
-      </NavLink>
-      <NavLink to="/app/investments/news" className="text-lg text-slate-500">
-        News
-      </NavLink>
-    </div>
+      <NavLink to="/app/investments/portfolio">Portfolio</NavLink>
+      <NavLink to="/app/investments/news">News</NavLink>
+    </nav>
   );
 }
 

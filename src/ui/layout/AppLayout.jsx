@@ -1,15 +1,12 @@
-import { Route, Routes, useParams } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Dashboard from "../../pages/app/Dashboard.jsx";
 import OverviewBudget from "../../pages/app/budget/OverviewBudget.jsx";
-import Budget from "../../pages/app/budget/Budget.jsx";
-import Update from "../../pages/app/budget/Update.jsx";
-import Insights from "../../pages/app/budget/Insights.jsx";
+import Spent from "../../pages/app/budget/Spent.jsx";
+import Planned from "../../pages/app/budget/Planned.jsx";
+import CalendarLayout from "../layout/CalendarLayout.jsx";
 import OverviewPortfolio from "../../pages/app/investing/OverviewPortfolio.jsx";
 import Portfolio from "../../pages/app/investing/Portfolio.jsx";
 import NewsPortfolio from "../../pages/app/investing/NewsPortfolio.jsx";
-import OverviewResources from "../../pages/app/resources/OverviewResources.jsx";
-import News from "../../pages/app/resources/News.jsx";
-import CostBasisCalculator from "../../pages/app/resources/CostBasisCalculator.jsx";
 import Account from "../../pages/app/Account.jsx";
 import InvestingLayout from "../layout/InvestingLayout.jsx";
 import BudgetLayout from "../layout/BudgetLayout";
@@ -42,21 +39,14 @@ function AppLayout() {
         <Route index element={<Dashboard />} />
         <Route path="budget-tracking" element={<BudgetLayout />}>
           <Route index element={<OverviewBudget />} />
-          <Route path="budget" element={<Budget />} />
-          <Route path="update" element={<Update userId={userId} />} />
-          <Route path="insights" element={<Insights />} />
+          <Route path="planned" element={<Planned userId={userId} />} />
+          <Route path="spent" element={<Spent />} />
+          <Route path="calendar" element={<CalendarLayout />} />
         </Route>
         <Route path="investments" element={<InvestingLayout />}>
           <Route index element={<OverviewPortfolio />} />
           <Route path="portfolio" element={<Portfolio />} />
           <Route path="news" element={<NewsPortfolio />} />
-        </Route>
-        <Route path="resources" element={<OverviewResources />}>
-          <Route path="news" element={<News />} />
-          <Route
-            path="cost-basis-calculator"
-            element={<CostBasisCalculator />}
-          />
         </Route>
         <Route path="account" element={<Account userId={userId} />} />
       </Routes>

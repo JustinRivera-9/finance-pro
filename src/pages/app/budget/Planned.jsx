@@ -1,11 +1,11 @@
-import UpdateForm from "../../../components/budget/UpdateForm";
+import UpdateForm from "../../../components/budget/UpdateForm.jsx";
 import { useState } from "react";
 import LoadingSpinner from "../../../ui/LoadingSpinner.jsx";
-import BudgetCategoriesLayout from "../../../components/budget/BudgetCategoriesLayout";
+import BudgetCategoriesLayout from "../../../components/budget/BudgetCategoriesLayout.jsx";
 import { useQuery } from "@tanstack/react-query";
 import { getBudgetCategories } from "../../../services/apiBudget.js";
 
-function Update({ userId }) {
+function Planned({ userId }) {
   const [formOpen, setFormOpen] = useState(false);
 
   const { data, isLoading, error } = useQuery({
@@ -28,6 +28,6 @@ function Update({ userId }) {
     </div>
   );
 }
-export default Update;
+export default Planned;
 
 // Add snackbar when editing or deleting
