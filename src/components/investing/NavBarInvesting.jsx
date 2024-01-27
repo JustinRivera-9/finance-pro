@@ -1,13 +1,37 @@
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 function NavBarInvesting() {
+  const [alignment, setAlignment] = useState("overview");
+
+  const handleChange = (event, newAlignment) => {
+    setAlignment(newAlignment);
+  };
+
   return (
-    <nav className="md:flex md:justify-center md:border-none md:space-x-8 flex justify-around mx-4 text-xl md:2xl border-b pb-2 border-slate-200 text-slate-200">
-      <NavLink to="/app/investments" end>
-        Overview
-      </NavLink>
-      <NavLink to="/app/investments/portfolio">Portfolio</NavLink>
-      <NavLink to="/app/investments/news">News</NavLink>
+    <nav className="md:flex md:justify-center md:space-x-8 flex justify-around mx-4 text-xl md:2xl pb-2">
+      <ToggleButtonGroup
+        color="primary"
+        value={alignment}
+        exclusive
+        onChange={handleChange}
+        aria-label="Platform"
+        sx={{ borderRadius: "50px" }}
+      >
+        <ToggleButton value="overview">
+          <NavLink to="/app/investments" end>
+            Overview
+          </NavLink>
+        </ToggleButton>
+        <ToggleButton value="planned">
+          <NavLink to="/app/investments/portfolio">Portfolio</NavLink>
+        </ToggleButton>
+        <ToggleButton value="spent">
+          <NavLink to="/app/investments/news">News</NavLink>
+        </ToggleButton>
+      </ToggleButtonGroup>
     </nav>
   );
 }
