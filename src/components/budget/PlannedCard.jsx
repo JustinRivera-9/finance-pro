@@ -2,7 +2,7 @@ import { FaPen as EditIcon } from "react-icons/fa";
 import { FaTrashAlt as DeleteIcon } from "react-icons/fa";
 import { formatCurrency } from "../../utils/helperFunctions";
 
-function BudgetCategoriesCard({ budgetData }) {
+function PlannedCard({ budgetData }) {
   const { category, amount, type, id } = budgetData;
 
   return (
@@ -23,4 +23,4 @@ function BudgetCategoriesCard({ budgetData }) {
   );
 }
 
-export default BudgetCategoriesCard;
+export default PlannedCard;

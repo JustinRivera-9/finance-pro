@@ -1,6 +1,6 @@
 import { formatCurrency } from "../../utils/helperFunctions";
 
-function BudgetGoalSummary({ income, expenses }) {
+function PlannedSummary({ income, expenses }) {
   const totalIncome = income
     .map((el) => el.amount)
     .reduce((acc, cur) => acc + cur, 0);
@@ -33,4 +33,4 @@ function BudgetGoalSummary({ income, expenses }) {
   );
 }
 
-export default BudgetGoalSummary;
+export default PlannedSummary;

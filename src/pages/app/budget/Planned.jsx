@@ -1,7 +1,7 @@
-import UpdateForm from "../../../components/budget/UpdateForm.jsx";
+import PlannedForm from "../../../components/budget/PlannedForm.jsx";
 import { useState } from "react";
 import LoadingSpinner from "../../../ui/LoadingSpinner.jsx";
-import BudgetCategoriesLayout from "../../../components/budget/BudgetCategoriesLayout.jsx";
+import PlannedLayout from "../../../components/budget/PlannedLayout.jsx";
 import { useQuery } from "@tanstack/react-query";
 import { getBudgetCategories } from "../../../services/apiBudget.js";
 
@@ -23,8 +23,10 @@ function Planned({ userId }) {
 
   return (
     <div className="w-full mt-6">
-      <BudgetCategoriesLayout openForm={setFormOpen} categories={data} />
-      {formOpen && <UpdateForm formOpen={formOpen} setFormOpen={setFormOpen} />}
+      <PlannedLayout openForm={setFormOpen} categories={data} />
+      {formOpen && (
+        <PlannedForm formOpen={formOpen} setFormOpen={setFormOpen} />
+      )}
     </div>
   );
 }

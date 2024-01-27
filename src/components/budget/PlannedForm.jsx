@@ -3,7 +3,7 @@ import { useState } from "react";
 import SelectInput from "../../ui/SelectInput";
 import TextInput from "../../ui/TextInput";
 
-function UpdateForm({ formOpen, setFormOpen }) {
+function PlannedForm({ formOpen, setFormOpen }) {
   const [category, setCategory] = useState("");
   const [amount, setAmount] = useState("");
   const [type, setType] = useState("");
@@ -57,4 +57,4 @@ function UpdateForm({ formOpen, setFormOpen }) {
   );
 }
 
-export default UpdateForm;
+export default PlannedForm;
