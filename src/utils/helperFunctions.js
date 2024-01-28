@@ -14,3 +14,13 @@ export const shuffleArray = (arr) => {
   }
   return arr;
 };
+
+export const createNewArray = (length) => {
+  let array = new Array(length);
+  for (let i = 1; i < array.length; i++) {
+    array[i] = i;
+  }
+  array.shift();
+
+  return array;
+};
