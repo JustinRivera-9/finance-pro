@@ -5,7 +5,7 @@ import { formatCurrency } from "../../utils/helperFunctions";
 function PlannedCard({ budgetData }) {
   const { category, amount, type, id, isFixed } = budgetData;
 
-  console.log(isFixed);
+  // console.log(isFixed);
 
   return (
     <li className="flex flex-wrap rounded-xl justify-between p-4 text-xl font-normal bg-[#404040] text-stone-200">
