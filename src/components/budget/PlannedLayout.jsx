@@ -19,11 +19,27 @@ function PlannedLayout({ categories, openForm }) {
     (el) => el.type === "expense" && el.isFixed === "true"
   );
 
+  // const now = new Date();
+  // console.log(now);
+  // console.log(now.getMonth() + 1);
+  // const options = {
+  //   hour: "numeric",
+  //   minute: "numeric",
+  //   day: "numeric",
+  //   month: "long",
+  //   year: "numeric",
+  //   weekday: "long",
+  // }; // Tuesday, May 16, 2023 at 6:23 PM
+
+  // const locale = navigator.language;
+  // const FormattedDate = new Intl.DateTimeFormat(locale, options).format(now);
+  // console.log(FormattedDate);
+
   return (
     <div className="flex flex-col mx-auto">
       <PlannedSummary income={incomeArr} expenses={expenseArr} />
       <div className="flex flex-col sm:flex-row sm:justify-around px-4">
-        <div className="sm:w-1/3">
+        <div className="sm:w-[30%]">
           <h2 className="w-fit mx-auto text-stone-700 text-xl font-semibold bg-green-400 rounded-full py-2 px-14">
             Income
           </h2>
@@ -33,7 +49,7 @@ function PlannedLayout({ categories, openForm }) {
             ))}
           </ul>
         </div>
-        <div className="sm:w-1/3">
+        <div className="sm:w-[30%]">
           <h2 className="w-fit mx-auto text-stone-700 text-xl bg-red-300 rounded-full py-2 px-14 font-semibold">
             Expenses
           </h2>
@@ -43,7 +59,7 @@ function PlannedLayout({ categories, openForm }) {
             ))}
           </ul>
         </div>
-        <div className="sm:w-1/3">
+        <div className="sm:w-[30%]">
           <h2 className="w-fit mx-auto text-stone-700 text-xl bg-slate-300 rounded-full py-2 px-14 font-semibold">
             Fixed Expenses
           </h2>
