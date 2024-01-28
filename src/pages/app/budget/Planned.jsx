@@ -1,8 +1,8 @@
-import PlannedForm from "../../../components/budget/PlannedForm.jsx";
 import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import PlannedForm from "../../../components/budget/PlannedForm.jsx";
 import LoadingSpinner from "../../../ui/LoadingSpinner.jsx";
 import PlannedLayout from "../../../components/budget/PlannedLayout.jsx";
-import { useQuery } from "@tanstack/react-query";
 import { getBudgetCategories } from "../../../services/apiBudget.js";
 
 function Planned({ userId }) {
