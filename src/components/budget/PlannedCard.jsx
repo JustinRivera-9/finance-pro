@@ -22,7 +22,7 @@ function PlannedCard({ budgetData }) {
         </button>
       </div>
       {isFixed === "true" && (
-        <p className="text-[1rem] text-green-300">
+        <p className="text-[1rem] text-green-400">
           Repeats monthly on the 23rd
         </p>
       )}
