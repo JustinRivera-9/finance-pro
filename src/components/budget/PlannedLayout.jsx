@@ -7,15 +7,15 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 const boxStyles = "flex flex-col space-y-4 my-4";
 
 function PlannedLayout({ categories, openForm }) {
-  const { budgetCategories } = categories[0];
+  const { plannedCategories } = categories[0];
 
-  if (!budgetCategories) return <SetUpMessage openForm={openForm} />;
+  if (!plannedCategories) return <SetUpMessage openForm={openForm} />;
 
-  const incomeArr = budgetCategories.filter((el) => el.type === "income");
-  const expenseArr = budgetCategories.filter(
+  const incomeArr = plannedCategories.filter((el) => el.type === "income");
+  const expenseArr = plannedCategories.filter(
     (el) => el.type === "expense" && el.isFixed === "false"
   );
-  const fixedExpenseArr = budgetCategories.filter(
+  const fixedExpenseArr = plannedCategories.filter(
     (el) => el.type === "expense" && el.isFixed === "true"
   );
 

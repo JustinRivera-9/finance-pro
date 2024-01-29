@@ -1,9 +1,9 @@
 import supabase from "./supabase";
 
-export const getBudgetCategories = async (userId) => {
+export const getPlannedCategories = async (userId) => {
   let { data, error } = await supabase
-    .from("budget")
-    .select("budgetCategories")
+    .from("planned")
+    .select("plannedCategories")
     .eq("user_id", userId);
 
   if (error)

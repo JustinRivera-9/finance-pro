@@ -3,15 +3,17 @@ import { useQuery } from "@tanstack/react-query";
 import PlannedForm from "../../../components/budget/PlannedForm.jsx";
 import LoadingSpinner from "../../../ui/LoadingSpinner.jsx";
 import PlannedLayout from "../../../components/budget/PlannedLayout.jsx";
-import { getBudgetCategories } from "../../../services/apiBudget.js";
+import { getPlannedCategories } from "../../../services/apiPlanned.js";
 
 function Planned({ userId }) {
   const [formOpen, setFormOpen] = useState(false);
 
   const { data, isLoading, error } = useQuery({
-    queryKey: ["budgetCategories", userId],
-    queryFn: () => getBudgetCategories(userId),
+    queryKey: ["planned", userId],
+    queryFn: () => getPlannedCategories(userId),
   });
+
+  console.log(data, isLoading, error);
 
   if (isLoading) {
     return <LoadingSpinner isLoading={isLoading} />;
