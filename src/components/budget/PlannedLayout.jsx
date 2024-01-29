@@ -19,22 +19,6 @@ function PlannedLayout({ categories, openForm }) {
     (el) => el.type === "expense" && el.isFixed === "true"
   );
 
-  // const now = new Date();
-  // console.log(now);
-  // console.log(now.getMonth() + 1);
-  // const options = {
-  //   hour: "numeric",
-  //   minute: "numeric",
-  //   day: "numeric",
-  //   month: "long",
-  //   year: "numeric",
-  //   weekday: "long",
-  // }; // Tuesday, May 16, 2023 at 6:23 PM
-
-  // const locale = navigator.language;
-  // const FormattedDate = new Intl.DateTimeFormat(locale, options).format(now);
-  // console.log(FormattedDate);
-
   return (
     <div className="flex flex-col mx-auto">
       <PlannedSummary income={incomeArr} expenses={expenseArr} />
