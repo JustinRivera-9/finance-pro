@@ -41,13 +41,11 @@ function PlannedForm({ formOpen, setFormOpen }) {
   };
 
   const onSubmit = (data) => {
-    const formData = { ...data, amount: +data.amount };
+    const formData = { ...data, amount: Number(data.amount) };
     console.log(formData);
     setFormOpen(false);
     reset();
   };
-
-  console.log(errors);
 
   return (
     <Backdrop open={formOpen}>
