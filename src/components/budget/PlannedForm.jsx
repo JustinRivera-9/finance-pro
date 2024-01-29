@@ -5,6 +5,7 @@ import {
   FormControl,
   FormControlLabel,
   FormGroup,
+  FormHelperText,
   InputLabel,
   MenuItem,
   OutlinedInput,
@@ -40,10 +41,13 @@ function PlannedForm({ formOpen, setFormOpen }) {
   };
 
   const onSubmit = (data) => {
-    console.log(data);
+    const formData = { ...data, amount: +data.amount };
+    console.log(formData);
     setFormOpen(false);
     reset();
   };
+
+  console.log(errors);
 
   return (
     <Backdrop open={formOpen}>
@@ -58,8 +62,11 @@ function PlannedForm({ formOpen, setFormOpen }) {
             id="outlined"
             type="text"
             label="Category"
-            required
-            {...register("category")}
+            error={errors.category}
+            helperText={errors?.category?.message}
+            {...register("category", {
+              required: "This field is required",
+            })}
           />
 
           {/* AMOUNT INPUT */}
@@ -68,21 +75,38 @@ function PlannedForm({ formOpen, setFormOpen }) {
             id="outlined"
             type="number"
             label="Amount"
-            required
-            {...register("amount")}
+            error={errors.amount}
+            helperText={errors?.amount?.message}
+            {...register("amount", {
+              required: "This field is required",
+              min: {
+                value: 1,
+                message: "Amount should be at least 1",
+              },
+            })}
           />
 
           {/* TYPE INPUT */}
-          <FormControl required sx={{ marginTop: "1.5rem" }}>
-            <InputLabel id="type">Type</InputLabel>
+          <FormControl sx={{ marginTop: "1.5rem" }}>
+            <InputLabel sx={errors.type && { color: "#D73A3A" }} id="type">
+              Type
+            </InputLabel>
             <Select
+              error={errors.type}
               id="type"
               input={<OutlinedInput label="Type" id="type" />}
-              {...register("type")}
+              {...register("type", {
+                required: "This field is required",
+              })}
             >
               <MenuItem value="income">Income</MenuItem>
               <MenuItem value="expense">Expense</MenuItem>
             </Select>
+            {errors.type && (
+              <FormHelperText sx={{ color: "#D73A3A" }}>
+                {errors?.type?.message}
+              </FormHelperText>
+            )}
           </FormControl>
 
           {/* IS FIXED CHECKBOX */}
@@ -97,12 +121,20 @@ function PlannedForm({ formOpen, setFormOpen }) {
 
           {/* FIXED DATE INPUT */}
           {dirtyFields.isFixed && (
-            <FormControl required sx={{ marginTop: "0.75rem" }}>
-              <InputLabel id="fixedDate">Day of month</InputLabel>
+            <FormControl sx={{ marginTop: "0.75rem" }}>
+              <InputLabel
+                sx={errors.fixedDate && { color: "#D73A3A" }}
+                id="fixedDate"
+              >
+                Day of month
+              </InputLabel>
               <Select
+                error={errors.fixedDate}
                 id="fixedDate"
                 input={<OutlinedInput label="Day of month" id="fixedDate" />}
-                {...register("fixedDate")}
+                {...register("fixedDate", {
+                  required: "This field is required",
+                })}
               >
                 {createNewArray(32).map((option) => (
                   <MenuItem key={option} value={option}>
@@ -110,6 +142,11 @@ function PlannedForm({ formOpen, setFormOpen }) {
                   </MenuItem>
                 ))}
               </Select>
+              {errors.fixedDate && (
+                <FormHelperText sx={{ color: "#D73A3A" }}>
+                  {errors?.fixedDate?.message}
+                </FormHelperText>
+              )}
             </FormControl>
           )}
 
