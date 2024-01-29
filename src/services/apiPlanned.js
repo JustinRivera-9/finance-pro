@@ -13,3 +13,7 @@ export const getPlannedCategories = async (userId) => {
 
   return data;
 };
+
+export const addPlannedCategory = async (newCategory) => {
+  console.log(newCategory);
+};
