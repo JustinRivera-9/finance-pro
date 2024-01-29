@@ -12,9 +12,12 @@ import {
   Select,
   TextField,
 } from "@mui/material";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
-import { createNewArray } from "../../utils/helperFunctions";
 import { v4 as uuidv4 } from "uuid";
+import toast from "react-hot-toast";
+import { createNewArray } from "../../utils/helperFunctions";
+import { addPlannedCategory } from "../../services/apiPlanned";
 
 function PlannedForm({ formOpen, setFormOpen }) {
   const {
@@ -32,18 +35,28 @@ function PlannedForm({ formOpen, setFormOpen }) {
     },
   });
 
-  const onError = (errors) => {
-    console.log(errors);
-  };
+  // REACT QUERY MUTATIONS
+  const queryClient = useQueryClient();
+  const { mutate, isLoading: isAdding } = useMutation({
+    mutationFn: addPlannedCategory,
+
+    onSuccess: () => {
+      toast.success("New budget category created.");
+      queryClient.invalidateQueries({ queryKey: ["planned"] });
+      setFormOpen(false);
+      reset();
+    },
+
+    onError: (err) => toast.error(err.message),
+  });
+
+  // FORM HANDLER FUNCTIONS
+  const onSubmit = (data) =>
+    mutate({ ...data, amount: Number(data.amount), id: uuidv4() });
+
+  const onError = (errors) => console.log(errors);
 
   const onCancel = () => {
-    setFormOpen(false);
-    reset();
-  };
-
-  const onSubmit = (data) => {
-    const formData = { ...data, amount: Number(data.amount), id: uuidv4() };
-    console.log(formData);
     setFormOpen(false);
     reset();
   };
@@ -149,7 +162,12 @@ function PlannedForm({ formOpen, setFormOpen }) {
             </FormControl>
           )}
 
-          <Button variant="contained" type="submit" sx={{ marginTop: "1rem" }}>
+          <Button
+            disabled={isAdding}
+            variant="contained"
+            type="submit"
+            sx={{ marginTop: "1rem" }}
+          >
             ADD
           </Button>
           <Button onClick={onCancel} sx={{ marginTop: ".75rem" }}>
