@@ -3,7 +3,7 @@ import { FaTrashAlt as DeleteIcon } from "react-icons/fa";
 import { formatCurrency } from "../../utils/helperFunctions";
 
 function PlannedCard({ budgetData }) {
-  const { category, amount, type, id, isFixed } = budgetData;
+  const { category, amount, type, id, isFixed, fixedDate } = budgetData;
 
   // console.log(isFixed);
 
@@ -23,7 +23,7 @@ function PlannedCard({ budgetData }) {
       </div>
       {isFixed === "true" && (
         <p className="text-[1rem] text-green-400">
-          Repeats monthly on the 23rd
+          Repeats on day {fixedDate} of the month.
         </p>
       )}
     </li>
