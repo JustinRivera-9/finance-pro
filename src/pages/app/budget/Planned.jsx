@@ -13,8 +13,6 @@ function Planned({ userId }) {
     queryFn: () => getPlannedCategories(userId),
   });
 
-  console.log(data, isLoading, error);
-
   if (isLoading) {
     return <LoadingSpinner isLoading={isLoading} />;
   }

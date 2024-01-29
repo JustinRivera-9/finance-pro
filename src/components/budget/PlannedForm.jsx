@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { createNewArray } from "../../utils/helperFunctions";
+import { v4 as uuidv4 } from "uuid";
 
 function PlannedForm({ formOpen, setFormOpen }) {
   const {
@@ -41,7 +42,7 @@ function PlannedForm({ formOpen, setFormOpen }) {
   };
 
   const onSubmit = (data) => {
-    const formData = { ...data, amount: Number(data.amount) };
+    const formData = { ...data, amount: Number(data.amount), id: uuidv4() };
     console.log(formData);
     setFormOpen(false);
     reset();
