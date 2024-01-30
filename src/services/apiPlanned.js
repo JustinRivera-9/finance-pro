@@ -16,6 +16,23 @@ export const getPlannedCategories = async (userId) => {
 
 export const addPlannedCategory = async (newCategory) => {
   const [category, userId] = newCategory;
-  console.log(category);
-  console.log(userId);
+
+  let { data } = await supabase
+    .from("planned")
+    .select("plannedCategories")
+    .eq("user_id", userId);
+
+  const tempData = data[0].plannedCategories;
+  const newPlannedCategories = [...tempData, category];
+  const plannedCategories = [...newPlannedCategories];
+
+  const { error } = await supabase
+    .from("planned")
+    .update({ plannedCategories })
+    .eq("user_id", userId);
+
+  if (error)
+    throw new Error(
+      "Category could not be added. Please refresh and try again."
+    );
 };
