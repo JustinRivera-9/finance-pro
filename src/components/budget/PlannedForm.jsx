@@ -45,7 +45,7 @@ function PlannedForm({ formOpen, setFormOpen }) {
 
     onSuccess: () => {
       toast.success("New budget category created.");
-      queryClient.invalidateQueries({ queryKey: ["planned", userId] });
+      queryClient.invalidateQueries({ queryKey: ["planned"] });
       setFormOpen(false);
       reset();
     },
