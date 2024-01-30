@@ -17,15 +17,14 @@ export const getPlannedCategories = async (userId) => {
 export const addPlannedCategory = async (newCategory) => {
   const [category, userId] = newCategory;
 
-  let { data } = await supabase
-    .from("planned")
-    .select("plannedCategories")
-    .eq("user_id", userId);
+  const prevData = await getPlannedCategories(userId);
 
-  const tempData = data[0].plannedCategories;
-  const newPlannedCategories = [...tempData, category];
+  // converts to array of objects. Combines prev w/ new
+  const tempPrevData = prevData[0].plannedCategories;
+  const newPlannedCategories = [...tempPrevData, category];
   const plannedCategories = [...newPlannedCategories];
 
+  // Updates database w/ new array
   const { error } = await supabase
     .from("planned")
     .update({ plannedCategories })
