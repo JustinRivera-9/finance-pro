@@ -15,5 +15,7 @@ export const getPlannedCategories = async (userId) => {
 };
 
 export const addPlannedCategory = async (newCategory) => {
-  console.log(newCategory);
+  const [category, userId] = newCategory;
+  console.log(category);
+  console.log(userId);
 };
