@@ -16,13 +16,16 @@ import useGetUser from "../../services/useGetUser.js";
 import LoadingSpinner from "../LoadingSpinner.jsx";
 import NavBarMobile from "../NavBarMobile.jsx";
 import { useEffect, useState } from "react";
+import { AuthContext } from "../../utils/context.js";
 
 function AppLayout() {
   const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
     if (window.innerWidth < 1000) setIsMobile(true);
     if (window.innerWidth > 1000) setIsMobile(false);
   }, []);
+
   const { userId, isLoading } = useGetUser();
 
   ///// Store userID in url to use in dashboard
@@ -33,13 +36,13 @@ function AppLayout() {
   }
 
   return userId.length ? (
-    <>
+    <AuthContext.Provider value={userId}>
       {!isMobile && <NavBarDesktop />}
       <Routes>
         <Route index element={<Dashboard />} />
         <Route path="budget-tracking" element={<BudgetLayout />}>
           <Route index element={<OverviewBudget />} />
-          <Route path="planned" element={<Planned userId={userId} />} />
+          <Route path="planned" element={<Planned />} />
           <Route path="spent" element={<Spent />} />
           <Route path="calendar" element={<CalendarLayout />} />
         </Route>
@@ -48,7 +51,7 @@ function AppLayout() {
           <Route path="portfolio" element={<Portfolio />} />
           <Route path="news" element={<NewsPortfolio />} />
         </Route>
-        <Route path="account" element={<Account userId={userId} />} />
+        <Route path="account" element={<Account />} />
       </Routes>
 
       {isMobile && (
@@ -56,7 +59,7 @@ function AppLayout() {
           <NavBarMobile />
         </nav>
       )}
-    </>
+    </AuthContext.Provider>
   ) : (
     <PageNotFound
       heading="You shouldn't be here"
