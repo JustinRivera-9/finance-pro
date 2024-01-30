@@ -12,14 +12,17 @@ import {
   Select,
   TextField,
 } from "@mui/material";
+import { useContext } from "react";
+import { AuthContext } from "../../utils/context";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
-import toast from "react-hot-toast";
 import { createNewArray } from "../../utils/helperFunctions";
 import { addPlannedCategory } from "../../services/apiPlanned";
+import toast from "react-hot-toast";
 
 function PlannedForm({ formOpen, setFormOpen }) {
+  const userId = useContext(AuthContext);
   const {
     register,
     formState: { errors, dirtyFields },
@@ -42,7 +45,7 @@ function PlannedForm({ formOpen, setFormOpen }) {
 
     onSuccess: () => {
       toast.success("New budget category created.");
-      queryClient.invalidateQueries({ queryKey: ["planned"] });
+      queryClient.invalidateQueries({ queryKey: ["planned", userId] });
       setFormOpen(false);
       reset();
     },
@@ -52,7 +55,7 @@ function PlannedForm({ formOpen, setFormOpen }) {
 
   // FORM HANDLER FUNCTIONS
   const onSubmit = (data) =>
-    mutate({ ...data, amount: Number(data.amount), id: uuidv4() });
+    mutate([{ ...data, amount: Number(data.amount), id: uuidv4() }, userId]);
 
   const onError = (errors) => console.log(errors);
 
