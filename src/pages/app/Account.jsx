@@ -1,12 +1,15 @@
 import { Button, Skeleton } from "@mui/material";
 import { useNavigate } from "react-router";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import useGetSettings from "../../services/useGetSettings";
 import AccountForm from "../../components/account/AccountForm";
 import supabase from "../../services/supabase";
 import AccountLoading from "../../ui/skeletonLoading/AccountLoading";
+import { AuthContext } from "../../utils/context";
 
-function Account({ userId }) {
+function Account() {
+  const userId = useContext(AuthContext);
+
   ////////// Fetches user settings from DB
   const { settings, isLoading, error } = useGetSettings(userId);
   const { first_name, last_name, email } = settings;

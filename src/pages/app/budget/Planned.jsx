@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import PlannedForm from "../../../components/budget/PlannedForm.jsx";
 import LoadingSpinner from "../../../ui/LoadingSpinner.jsx";
 import PlannedLayout from "../../../components/budget/PlannedLayout.jsx";
 import { getPlannedCategories } from "../../../services/apiPlanned.js";
+import { AuthContext } from "../../../utils/context.js";
 
-function Planned({ userId }) {
+function Planned() {
+  const userId = useContext(AuthContext);
   const [formOpen, setFormOpen] = useState(false);
 
   const { data, isLoading, error } = useQuery({
