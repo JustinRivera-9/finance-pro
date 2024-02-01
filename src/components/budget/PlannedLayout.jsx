@@ -9,7 +9,7 @@ const boxStyles = "flex flex-col space-y-4 my-4";
 function PlannedLayout({ categories, openForm }) {
   const { plannedCategories } = categories[0];
 
-  if (!plannedCategories) return <SetUpMessage openForm={openForm} />;
+  if (!plannedCategories.length) return <SetUpMessage openForm={openForm} />;
 
   const incomeArr = plannedCategories.filter((el) => el.type === "income");
   const expenseArr = plannedCategories.filter(
