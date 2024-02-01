@@ -24,3 +24,7 @@ export const createNewArray = (length) => {
 
   return array;
 };
+
+export const reduceArr = (arr) => {
+  return arr.map((el) => el.amount).reduce((acc, cur) => acc + cur, 0);
+};
