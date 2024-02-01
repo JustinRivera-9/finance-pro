@@ -5,7 +5,7 @@ import { formatCurrency } from "../../utils/helperFunctions";
 function PlannedCard({ budgetData }) {
   const { category, amount, type, id, isFixed, fixedDate } = budgetData;
 
-  // console.log(isFixed);
+  console.log(id);
 
   return (
     <li className="flex flex-wrap rounded-xl justify-between p-4 text-xl font-normal bg-[#404040] text-stone-200">
@@ -14,10 +14,10 @@ function PlannedCard({ budgetData }) {
         <p className="">{formatCurrency(amount)}</p>
       </div>
       <div className="flex justify-around w-1/5">
-        <button onClick={() => {}}>
+        <button onClick={(id) => {}}>
           <EditIcon />
         </button>
-        <button onClick={() => {}}>
+        <button onClick={(id) => {}}>
           <DeleteIcon />
         </button>
       </div>
