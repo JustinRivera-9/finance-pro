@@ -21,8 +21,8 @@ export const addPlannedCategory = async (newCategory) => {
 
   // converts to array of objects. Combines prev w/ new
   const tempPrevData = prevData[0].plannedCategories;
-  const newPlannedCategories = [...tempPrevData, category];
-  const plannedCategories = [...newPlannedCategories];
+  const oldCategories = [...tempPrevData];
+  const plannedCategories = [...oldCategories, category];
 
   // Updates database w/ new array
   const { error } = await supabase
