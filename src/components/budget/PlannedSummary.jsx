@@ -1,14 +1,10 @@
-import { formatCurrency } from "../../utils/helperFunctions";
+import { formatCurrency, reduceArr } from "../../utils/helperFunctions";
 
-function PlannedSummary({ income, expenses }) {
-  const totalIncome = income
-    .map((el) => el.amount)
-    .reduce((acc, cur) => acc + cur, 0);
-
-  const totalExpenses = expenses
-    .map((el) => el.amount)
-    .reduce((acc, cur) => acc + cur, 0);
-  const net = totalIncome - totalExpenses;
+function PlannedSummary({ income, expenses, fixed }) {
+  const totalIncome = reduceArr(income);
+  const totalExpenses = reduceArr(expenses);
+  const totalFixed = reduceArr(fixed);
+  const net = totalIncome - totalExpenses - totalFixed;
 
   return (
     <>
@@ -20,7 +16,7 @@ function PlannedSummary({ income, expenses }) {
         <p className="text-2xl">-</p>
         <div className="text-center">
           <p className="text-red-300">Total Expenses</p>
-          <p>{formatCurrency(totalExpenses)}</p>
+          <p>{formatCurrency(totalExpenses + totalFixed)}</p>
         </div>
         <p className="text-2xl">=</p>
         <div className="text-center">
