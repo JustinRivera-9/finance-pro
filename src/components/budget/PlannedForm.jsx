@@ -47,17 +47,28 @@ function PlannedForm({ formOpen, setFormOpen }) {
 
     onSuccess: () => {
       toast.success("New budget category created.");
-      queryClient.invalidateQueries({ queryKey: ["planned"] });
+      queryClient.invalidateQueries({ queryKey: ["planned", userId] });
       setFormOpen(false);
       reset();
     },
 
-    onError: (err) => toast.error(err.message),
+    onError: (err) => {
+      toast.error(err.message);
+      console.error(err);
+    },
   });
 
   // FORM HANDLER FUNCTIONS
   const onSubmit = (data) =>
-    mutate([{ ...data, amount: Number(data.amount), id: uuidv4() }, userId]);
+    mutate([
+      {
+        ...data,
+        isFixed: Boolean(data.isFixed),
+        amount: Number(data.amount),
+        id: uuidv4(),
+      },
+      userId,
+    ]);
 
   const onError = (errors) => console.log(errors);
 
