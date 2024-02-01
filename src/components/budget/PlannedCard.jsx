@@ -21,7 +21,7 @@ function PlannedCard({ budgetData }) {
           <DeleteIcon />
         </button>
       </div>
-      {isFixed === "true" && (
+      {isFixed && (
         <p className="text-[1rem] text-green-400">
           Repeats on day {fixedDate} of the month.
         </p>
