@@ -1,11 +1,39 @@
 import { FaPen as EditIcon } from "react-icons/fa";
 import { FaTrashAlt as DeleteIcon } from "react-icons/fa";
+
+import { useContext } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+
 import { formatCurrency } from "../../utils/helperFunctions";
+import { AuthContext } from "../../utils/context";
+import toast from "react-hot-toast";
+import { deletePlannedCategory } from "../../services/apiPlanned";
 
 function PlannedCard({ budgetData }) {
-  const { category, amount, type, id, isFixed, fixedDate } = budgetData;
+  const userId = useContext(AuthContext);
+  const {
+    category,
+    amount,
+    type,
+    id: categoryId,
+    isFixed,
+    fixedDate,
+  } = budgetData;
 
-  console.log(id);
+  // REACT QUERY MUTATIONS
+  const queryClient = useQueryClient();
+  const { mutate, isLoading: isDeleting } = useMutation({
+    mutationFn: deletePlannedCategory,
+    onSuccess: () => {
+      toast.success("Category successfully deleted");
+      queryClient.invalidateQueries({ queryKey: ["planned", userId] });
+    },
+
+    onError: (err) =>
+      toast.error(
+        "There was a problem deleting the category. Please try again"
+      ),
+  });
 
   return (
     <li className="flex flex-wrap rounded-xl justify-between p-4 text-xl font-normal bg-[#404040] text-stone-200">
@@ -14,11 +42,11 @@ function PlannedCard({ budgetData }) {
         <p className="">{formatCurrency(amount)}</p>
       </div>
       <div className="flex justify-around w-1/5">
-        <button onClick={(id) => {}}>
+        <button>
           <EditIcon />
         </button>
-        <button onClick={(id) => {}}>
-          <DeleteIcon />
+        <button>
+          <DeleteIcon onClick={() => mutate({ categoryId, userId })} />
         </button>
       </div>
       {isFixed && (
