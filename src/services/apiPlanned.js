@@ -44,7 +44,6 @@ export const deletePlannedCategory = async (categoryInfo) => {
   const oldCategories = [...tempPrevData];
 
   const plannedCategories = oldCategories.filter((el) => el.id !== categoryId);
-  console.log(plannedCategories);
 
   // Updates database w/ new array
   const { error } = await supabase
