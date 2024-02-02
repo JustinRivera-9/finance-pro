@@ -33,7 +33,7 @@ function PlannedLayout({ categories, openForm }) {
           </h2>
           <ul className={boxStyles}>
             {incomeArr.map((el) => (
-              <PlannedCard key={el.id} budgetData={el} />
+              <PlannedCard key={el.id} categoryData={el} />
             ))}
           </ul>
         </div>
@@ -43,7 +43,7 @@ function PlannedLayout({ categories, openForm }) {
           </h2>
           <ul className={boxStyles}>
             {expenseArr.map((el) => (
-              <PlannedCard key={el.id} budgetData={el} />
+              <PlannedCard key={el.id} categoryData={el} />
             ))}
           </ul>
         </div>
@@ -53,7 +53,7 @@ function PlannedLayout({ categories, openForm }) {
           </h2>
           <ul className={boxStyles}>
             {fixedExpenseArr.map((el) => (
-              <PlannedCard key={el.id} budgetData={el} />
+              <PlannedCard key={el.id} categoryData={el} />
             ))}
           </ul>
         </div>
