@@ -1,4 +1,4 @@
-import { formatCurrency, reduceArr } from "../../utils/helperFunctions";
+import { formatCurrency, reduceArr } from "../../../utils/helperFunctions";
 
 function PlannedSummary({ income, expenses, fixed }) {
   const totalIncome = reduceArr(income);

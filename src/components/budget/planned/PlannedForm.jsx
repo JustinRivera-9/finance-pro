@@ -19,9 +19,9 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
 
-import { AuthContext } from "../../utils/context";
-import { createNewArray } from "../../utils/helperFunctions";
-import { addPlannedCategory } from "../../services/apiPlanned";
+import { AuthContext } from "../../../utils/context";
+import { createNewArray } from "../../../utils/helperFunctions";
+import { addPlannedCategory } from "../../../services/apiPlanned";
 
 const defaultFormValues = {
   category: "",
