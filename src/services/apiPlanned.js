@@ -25,6 +25,7 @@ export const addPlannedCategory = async (newCategory) => {
   // Checks if object already exists in array
   const isEdit = oldCategories.some((el) => el.id === category.id);
 
+  // If action is add new category
   if (!isEdit) {
     // Combines old array with new category object
     const plannedCategories = [...oldCategories, category];
@@ -39,9 +40,10 @@ export const addPlannedCategory = async (newCategory) => {
         "Category could not be added. Please refresh and try again."
       );
   } else {
+    // If action is update category
     // Gets index of item being updated
     const idx = oldCategories.findIndex((el) => el.id === category.id);
-    // Mutates item within array
+    // Mutates category to be updated
     oldCategories[idx] = category;
 
     const plannedCategories = oldCategories;
