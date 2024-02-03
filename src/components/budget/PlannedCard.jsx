@@ -1,15 +1,17 @@
 import { FaPen as EditIcon } from "react-icons/fa";
 import { FaTrashAlt as DeleteIcon } from "react-icons/fa";
 
-import { useContext } from "react";
+import toast from "react-hot-toast";
+import { useContext, useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
+import PlannedForm from "./PlannedForm";
 import { formatCurrency } from "../../utils/helperFunctions";
 import { AuthContext } from "../../utils/context";
-import toast from "react-hot-toast";
 import { deletePlannedCategory } from "../../services/apiPlanned";
 
-function PlannedCard({ budgetData }) {
+function PlannedCard({ categoryData }) {
+  const [formOpen, setFormOpen] = useState(false);
   const userId = useContext(AuthContext);
   const {
     category,
@@ -18,7 +20,7 @@ function PlannedCard({ budgetData }) {
     id: categoryId,
     isFixed,
     fixedDate,
-  } = budgetData;
+  } = categoryData;
 
   // REACT QUERY MUTATIONS
   const queryClient = useQueryClient();
@@ -36,25 +38,34 @@ function PlannedCard({ budgetData }) {
   });
 
   return (
-    <li className="flex flex-wrap rounded-xl justify-between p-4 text-xl font-normal bg-[#404040] text-stone-200">
-      <div className="flex w-1/2 sm:2/3 text-left justify-between">
-        <p className="capitalize">{category}</p>
-        <p className="">{formatCurrency(amount)}</p>
-      </div>
-      <div className="flex justify-around w-1/5">
-        <button>
-          <EditIcon />
-        </button>
-        <button>
-          <DeleteIcon onClick={() => mutate({ categoryId, userId })} />
-        </button>
-      </div>
-      {isFixed && (
-        <p className="text-[1rem] text-green-400">
-          Repeats on day {fixedDate} of the month.
-        </p>
+    <>
+      <li className="flex flex-wrap rounded-xl justify-between p-4 text-xl font-normal bg-[#404040] text-stone-200">
+        <div className="flex w-1/2 sm:2/3 text-left justify-between">
+          <p className="capitalize">{category}</p>
+          <p className="">{formatCurrency(amount)}</p>
+        </div>
+        <div className="flex justify-around w-1/5">
+          <button>
+            <EditIcon onClick={() => setFormOpen((show) => !show)} />
+          </button>
+          <button>
+            <DeleteIcon onClick={() => mutate({ categoryId, userId })} />
+          </button>
+        </div>
+        {isFixed && (
+          <p className="text-[1rem] text-green-400">
+            Repeats on day {fixedDate} of the month.
+          </p>
+        )}
+      </li>
+      {formOpen && (
+        <PlannedForm
+          categoryToEdit={categoryData}
+          formOpen={formOpen}
+          setFormOpen={setFormOpen}
+        />
       )}
-    </li>
+    </>
   );
 }
 
