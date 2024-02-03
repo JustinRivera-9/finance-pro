@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import PlannedForm from "../../../components/budget/PlannedForm.jsx";
+import PlannedForm from "../../../components/budget/planned/PlannedForm.jsx";
 import LoadingSpinner from "../../../ui/LoadingSpinner.jsx";
-import PlannedLayout from "../../../components/budget/PlannedLayout.jsx";
+import PlannedLayout from "../../../components/budget/planned/PlannedLayout.jsx";
 import { getPlannedCategories } from "../../../services/apiPlanned.js";
 import { AuthContext } from "../../../utils/context.js";
 
