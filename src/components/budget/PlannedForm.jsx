@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 
 import toast from "react-hot-toast";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
@@ -23,7 +23,18 @@ import { AuthContext } from "../../utils/context";
 import { createNewArray } from "../../utils/helperFunctions";
 import { addPlannedCategory } from "../../services/apiPlanned";
 
-function PlannedForm({ formOpen, setFormOpen }) {
+const defaultFormValues = {
+  category: "",
+  amount: "",
+  type: "income",
+  isFixed: false,
+  fixedDate: "",
+  id: "",
+};
+
+function PlannedForm({ formOpen, setFormOpen, categoryToEdit = {} }) {
+  const [isEdit, setIsEdit] = useState(Boolean(categoryToEdit.id));
+
   const userId = useContext(AuthContext);
   const {
     register,
@@ -31,13 +42,9 @@ function PlannedForm({ formOpen, setFormOpen }) {
     handleSubmit,
     reset,
   } = useForm({
-    defaultValues: {
-      category: "",
-      amount: "",
-      type: "",
-      isFixed: false,
-      fixedDate: "",
-    },
+    defaultValues: categoryToEdit
+      ? { ...categoryToEdit, type: "", isFixed: false, fixedDate: "" }
+      : defaultFormValues,
   });
 
   // REACT QUERY MUTATIONS
@@ -59,26 +66,29 @@ function PlannedForm({ formOpen, setFormOpen }) {
   });
 
   // FORM HANDLER FUNCTIONS
+  // TO DO - Find id in apiPlanned and replace that index with updated object
   const onSubmit = (data) =>
     mutate([
       {
         ...data,
         isFixed: Boolean(data.isFixed),
         amount: Number(data.amount),
-        id: uuidv4(),
+        id: data.id || uuidv4(),
       },
       userId,
     ]);
 
   const onError = (errors) => console.log(errors);
-
   const onCancel = () => {
     setFormOpen(false);
     reset();
   };
 
   return (
-    <Backdrop open={formOpen}>
+    <Backdrop
+      open={formOpen}
+      sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+    >
       <div className="flex flex-col bg-[#303030] p-8 rounded-xl">
         <form
           className="flex flex-col"
@@ -184,7 +194,7 @@ function PlannedForm({ formOpen, setFormOpen }) {
             type="submit"
             sx={{ marginTop: "1rem" }}
           >
-            ADD
+            {isEdit ? "UPDATE" : "ADD"}
           </Button>
           <Button onClick={onCancel} sx={{ marginTop: ".75rem" }}>
             Cancel
