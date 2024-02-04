@@ -8,7 +8,12 @@ import ExpenseCard from "./ExpenseCard";
 
 function CategoryAccordian({ category }) {
   const [isOpen, setIsOpen] = useState(false);
-  const { categoryName, plannedAmount, spentAmount, expenses } = category;
+  const {
+    categoryName,
+    plannedAmount,
+    spentAmount,
+    expenses2024: expenses,
+  } = category;
 
   return (
     <li className="flex flex-col space-y-2 py-4 items-center bg-[#404040] rounded-xl">
