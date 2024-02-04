@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../utils/context";
 import { getExpenses } from "../../../services/apiExpenses";
 import LoadingSpinner from "../../../ui/LoadingSpinner";
+import { expenseArrayMutation } from "../../../utils/helperFunctions";
 
 const tempData = [
   {
@@ -64,11 +65,7 @@ function Spent() {
   const userId = useContext(AuthContext);
 
   // QUERY SET UP
-  const {
-    data: expenses,
-    isLoading,
-    error,
-  } = useQuery({
+  const { data, isLoading, error } = useQuery({
     queryKey: ["expenses", userId],
     queryFn: () => getExpenses(userId),
   });
@@ -78,11 +75,13 @@ function Spent() {
   }
 
   if (error) {
+    console.error(error.message);
     return <h2>There was an error in Spent Page</h2>;
   }
 
-  console.log(expenses);
+  const { expenses } = data;
 
+  console.log(expenses);
   return (
     <div className="flex flex-col space-y-4 w-11/12 mx-auto text-center">
       {/* MONTH FILTER COMPONENT */}
