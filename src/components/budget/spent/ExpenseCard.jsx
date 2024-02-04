@@ -16,7 +16,7 @@ function ExpenseCard({ expense }) {
         <p className="text-xl">{description}</p>
       </div>
       <div className="flex space-x-4">
-        <p className="text-[#48ff00] text-xl">{formatCurrency(amount)}</p>
+        <p className="text-[#48ff00bd] text-xl">{formatCurrency(amount)}</p>
         <button>
           <MoreVertIcon />
         </button>
