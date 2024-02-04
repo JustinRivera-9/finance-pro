@@ -64,7 +64,11 @@ function Spent() {
   const userId = useContext(AuthContext);
 
   // QUERY SET UP
-  const { data, isLoading, error } = useQuery({
+  const {
+    data: expenses,
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ["expenses", userId],
     queryFn: () => getExpenses(userId),
   });
@@ -74,10 +78,9 @@ function Spent() {
   }
 
   if (error) {
-    return <h2>There was an error</h2>;
+    return <h2>There was an error in Spent Page</h2>;
   }
 
-  const { expenses } = data;
   console.log(expenses);
 
   return (
