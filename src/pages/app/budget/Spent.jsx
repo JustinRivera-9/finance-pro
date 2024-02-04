@@ -64,11 +64,7 @@ function Spent() {
   const userId = useContext(AuthContext);
 
   // QUERY SET UP
-  const {
-    data: { expenses },
-    isLoading,
-    error,
-  } = useQuery({
+  const { data, isLoading, error } = useQuery({
     queryKey: ["expenses", userId],
     queryFn: () => getExpenses(userId),
   });
@@ -80,6 +76,9 @@ function Spent() {
   if (error) {
     return <h2>There was an error</h2>;
   }
+
+  const { expenses } = data;
+  console.log(expenses);
 
   return (
     <div className="flex flex-col space-y-4 w-11/12 mx-auto text-center">
