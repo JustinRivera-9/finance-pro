@@ -1,10 +1,13 @@
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 
+import { useState } from "react";
+
 import { formatCurrency } from "../../../utils/helperFunctions";
 import ExpenseCard from "./ExpenseCard";
 
 function CategoryAccordian({ category }) {
+  const [isOpen, setIsOpen] = useState(false);
   const { categoryName, plannedAmount, spentAmount, expenses } = category;
 
   return (
@@ -16,8 +19,12 @@ function CategoryAccordian({ category }) {
             Spent: {formatCurrency(spentAmount)}
           </p>
         </div>
-        <button className="pr-4">
-          <RemoveCircleIcon color="primary" />
+        <button onClick={() => setIsOpen((show) => !show)} className="pr-4">
+          {isOpen ? (
+            <RemoveCircleIcon color="primary" />
+          ) : (
+            <AddCircleIcon color="primary" />
+          )}
         </button>
       </div>
       <div className="flex justify-around items-center w-full">
@@ -26,11 +33,13 @@ function CategoryAccordian({ category }) {
           {formatCurrency(plannedAmount)}
         </p>
       </div>
-      <ul className="flex flex-col space-y-2 w-full px-4">
-        {expenses.map((el) => (
-          <ExpenseCard key={el.id} expense={el} />
-        ))}
-      </ul>
+      {isOpen && (
+        <ul className="flex flex-col space-y-2 w-full px-4">
+          {expenses.map((el) => (
+            <ExpenseCard key={el.id} expense={el} />
+          ))}
+        </ul>
+      )}
     </li>
   );
 }
