@@ -8,7 +8,7 @@ function ExpenseCard({ expense }) {
   const [month, day] = date.split(" ");
 
   return (
-    <li className="flex px-3 py-1 justify-between bg-[#292929] items-center w-full rounded-2xl">
+    <li className="flex mt-2 px-3 py-1 justify-between bg-[#292929] items-center w-full rounded-2xl">
       <div className="flex space-x-4 items-center">
         <div className="flex flex-col text-slate-300">
           <p className="text-2xl">{day}</p>
