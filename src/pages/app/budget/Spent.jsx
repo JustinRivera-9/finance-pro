@@ -55,7 +55,7 @@ const tempData = [
 
 function Spent() {
   return (
-    <div className="flex flex-col w-11/12 mx-auto text-center">
+    <div className="flex flex-col space-y-4 w-11/12 mx-auto text-center">
       {/* MONTH FILTER COMPONENT */}
       <p>January 2024</p>
       <div className="flex justify-between">

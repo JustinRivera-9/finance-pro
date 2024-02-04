@@ -1,17 +1,32 @@
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
+
+import { formatCurrency } from "../../../utils/helperFunctions";
 import ExpenseCard from "./ExpenseCard";
 
 function CategoryAccordian({ category }) {
   const { categoryName, plannedAmount, spentAmount, expenses } = category;
 
   return (
-    <li className="my-4 border-red-500 border-2">
-      <p>Category: {categoryName}</p>
-      <p>Spent Amount: {spentAmount}</p>
-      <div>
-        <p>Bar Chart</p>
-        <p>Budget Amount: {plannedAmount}</p>
+    <li className="flex flex-col space-y-2 py-4 items-center bg-[#404040] rounded-xl">
+      <div className="flex justify-between w-full">
+        <div className="flex justify-around items-baseline space-x-4">
+          <p className="text-2xl pl-4 capitalize">{categoryName}</p>
+          <p className="text-[#48ff00c2] text-xl">
+            Spent: {formatCurrency(spentAmount)}
+          </p>
+        </div>
+        <button className="pr-4">
+          <RemoveCircleIcon color="primary" />
+        </button>
       </div>
-      <ul className="my-8">
+      <div className="flex justify-around items-center w-full">
+        <div className="h-5 bg-[#48ff00] rounded-xl w-4/5"></div>
+        <p className="pr-2 text-md text-slate-300">
+          {formatCurrency(plannedAmount)}
+        </p>
+      </div>
+      <ul className="flex flex-col space-y-2 w-full px-4">
         {expenses.map((el) => (
           <ExpenseCard key={el.id} expense={el} />
         ))}
