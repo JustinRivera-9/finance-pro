@@ -1,6 +1,7 @@
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 import { formatCurrency } from "../../../utils/helperFunctions";
+import MenuIcon from "../../../ui/MenuIcon";
 
 function ExpenseCard({ expense }) {
   const { id, amount, date, description } = expense;
@@ -15,11 +16,10 @@ function ExpenseCard({ expense }) {
         </div>
         <p className="text-xl">{description}</p>
       </div>
-      <div className="flex space-x-4">
+      <div className="flex items-center space-x-4">
         <p className="text-[#48ff00bd] text-xl">{formatCurrency(amount)}</p>
-        <button>
-          <MoreVertIcon />
-        </button>
+        <MenuIcon />
+        {/* <MoreVertIcon /> */}
       </div>
     </li>
   );
