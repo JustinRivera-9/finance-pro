@@ -28,7 +28,6 @@ function Spent() {
 
   const { expenses } = data;
 
-  console.log(expenses);
   return (
     <div className="flex flex-col space-y-4 w-11/12 mx-auto text-center">
       {/* MONTH FILTER COMPONENT */}
