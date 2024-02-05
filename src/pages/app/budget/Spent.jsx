@@ -2,11 +2,11 @@ import CategoryList from "../../../components/budget/spent/CategoryList";
 
 import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
-
 import { AuthContext } from "../../../utils/context";
+
+import SetUpMessage from "../../../components/budget/spent/SetUpMessage";
 import { getExpenses } from "../../../services/apiExpenses";
 import LoadingSpinner from "../../../ui/LoadingSpinner";
-import { expenseArrayMutation } from "../../../utils/helperFunctions";
 
 function Spent() {
   const userId = useContext(AuthContext);
@@ -27,18 +27,25 @@ function Spent() {
   }
 
   const { expenses } = data;
+  console.log(expenses);
 
   return (
     <div className="flex flex-col space-y-4 w-11/12 mx-auto text-center">
-      {/* MONTH FILTER COMPONENT */}
-      <p>January 2024</p>
-      <div className="flex justify-between">
-        {/* CHART COMPONENT */}
-        <p>Chart</p>
-        <p>Chart Legend</p>
-      </div>
-      <CategoryList categories={expenses} />
-      <div>Add Expense Form</div>
+      {expenses.length ? (
+        <>
+          {/* MONTH FILTER COMPONENT */}
+          <p>January 2024</p>
+          <div className="flex justify-between">
+            {/* CHART COMPONENT */}
+            <p>Chart</p>
+            <p>Chart Legend</p>
+          </div>
+          <CategoryList categories={expenses} />
+          <div>Add Expense Form</div>
+        </>
+      ) : (
+        <SetUpMessage />
+      )}
     </div>
   );
 }
