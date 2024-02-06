@@ -1,4 +1,4 @@
-import { formatCurrency } from "../../../utils/helperFunctions";
+import { formatCurrency } from "../utils/helperFunctions";
 
 function CategoryProgressBar({ spent, planned }) {
   const percentSpent = (spent / planned) * 100;
