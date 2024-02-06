@@ -14,7 +14,7 @@ function ExpenseCard({ expense }) {
           <p className="text-2xl">{day}</p>
           <p>{month}</p>
         </div>
-        <p className="text-xl">{description}</p>
+        <p className="text-xl text-left">{description}</p>
       </div>
       <div className="flex items-center space-x-4">
         <p className="text-[#48ff00bd] text-xl">{formatCurrency(amount)}</p>
