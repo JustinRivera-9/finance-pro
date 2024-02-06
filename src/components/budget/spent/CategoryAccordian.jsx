@@ -1,11 +1,15 @@
+import { Button } from "@mui/material";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+
 import { useState } from "react";
 
-import CategoryProgressBar from "./AccordianProgressBar";
+import CategoryProgressBar from "../../../ui/AccordianProgressBar";
 import ExpenseCard from "./ExpenseCard";
 import CategoryTitle from "./AccordianTitle";
 
 function CategoryAccordian({ category }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [openForm, setOpenForm] = useState(false);
   const { plannedAmount, spentAmount, expenses2024: expenses } = category;
 
   return (
@@ -17,6 +21,21 @@ function CategoryAccordian({ category }) {
           {expenses.map((el) => (
             <ExpenseCard key={el.id} expense={el} />
           ))}
+          <Button
+            variant="outlined"
+            // variant="contained"
+            style={{
+              width: "fit-content",
+              margin: "auto",
+              marginTop: ".70rem",
+              padding: ".35rem .75rem",
+              borderRadius: "2rem",
+            }}
+            onClick={() => openForm(true)}
+          >
+            <AddCircleIcon fontSize="medium" />
+            <span className="ml-2">Add Expense</span>
+          </Button>
         </ul>
       )}
     </li>
