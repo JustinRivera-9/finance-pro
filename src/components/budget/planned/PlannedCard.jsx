@@ -9,6 +9,7 @@ import PlannedForm from "./PlannedForm";
 import { formatCurrency } from "../../../utils/helperFunctions";
 import { AuthContext } from "../../../utils/context";
 import { deletePlannedCategory } from "../../../services/apiPlanned";
+import { CircularProgress } from "@mui/material";
 
 function PlannedCard({ categoryData }) {
   const [formOpen, setFormOpen] = useState(false);
@@ -24,7 +25,7 @@ function PlannedCard({ categoryData }) {
 
   // REACT QUERY MUTATIONS
   const queryClient = useQueryClient();
-  const { mutate, isLoading: isDeleting } = useMutation({
+  const { mutate, isPending: isDeleting } = useMutation({
     mutationFn: deletePlannedCategory,
     onSuccess: () => {
       toast.success("Category successfully deleted");
@@ -37,6 +38,8 @@ function PlannedCard({ categoryData }) {
       ),
   });
 
+  console.log(isDeleting);
+
   return (
     <>
       <li className="flex flex-wrap rounded-xl justify-between p-4 text-xl font-normal bg-[#404040] text-stone-200">
@@ -48,8 +51,8 @@ function PlannedCard({ categoryData }) {
           <button>
             <EditIcon onClick={() => setFormOpen((show) => !show)} />
           </button>
-          <button>
-            <DeleteIcon onClick={() => mutate({ categoryId, userId })} />
+          <button onClick={() => mutate({ categoryId, userId })}>
+            {isDeleting ? <CircularProgress size="2rem" /> : <DeleteIcon />}
           </button>
         </div>
         {isFixed && (
