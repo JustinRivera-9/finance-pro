@@ -62,7 +62,7 @@ function PlannedLayout({ categories, openForm }) {
         style={{
           width: "fit-content",
           margin: "auto",
-          padding: "1rem",
+          padding: ".75rem",
           borderRadius: "1rem",
         }}
         onClick={() => openForm(true)}
