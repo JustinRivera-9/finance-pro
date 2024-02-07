@@ -41,7 +41,6 @@ function Spent() {
             <p>Chart Legend</p>
           </div>
           <CategoryList categories={expenses} />
-          <div>Add Expense Form</div>
         </>
       ) : (
         <SetUpMessage />
