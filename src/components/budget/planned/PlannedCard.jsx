@@ -38,8 +38,6 @@ function PlannedCard({ categoryData }) {
       ),
   });
 
-  console.log(isDeleting);
-
   return (
     <>
       <li className="flex flex-wrap rounded-xl justify-between p-4 text-xl font-normal bg-[#404040] text-stone-200">
