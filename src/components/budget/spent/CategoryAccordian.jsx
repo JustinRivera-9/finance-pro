@@ -41,7 +41,11 @@ function CategoryAccordian({ category }) {
         </ul>
       )}
       {formOpen && (
-        <ExpenseForm formOpen={formOpen} setFormOpen={setFormOpen} />
+        <ExpenseForm
+          categoryName={category.categoryName}
+          formOpen={formOpen}
+          setFormOpen={setFormOpen}
+        />
       )}
     </li>
   );
