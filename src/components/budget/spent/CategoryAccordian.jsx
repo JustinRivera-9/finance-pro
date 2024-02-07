@@ -22,12 +22,14 @@ function CategoryAccordian({ category }) {
             <ExpenseCard key={el.id} expense={el} />
           ))}
           <Button
-            variant="outlined"
-            // variant="contained"
+            // variant="outlined"
+            variant="contained"
             style={{
               width: "fit-content",
               margin: "auto",
               marginTop: ".70rem",
+              fontWeight: "bold",
+              borderWidth: "2px",
               padding: ".35rem .75rem",
               borderRadius: "2rem",
             }}
