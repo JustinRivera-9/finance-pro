@@ -34,7 +34,6 @@ function ExpenseForm({
   // GET EXPENSES FROM CACHE FOR MUTATION
   const queryCache = queryClient.getQueryCache();
   const expenseCache = queryCache.find(["expenses"]).state?.data?.expenses;
-  console.log(expenseCache);
 
   // QUERY MUTATION
   const { mutate, isLoading: isAdding } = useMutation({
