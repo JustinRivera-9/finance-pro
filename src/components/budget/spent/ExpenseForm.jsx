@@ -5,8 +5,12 @@ import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 import dayjs from "dayjs";
 
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../../utils/context";
 import { v4 as uuidv4 } from "uuid";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { addExpense } from "../../../services/apiExpenses";
+import toast from "react-hot-toast";
 
 function ExpenseForm({
   formOpen,
@@ -14,8 +18,11 @@ function ExpenseForm({
   categoryName,
   expenseToEdit = {},
 }) {
+  // Checks if adding or editing
+  const userId = useContext(AuthContext);
   const [isEdit, setIsEdit] = useState(Boolean(expenseToEdit.id));
 
+  // FORM
   const {
     register,
     handleSubmit,
@@ -23,11 +30,25 @@ function ExpenseForm({
     formState: { errors },
   } = useForm();
 
+  const queryClient = useQueryClient();
+  // GET EXPENSES FROM CACHE FOR MUTATION
+
+  // QUERY MUTATION
+  const { mutate, isLoading: isAdding } = useMutation({
+    mutationFn: addExpense,
+    onSuccess: () => {
+      toast.success("Expense successfully added");
+      queryClient.invalidateQueries({ queryKey: ["expenses", userId] });
+      setFormOpen(false);
+      reset();
+    },
+    onError: (err) => toast.error(err.message),
+  });
+
+  // MUTATE ON SUBMIT
   const onSubmit = (data) => {
     const formData = { ...data, categoryName, id: uuidv4() };
-    console.log(formData);
-    setFormOpen(false);
-    reset();
+    mutate([formData, userId]);
   };
   const onError = (error) => console.error(error);
   const onCancel = () => {
@@ -45,7 +66,7 @@ function ExpenseForm({
           className="flex flex-col"
           onSubmit={handleSubmit(onSubmit, onError)}
         >
-          {/* CATEGORY INPUT */}
+          {/* AMOUNT INPUT */}
           <TextField
             sx={{ marginTop: "1.5rem" }}
             id="outlined"
@@ -62,7 +83,7 @@ function ExpenseForm({
             })}
           />
 
-          {/* AMOUNT INPUT */}
+          {/* DESCRIPTION INPUT */}
           <TextField
             sx={{ marginTop: "1rem" }}
             id="outlined"
@@ -74,6 +95,8 @@ function ExpenseForm({
               required: "This field is required",
             })}
           />
+
+          {/* DATE PICKER */}
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <MobileDatePicker
               defaultValue={dayjs()}

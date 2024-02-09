@@ -30,3 +30,10 @@ export const getExpenses = async (userId) => {
   const expenses = expenseArrayMutation(categories, expensesArr);
   return { expenses };
 };
+
+export const addExpense = async (expense) => {
+  const [newExpense, userId] = expense;
+
+  console.log(userId);
+  console.log(newExpense);
+};
