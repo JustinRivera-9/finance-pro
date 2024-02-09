@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../utils/context";
 import { v4 as uuidv4 } from "uuid";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { QueryCache, useMutation, useQueryClient } from "@tanstack/react-query";
 import { addExpense } from "../../../services/apiExpenses";
 import toast from "react-hot-toast";
 
@@ -32,6 +32,9 @@ function ExpenseForm({
 
   const queryClient = useQueryClient();
   // GET EXPENSES FROM CACHE FOR MUTATION
+  const queryCache = queryClient.getQueryCache();
+  const expenseCache = queryCache.find(["expenses"]).state?.data?.expenses;
+  console.log(expenseCache);
 
   // QUERY MUTATION
   const { mutate, isLoading: isAdding } = useMutation({
@@ -48,7 +51,7 @@ function ExpenseForm({
   // MUTATE ON SUBMIT
   const onSubmit = (data) => {
     const formData = { ...data, categoryName, id: uuidv4() };
-    mutate([formData, userId]);
+    mutate([expenseCache, formData, userId]);
   };
   const onError = (error) => console.error(error);
   const onCancel = () => {

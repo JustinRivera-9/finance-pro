@@ -32,8 +32,9 @@ export const getExpenses = async (userId) => {
 };
 
 export const addExpense = async (expense) => {
-  const [newExpense, userId] = expense;
+  const [expenseCache, newExpense, userId] = expense;
 
   console.log(userId);
+  console.log(expenseCache);
   console.log(newExpense);
 };
