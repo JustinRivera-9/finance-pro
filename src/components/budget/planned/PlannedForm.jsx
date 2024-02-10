@@ -64,7 +64,11 @@ function PlannedForm({ formOpen, setFormOpen, categoryToEdit = {} }) {
     },
 
     onError: (err) => {
-      toast.error(err.message);
+      toast.error(
+        isEdit
+          ? "There was an issue updating the category. Please try again."
+          : "There was an issue adding the new category. Please try again."
+      );
       console.error(err);
     },
   });
