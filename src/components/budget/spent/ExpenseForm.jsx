@@ -22,7 +22,6 @@ function ExpenseForm({
   // Checks if adding or editing
   const userId = useContext(AuthContext);
   const [isEdit, setIsEdit] = useState(Boolean(expenseToEdit.id));
-  console.log(isEdit);
 
   // FORM
   const {
