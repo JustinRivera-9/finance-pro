@@ -53,7 +53,11 @@ function PlannedForm({ formOpen, setFormOpen, categoryToEdit = {} }) {
     mutationFn: addPlannedCategory,
 
     onSuccess: () => {
-      toast.success("New budget category created.");
+      toast.success(
+        isEdit
+          ? "Successfully updated budget category"
+          : "New budget category created"
+      );
       queryClient.invalidateQueries({ queryKey: ["planned", userId] });
       setFormOpen(false);
       reset();
