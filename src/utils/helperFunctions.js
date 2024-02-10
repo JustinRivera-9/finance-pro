@@ -53,3 +53,11 @@ export const expenseArrayMutation = (categoryArr, expensesArr) => {
 
   return updatedArray;
 };
+
+export const formatExpenseDate = (date) => {
+  const arr = date.split(" ");
+  const [_, day, month] = arr;
+  const formattedDate = [month, day].join(" ");
+
+  return formattedDate;
+};
