@@ -41,7 +41,6 @@ export const addExpense = async ({ expenses, newExpense, userId }) => {
   // 2. Add new expense to expenses2024 array for that index
   const updatedExpenses = [newExpense, ...expenses[idx].expenses2024];
   expenses[idx].expenses2024 = updatedExpenses;
-  console.log(expenses);
 
   const { error } = await supabase
     .from("expenses")
