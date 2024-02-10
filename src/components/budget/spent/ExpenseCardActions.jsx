@@ -4,14 +4,13 @@ import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 import { useState } from "react";
-import ExpenseForm from "../components/budget/spent/ExpenseForm";
+import ExpenseForm from "./ExpenseForm";
 
 const options = ["Edit", "Delete"];
 
 const ITEM_HEIGHT = 48;
 
-export default function MenuIcon({ expense }) {
-  console.log(expense);
+export default function ExpenseCardActions({ expense }) {
   const [formOpen, setFormOpen] = useState(false);
 
   const [anchorEl, setAnchorEl] = useState(null);
