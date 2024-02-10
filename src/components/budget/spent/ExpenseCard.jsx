@@ -1,11 +1,10 @@
-import MenuIcon from "../../../ui/MenuIcon";
-
 import { formatCurrency } from "../../../utils/helperFunctions";
+import ExpenseCardActions from "./ExpenseCardActions";
 
 function ExpenseCard({ expense }) {
   const { id, amount, date, description } = expense;
   const [month, day] = date.split(" ");
-  console.log(expense);
+
   return (
     <li className="flex mt-2 px-3 py-1 justify-between bg-[#292929] items-center w-full rounded-2xl">
       <div className="flex space-x-4 items-center">
@@ -17,7 +16,7 @@ function ExpenseCard({ expense }) {
       </div>
       <div className="flex items-center space-x-4">
         <p className="text-[#48ff00bd] text-xl">{formatCurrency(amount)}</p>
-        <MenuIcon expense={expense} />
+        <ExpenseCardActions expense={expense} />
         {/* <MoreVertIcon /> */}
       </div>
     </li>
