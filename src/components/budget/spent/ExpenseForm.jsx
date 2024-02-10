@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../utils/context";
 import { v4 as uuidv4 } from "uuid";
-import { QueryCache, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { addExpense } from "../../../services/apiExpenses";
 import toast from "react-hot-toast";
 import { formatExpenseDate } from "../../../utils/helperFunctions";
@@ -22,6 +22,7 @@ function ExpenseForm({
   // Checks if adding or editing
   const userId = useContext(AuthContext);
   const [isEdit, setIsEdit] = useState(Boolean(expenseToEdit.id));
+  console.log(isEdit);
 
   // FORM
   const {
