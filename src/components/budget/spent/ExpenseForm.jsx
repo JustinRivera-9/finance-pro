@@ -33,8 +33,7 @@ function ExpenseForm({
   const queryClient = useQueryClient();
   // GET EXPENSES FROM CACHE FOR MUTATION
   const queryCache = queryClient.getQueryCache();
-  const expenseCache = queryCache.find(["expenses"]).state?.data?.expenses;
-
+  const expenses = queryCache.find(["expenses"]).state?.data?.expenses;
   // QUERY MUTATION
   const { mutate, isLoading: isAdding } = useMutation({
     mutationFn: addExpense,
@@ -49,8 +48,8 @@ function ExpenseForm({
 
   // MUTATE ON SUBMIT
   const onSubmit = (data) => {
-    const formData = { ...data, categoryName, id: uuidv4() };
-    mutate([expenseCache, formData, userId]);
+    const newExpense = { ...data, categoryName, id: uuidv4() };
+    mutate({ expenses, newExpense, userId });
   };
   const onError = (error) => console.error(error);
   const onCancel = () => {
@@ -74,6 +73,7 @@ function ExpenseForm({
             id="outlined"
             type="number"
             label="Amount"
+            inputProps={{ step: "0.01" }}
             error={errors.amount?.type}
             helperText={errors?.amount?.message}
             {...register("amount", {
