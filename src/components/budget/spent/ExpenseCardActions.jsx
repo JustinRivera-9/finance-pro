@@ -3,27 +3,52 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ExpenseForm from "./ExpenseForm";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { deleteExpense } from "../../../services/apiExpenses";
+import toast from "react-hot-toast";
+import { AuthContext } from "../../../utils/context";
 
 const options = ["Edit", "Delete"];
 
 const ITEM_HEIGHT = 48;
 
 export default function ExpenseCardActions({ expense }) {
+  const userId = useContext(AuthContext);
   const [formOpen, setFormOpen] = useState(false);
-
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
+  const queryClient = useQueryClient();
+  // GET EXPENSES FROM CACHE FOR MUTATION
+  const queryCache = queryClient.getQueryCache();
+  const expenses = queryCache
+    .getAll()
+    .find((query) => query.queryKey[0] === "expenses")?.state?.data?.expenses;
+
+  const { mutate, isLoading: isDeleting } = useMutation({
+    mutationFn: deleteExpense,
+    onSuccess: () => {
+      toast.success("Expense successfully deleted.");
+      queryClient.invalidateQueries({ queryKey: ["expenses", userId] });
+    },
+
+    onError: (err) => {
+      toast.error("There was an issue deleting the expense. Please try again.");
+      console.error(err.message);
+    },
+  });
+
   const handleClose = (e) => {
     setAnchorEl(null);
-    if (e.target.tabIndex === 0) setFormOpen(true);
-    if (e.target.tabIndex === -1)
-      console.log("Delete button clicked", expense.id);
+    if (e.target.textContent === "Edit") setFormOpen(true);
+    if (e.target.textContent === "Delete")
+      mutate({ expenses, expense, userId });
   };
 
   return (

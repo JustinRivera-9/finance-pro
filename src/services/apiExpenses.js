@@ -23,7 +23,9 @@ export const getExpenses = async (userId) => {
     .eq("user_id", userId);
 
   if (error)
-    throw new Error("There was an issue getting expenses. Please try again.");
+    throw new Error(
+      "There was an issue getting your expenses. Please try again."
+    );
 
   const expensesArr = data[0].expenses;
 
@@ -65,7 +67,7 @@ export const addExpense = async ({ expenses, newExpense, userId }) => {
       .update({ expenses })
       .eq("user_id", userId);
 
-    if (error) throw new Error("Issue updating expense");
+    if (error) throw new Error("Issue updating expense. Please try again.");
   }
 
   ////////// HANDLES ADDING NEW EXPENSE
@@ -80,4 +82,24 @@ export const addExpense = async ({ expenses, newExpense, userId }) => {
 
     if (error) throw new Error("Issue adding new expense");
   }
+};
+
+export const deleteExpense = async ({ expenses, expense, userId }) => {
+  const categoryIdx = expenses.findIndex(
+    (el) => el.categoryName === expense.categoryName
+  );
+
+  const catgeoryExpenses = expenses[categoryIdx].expenses2024;
+  const updatedCategoryExpenses = catgeoryExpenses.filter(
+    (el) => el.id !== expense.id
+  );
+
+  expenses[categoryIdx].expenses2024 = updatedCategoryExpenses;
+
+  const { error } = await supabase
+    .from("expenses")
+    .update({ expenses })
+    .eq("user_id", userId);
+
+  if (error) throw new Error("Issue deleting expense. Please try again.");
 };
