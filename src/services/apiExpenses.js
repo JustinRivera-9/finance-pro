@@ -64,6 +64,8 @@ export const addExpense = async ({ expenses, newExpense, userId }) => {
       .from("expenses")
       .update({ expenses })
       .eq("user_id", userId);
+
+    if (error) throw new Error("Issue updating expense");
   }
 
   ////////// HANDLES ADDING NEW EXPENSE
@@ -75,5 +77,7 @@ export const addExpense = async ({ expenses, newExpense, userId }) => {
       .from("expenses")
       .update({ expenses })
       .eq("user_id", userId);
+
+    if (error) throw new Error("Issue adding new expense");
   }
 };
