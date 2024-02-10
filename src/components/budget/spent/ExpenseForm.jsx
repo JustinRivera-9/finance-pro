@@ -63,8 +63,6 @@ function ExpenseForm({
     reset();
   };
 
-  formatExpenseDate("Fri, 25 Jan 2019 02:00:00 GMT");
-
   return (
     <Backdrop
       open={formOpen}
