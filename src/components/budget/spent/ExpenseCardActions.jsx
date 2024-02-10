@@ -70,6 +70,7 @@ export default function ExpenseCardActions({ expense }) {
           formOpen={formOpen}
           setFormOpen={setFormOpen}
           expenseToEdit={expense}
+          categoryName={expense.categoryName}
         />
       )}
     </>
