@@ -26,7 +26,7 @@ export const createNewArray = (length) => {
 };
 
 export const reduceArr = (arr) => {
-  return arr.map((el) => el.amount).reduce((acc, cur) => acc + cur, 0);
+  return arr.map((el) => Number(el.amount)).reduce((acc, cur) => acc + cur, 0);
 };
 
 export const expenseArrayMutation = (categoryArr, expensesArr) => {
@@ -37,6 +37,7 @@ export const expenseArrayMutation = (categoryArr, expensesArr) => {
 
     if (expenseEl) {
       const spentAmount = reduceArr(expenseEl?.expenses2024);
+      console.log(spentAmount);
       return {
         ...categoryEl,
         expenses2024: [...expenseEl.expenses2024],
