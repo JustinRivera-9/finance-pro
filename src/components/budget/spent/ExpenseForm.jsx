@@ -29,7 +29,7 @@ function ExpenseForm({
 }) {
   // Checks if adding or editing
   const userId = useContext(AuthContext);
-  const [isEdit, setIsEdit] = useState(Boolean(expenseToEdit.id));
+  const [isEdit, setIsEdit] = useState(Boolean(expenseToEdit.id) || false);
 
   // FORM
   const {
@@ -48,7 +48,7 @@ function ExpenseForm({
     .getAll()
     .find((query) => query.queryKey[0] === "expenses")?.state?.data?.expenses;
 
-  // QUERY MUTATION
+  // QUERY MUTATION -- Maybe refetch ILO invalidate to fix edit query
   const { mutate, isLoading: isAdding } = useMutation({
     mutationFn: addExpense,
     onSuccess: () => {
