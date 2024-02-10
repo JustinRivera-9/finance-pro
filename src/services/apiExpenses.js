@@ -31,10 +31,24 @@ export const getExpenses = async (userId) => {
   return { expenses };
 };
 
-export const addExpense = async (expense) => {
-  const [expenseCache, newExpense, userId] = expense;
+export const addExpense = async ({ expenses, newExpense, userId }) => {
+  ////////// ON ADD NEW EXPENSE
+  // 1. Find index of category that matches new expense
+  const idx = expenses.findIndex(
+    (el) => el.categoryName === newExpense.categoryName
+  );
 
-  console.log(userId);
-  console.log(expenseCache);
-  console.log(newExpense);
+  // 2. Add new expense to expenses2024 array for that index
+  const updatedExpenses = [newExpense, ...expenses[idx].expenses2024];
+  expenses[idx].expenses2024 = updatedExpenses;
+  console.log(expenses);
+
+  const { error } = await supabase
+    .from("expenses")
+    .update({ expenses })
+    .eq("user_id", userId);
+
+  ////////// ON EDIT EXPENSE
+  // 1. Find index of category that matches new expense
+  // 2. Find index of expense within expenses array
 };
