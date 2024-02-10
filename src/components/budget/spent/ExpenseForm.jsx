@@ -13,6 +13,14 @@ import { addExpense } from "../../../services/apiExpenses";
 import toast from "react-hot-toast";
 import { formatExpenseDate } from "../../../utils/helperFunctions";
 
+const defaultFormValues = {
+  amount: "",
+  categoryName: "",
+  date: dayjs(),
+  description: "",
+  id: uuidv4(),
+};
+
 function ExpenseForm({
   formOpen,
   setFormOpen,
@@ -29,22 +37,38 @@ function ExpenseForm({
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: expenseToEdit ? expenseToEdit : defaultFormValues,
+  });
 
   const queryClient = useQueryClient();
   // GET EXPENSES FROM CACHE FOR MUTATION
   const queryCache = queryClient.getQueryCache();
-  const expenses = queryCache.find(["expenses"]).state?.data?.expenses;
+  const expenses = queryCache
+    .getAll()
+    .find((query) => query.queryKey[0] === "expenses")?.state?.data?.expenses;
+
   // QUERY MUTATION
   const { mutate, isLoading: isAdding } = useMutation({
     mutationFn: addExpense,
     onSuccess: () => {
-      toast.success("Expense successfully added");
-      queryClient.invalidateQueries({ queryKey: ["expenses", userId] });
-      setFormOpen(false);
+      toast.success(
+        isEdit ? "Successfully updated expense" : "Expense successfully added"
+      );
+      queryClient.invalidateQueries({
+        queryKey: ["expenses", userId],
+      });
       reset();
+      setFormOpen(false);
     },
-    onError: (err) => toast.error(err.message),
+    onError: (err) => {
+      toast.error(
+        isEdit
+          ? "There was an issue updating the expense. Please try again."
+          : "There was an issue adding the new expense. Please try again."
+      );
+      console.error(err);
+    },
   });
 
   // MUTATE ON SUBMIT
@@ -52,8 +76,8 @@ function ExpenseForm({
     const newExpense = {
       ...data,
       date: formatExpenseDate(dayjs(data.date).toString()),
-      categoryName,
-      id: uuidv4(),
+      categoryName: categoryName || expenseToEdit.categoryName,
+      id: data.id || uuidv4(),
     };
     mutate({ expenses, newExpense, userId });
   };

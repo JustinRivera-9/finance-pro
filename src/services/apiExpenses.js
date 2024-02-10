@@ -1,4 +1,4 @@
-import { expenseArrayMutation } from "../utils/helperFunctions";
+import { expenseArrayMutation, reduceArr } from "../utils/helperFunctions";
 import { getPlannedCategories } from "./apiPlanned";
 import supabase from "./supabase";
 
@@ -32,22 +32,48 @@ export const getExpenses = async (userId) => {
 };
 
 export const addExpense = async ({ expenses, newExpense, userId }) => {
-  ////////// ON ADD NEW EXPENSE
-  // 1. Find index of category that matches new expense
-  const idx = expenses.findIndex(
+  // Find index of category that matches new expense
+  const categoryIdx = expenses.findIndex(
     (el) => el.categoryName === newExpense.categoryName
   );
 
-  // 2. Add new expense to expenses2024 array for that index
-  const updatedExpenses = [newExpense, ...expenses[idx].expenses2024];
-  expenses[idx].expenses2024 = updatedExpenses;
+  // Determines if edit or add session by checking if expense already exists
+  const isEdit = expenses[categoryIdx]?.expenses2024.some(
+    (el) => el.id === newExpense.id
+  );
 
-  const { error } = await supabase
-    .from("expenses")
-    .update({ expenses })
-    .eq("user_id", userId);
+  ////////// HANDLES UPDATING AN EXISTING EXPENSE
+  if (isEdit) {
+    // Gets index of expense to edit
+    const expenseIdx = expenses[categoryIdx]?.expenses2024.findIndex(
+      (el) => el.id === newExpense.id
+    );
 
-  ////////// ON EDIT EXPENSE
-  // 1. Find index of category that matches new expense
-  // 2. Find index of expense within expenses array
+    // Mutates the expense item
+    expenses[categoryIdx].expenses2024[expenseIdx] = {
+      ...newExpense,
+      amount: Number(newExpense.amount),
+    };
+
+    // Mutates the spent amount
+    expenses[categoryIdx].spentAmount = reduceArr(
+      expenses[categoryIdx].expenses2024
+    );
+
+    const { error } = await supabase
+      .from("expenses")
+      .update({ expenses })
+      .eq("user_id", userId);
+  }
+
+  ////////// HANDLES ADDING NEW EXPENSE
+  if (!isEdit) {
+    const updatedExpenses = [newExpense, ...expenses[categoryIdx].expenses2024];
+    expenses[categoryIdx].expenses2024 = updatedExpenses;
+
+    const { error } = await supabase
+      .from("expenses")
+      .update({ expenses })
+      .eq("user_id", userId);
+  }
 };
