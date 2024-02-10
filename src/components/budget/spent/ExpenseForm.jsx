@@ -11,6 +11,7 @@ import { v4 as uuidv4 } from "uuid";
 import { QueryCache, useMutation, useQueryClient } from "@tanstack/react-query";
 import { addExpense } from "../../../services/apiExpenses";
 import toast from "react-hot-toast";
+import { formatExpenseDate } from "../../../utils/helperFunctions";
 
 function ExpenseForm({
   formOpen,
@@ -48,7 +49,12 @@ function ExpenseForm({
 
   // MUTATE ON SUBMIT
   const onSubmit = (data) => {
-    const newExpense = { ...data, categoryName, id: uuidv4() };
+    const newExpense = {
+      ...data,
+      date: formatExpenseDate(dayjs(data.date).toString()),
+      categoryName,
+      id: uuidv4(),
+    };
     mutate({ expenses, newExpense, userId });
   };
   const onError = (error) => console.error(error);
@@ -56,6 +62,8 @@ function ExpenseForm({
     setFormOpen(false);
     reset();
   };
+
+  formatExpenseDate("Fri, 25 Jan 2019 02:00:00 GMT");
 
   return (
     <Backdrop
