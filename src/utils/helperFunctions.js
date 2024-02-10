@@ -37,7 +37,7 @@ export const expenseArrayMutation = (categoryArr, expensesArr) => {
 
     if (expenseEl) {
       const spentAmount = reduceArr(expenseEl?.expenses2024);
-      console.log(spentAmount);
+
       return {
         ...categoryEl,
         expenses2024: [...expenseEl.expenses2024],
