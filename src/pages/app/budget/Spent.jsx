@@ -36,8 +36,10 @@ function Spent() {
       {expenses.length ? (
         <>
           <MonthFilterButton />
-          <SummaryPieChart expenses={expenses} />
-          <SummaryBarChart expenses={expenses} />
+          <div className="flex flex-col md:flex-row mx-auto">
+            <SummaryPieChart expenses={expenses} />
+            <SummaryBarChart expenses={expenses} />
+          </div>
           <CategoryList categories={expenses} />
         </>
       ) : (
