@@ -16,7 +16,6 @@ import { formatExpenseDate } from "../../../utils/helperFunctions";
 const defaultFormValues = {
   amount: "",
   categoryName: "",
-  date: dayjs(),
   description: "",
   id: uuidv4(),
 };
@@ -73,14 +72,18 @@ function ExpenseForm({
 
   // MUTATE ON SUBMIT
   const onSubmit = (data) => {
+    ////////// console.log(data); // Returning current date. Issue at the register() func
+
     const newExpense = {
       ...data,
       date: formatExpenseDate(dayjs(data.date).toString()),
       categoryName: categoryName || expenseToEdit.categoryName,
       id: data.id || uuidv4(),
     };
+
     mutate({ expenses, newExpense, userId });
   };
+
   const onError = (error) => console.error(error);
   const onCancel = () => {
     setFormOpen(false);
