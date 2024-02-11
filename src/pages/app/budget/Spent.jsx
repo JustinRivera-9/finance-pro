@@ -7,6 +7,8 @@ import { AuthContext } from "../../../utils/context";
 import SetUpMessage from "../../../components/budget/spent/SetUpMessage";
 import { getExpenses } from "../../../services/apiExpenses";
 import LoadingSpinner from "../../../ui/LoadingSpinner";
+import SummaryChart from "../../../components/budget/spent/SummaryChart";
+import MonthFilterButton from "../../../components/budget/spent/MonthFilterButton";
 
 function Spent() {
   const userId = useContext(AuthContext);
@@ -32,13 +34,8 @@ function Spent() {
     <div className="flex flex-col space-y-4 w-11/12 mx-auto text-center">
       {expenses.length ? (
         <>
-          {/* MONTH FILTER COMPONENT */}
-          <p>January 2024</p>
-          <div className="flex justify-between">
-            {/* CHART COMPONENT */}
-            <p>Chart</p>
-            <p>Chart Legend</p>
-          </div>
+          <MonthFilterButton />
+          <SummaryChart expenses={expenses} />
           <CategoryList categories={expenses} />
         </>
       ) : (
