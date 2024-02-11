@@ -80,3 +80,15 @@ export const prepareSpentPieChartData = (expenses) => {
   });
   return updatedData;
 };
+
+export const prepareSpentBarChartData = (expenses) => {
+  const updatedData = expenses.map((el) => {
+    const updatedObj = {
+      plannedAmount: el.plannedAmount,
+      spentAmount: el.spentAmount,
+      category: el.categoryName,
+    };
+    return updatedObj;
+  });
+  return updatedData;
+};
