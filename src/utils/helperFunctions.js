@@ -82,13 +82,16 @@ export const prepareSpentPieChartData = (expenses) => {
 };
 
 export const prepareSpentBarChartData = (expenses) => {
-  const updatedData = expenses.map((el) => {
-    const updatedObj = {
-      plannedAmount: +el.plannedAmount.toFixed(2),
-      spentAmount: +el.spentAmount.toFixed(2),
-      category: el.categoryName.split(" ")[0],
-    };
-    return updatedObj;
-  });
+  console.log(expenses);
+  const updatedData = expenses
+    .filter((el) => !el.isFixed)
+    .map((el) => {
+      const updatedObj = {
+        plannedAmount: +el.plannedAmount.toFixed(2),
+        spentAmount: +el.spentAmount.toFixed(2),
+        category: el.categoryName.split(" ")[0],
+      };
+      return updatedObj;
+    });
   return updatedData;
 };
