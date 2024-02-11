@@ -10,6 +10,7 @@ export const getExpenses = async (userId) => {
     .filter((el) => el.type === "expense")
     .map((el) => {
       return {
+        isFixed: el.isFixed,
         categoryName: el.category,
         plannedAmount: el.amount,
         spentAmount: null,
