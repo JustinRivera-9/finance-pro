@@ -1,8 +1,8 @@
 import { PieChart, pieArcLabelClasses } from "@mui/x-charts";
-import { prepareSpentChartData } from "../../../utils/helperFunctions";
+import { prepareSpentPieChartData } from "../../../utils/helperFunctions";
 
 function SummaryPieChart({ expenses }) {
-  const chartData = prepareSpentChartData(expenses);
+  const chartData = prepareSpentPieChartData(expenses);
 
   return (
     <PieChart
