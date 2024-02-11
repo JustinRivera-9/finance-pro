@@ -7,7 +7,7 @@ const chartSetting = {
       label: "($)",
     },
   ],
-  width: 550,
+  width: 500,
   height: 300,
   sx: {
     [`.${axisClasses.left} .${axisClasses.label}`]: {
@@ -33,8 +33,18 @@ export default function SummaryBarChart({ expenses }) {
         },
       ]}
       series={[
-        { dataKey: "plannedAmount", label: "Planned", valueFormatter },
-        { dataKey: "spentAmount", label: "Spent", valueFormatter },
+        {
+          dataKey: "plannedAmount",
+          label: "Planned",
+          valueFormatter,
+          color: "#757575",
+        },
+        {
+          dataKey: "spentAmount",
+          label: "Spent",
+          valueFormatter,
+          color: "#48ff00",
+        },
       ]}
       {...chartSetting}
     />
