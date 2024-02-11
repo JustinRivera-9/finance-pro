@@ -7,7 +7,7 @@ import { AuthContext } from "../../../utils/context";
 import SetUpMessage from "../../../components/budget/spent/SetUpMessage";
 import { getExpenses } from "../../../services/apiExpenses";
 import LoadingSpinner from "../../../ui/LoadingSpinner";
-import SummaryChart from "../../../components/budget/spent/SummaryChart";
+import SummaryPieChart from "../../../components/budget/spent/SummaryPieChart";
 import MonthFilterButton from "../../../components/budget/spent/MonthFilterButton";
 
 function Spent() {
@@ -35,7 +35,7 @@ function Spent() {
       {expenses.length ? (
         <>
           <MonthFilterButton />
-          <SummaryChart expenses={expenses} />
+          <SummaryPieChart expenses={expenses} />
           <CategoryList categories={expenses} />
         </>
       ) : (

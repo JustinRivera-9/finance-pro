@@ -4,7 +4,7 @@ import {
   prepareSpentChartData,
 } from "../../../utils/helperFunctions";
 
-function SummaryChart({ expenses }) {
+function SummaryPieChart({ expenses }) {
   const chartData = prepareSpentChartData(expenses);
 
   return (
@@ -39,4 +39,4 @@ function SummaryChart({ expenses }) {
   );
 }
 
-export default SummaryChart;
+export default SummaryPieChart;
