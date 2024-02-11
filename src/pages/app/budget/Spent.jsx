@@ -9,6 +9,7 @@ import { getExpenses } from "../../../services/apiExpenses";
 import LoadingSpinner from "../../../ui/LoadingSpinner";
 import SummaryPieChart from "../../../components/budget/spent/SummaryPieChart";
 import MonthFilterButton from "../../../components/budget/spent/MonthFilterButton";
+import SummaryBarChart from "../../../components/budget/spent/SummaryBarChart";
 
 function Spent() {
   const userId = useContext(AuthContext);
@@ -36,6 +37,7 @@ function Spent() {
         <>
           <MonthFilterButton />
           <SummaryPieChart expenses={expenses} />
+          <SummaryBarChart expenses={expenses} />
           <CategoryList categories={expenses} />
         </>
       ) : (
