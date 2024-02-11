@@ -84,8 +84,8 @@ export const prepareSpentPieChartData = (expenses) => {
 export const prepareSpentBarChartData = (expenses) => {
   const updatedData = expenses.map((el) => {
     const updatedObj = {
-      plannedAmount: el.plannedAmount,
-      spentAmount: el.spentAmount,
+      plannedAmount: +el.plannedAmount.toFixed(2),
+      spentAmount: +el.spentAmount.toFixed(2),
       category: el.categoryName,
     };
     return updatedObj;
