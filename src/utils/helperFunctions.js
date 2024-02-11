@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
+
 export const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
 export const formatCurrency = (value) => {
@@ -61,4 +63,20 @@ export const formatExpenseDate = (date) => {
   const formattedDate = [month, day].join(" ");
 
   return formattedDate;
+};
+
+export const prepareSpentChartData = (expenses) => {
+  const updatedData = expenses.map((category) => {
+    const randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+
+    // Changes color on each render
+    const categoryObj = {
+      id: uuidv4(),
+      value: category.spentAmount.toFixed(2),
+      label: category.categoryName,
+      color: category.color || randomColor,
+    };
+    return categoryObj;
+  });
+  return updatedData;
 };
