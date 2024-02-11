@@ -86,7 +86,7 @@ export const prepareSpentBarChartData = (expenses) => {
     const updatedObj = {
       plannedAmount: +el.plannedAmount.toFixed(2),
       spentAmount: +el.spentAmount.toFixed(2),
-      category: el.categoryName,
+      category: el.categoryName.split(" ")[0],
     };
     return updatedObj;
   });
