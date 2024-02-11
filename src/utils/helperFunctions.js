@@ -65,7 +65,7 @@ export const formatExpenseDate = (date) => {
   return formattedDate;
 };
 
-export const prepareSpentChartData = (expenses) => {
+export const prepareSpentPieChartData = (expenses) => {
   const updatedData = expenses.map((category) => {
     const randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
 
