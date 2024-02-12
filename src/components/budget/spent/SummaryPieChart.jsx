@@ -28,7 +28,7 @@ function SummaryPieChart({ expenses }) {
           textWrap: "wrap",
         },
       }}
-      width={475}
+      width={450}
       height={250}
     />
   );

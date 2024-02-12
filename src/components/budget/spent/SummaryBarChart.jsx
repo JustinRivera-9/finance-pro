@@ -7,13 +7,13 @@ const chartSetting = {
       label: "($)",
     },
   ],
-  width: 500,
+  width: 450,
   height: 300,
-  sx: {
-    [`.${axisClasses.left} .${axisClasses.label}`]: {
-      transform: "translate(-10px, 0)",
-    },
-  },
+  // sx: {
+  //   [`.${axisClasses.left} .${axisClasses.label}`]: {
+  //     transform: "translate(0px, 0)",
+  //   },
+  // },
 };
 
 const valueFormatter = (value) => `$${value}`;
