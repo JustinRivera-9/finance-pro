@@ -2,7 +2,7 @@ import { expenseArrayMutation, reduceArr } from "../utils/helperFunctions";
 import { getPlannedCategories } from "./apiPlanned";
 import supabase from "./supabase";
 
-export const getExpenses = async (userId) => {
+export const getExpenses = async (userId, monthFilter) => {
   // Gets categories from planned table and sets JSON shape
   const tempCategories = await getPlannedCategories(userId);
   const { plannedCategories } = tempCategories[0];
@@ -30,7 +30,7 @@ export const getExpenses = async (userId) => {
 
   const expensesArr = data[0].expenses;
 
-  const expenses = expenseArrayMutation(categories, expensesArr);
+  const expenses = expenseArrayMutation(categories, expensesArr, monthFilter);
   return { expenses };
 };
 
