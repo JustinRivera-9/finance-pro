@@ -1,7 +1,5 @@
 # FINANCE PRO
 
-## Description
-
 Finance Pro enables users to seamlessly track both their budgets and investments in a single platform. Oftentimes, individuals focus solely on budgeting and overlook the crucial aspect of investing. With this application, users can efficiently manage their finances by monitoring their budgets alongside their investment portfolios, ensuring a comprehensive approach to personal financial management.
 
 
