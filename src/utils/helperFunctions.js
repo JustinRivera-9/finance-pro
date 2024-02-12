@@ -31,14 +31,18 @@ export const reduceArr = (arr) => {
   return arr.map((el) => Number(el.amount)).reduce((acc, cur) => acc + cur, 0);
 };
 
-export const expenseArrayMutation = (categoryArr, expensesArr) => {
+export const expenseArrayMutation = (categoryArr, expensesArr, monthFilter) => {
   const updatedArray = categoryArr.map((categoryEl) => {
     const expenseEl = expensesArr.find(
       (expense) => categoryEl.categoryName === expense.categoryName
     );
 
     if (expenseEl) {
-      const spentAmount = reduceArr(expenseEl?.expenses2024);
+      const spentAmount = reduceArr(
+        expenseEl?.expenses2024.filter(
+          (el) => el.date.split(" ")[0] === monthFilter
+        )
+      );
 
       return {
         ...categoryEl,
@@ -130,4 +134,17 @@ export const prepareSpentBarChartData = (expenses) => {
       return updatedObj;
     });
   return updatedData;
+};
+
+export const monthFilterExpenseData = (expenses, month) => {
+  const filteredExpenses = expenses.map((el) => {
+    return {
+      ...el,
+      expenses2024: el.expenses2024.filter(
+        (expense) => expense.date.split(" ")[0] === month
+      ),
+    };
+  });
+
+  return filteredExpenses;
 };
