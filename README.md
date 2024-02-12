@@ -15,8 +15,10 @@ Finance Pro enables users to seamlessly track both their budgets and investments
 ## UI Libraries
 
 - **MUI (Material-UI)**: A popular React UI framework that provides a set of customizable and accessible components following Material Design guidelines.
+- **MUI-X**: MUI X is a collection of advanced React UI components for complex use cases. Utilized charts and date pickers for this project.
 - **TailwindCSS**: A utility-first CSS framework for quickly building custom designs and layouts.
 - **React Hot Toast**: A toast notification library for React applications, used to display success, error, or informational messages to the user.
+- **React-Icons**: Icon library that utilizes ES6 imports allowing you to include only the icons that your project is using
 
 ## Setup Instructions
 **1. Clone the Repository**: Use `git clone` to clone the repository to your local machine.
