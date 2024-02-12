@@ -119,7 +119,6 @@ export const prepareSpentPieChartData = (expenses) => {
 };
 
 export const prepareSpentBarChartData = (expenses) => {
-  console.log(expenses);
   const updatedData = expenses
     .filter((el) => !el.isFixed)
     .map((el) => {
