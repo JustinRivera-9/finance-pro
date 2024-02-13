@@ -1,5 +1,4 @@
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
-import { useState } from "react";
+import { MenuItem, Select } from "@mui/material";
 
 function MonthFilterButton({ monthFilter, setMonthFilter }) {
   return (
