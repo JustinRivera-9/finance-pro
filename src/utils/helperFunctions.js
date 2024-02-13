@@ -148,3 +148,18 @@ export const monthFilterExpenseData = (expenses, month) => {
 
   return filteredExpenses;
 };
+
+export const monthArr = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
