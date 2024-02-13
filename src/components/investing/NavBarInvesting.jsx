@@ -1,33 +1,39 @@
-import ToggleButton from "@mui/material/ToggleButton";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import { Tab, Tabs } from "@mui/material";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 function NavBarInvesting() {
-  const [alignment, setAlignment] = useState("overview");
+  const [page, setPage] = useState();
+
+  const handleChange = (event, page) => {
+    setPage(page);
+  };
 
   return (
-    <nav className="md:flex md:justify-center md:space-x-8 flex justify-around mx-4 text-xl md:2xl pb-2">
-      <ToggleButtonGroup
-        color="primary"
-        value={alignment}
-        exclusive
-        onChange={(event, value) => setAlignment(value)}
-        aria-label="Platform"
-        sx={{ borderRadius: "50px" }}
+    <nav className="md:flex md:justify-center md:space-x-8 flex justify-around w-fit mx-auto">
+      <Tabs
+        value={page}
+        onChange={(e) => handleChange(e.target.value)}
+        aria-label="budget navigation"
       >
-        <ToggleButton value="overview">
-          <NavLink to="/app/investments" end>
-            Overview
-          </NavLink>
-        </ToggleButton>
-        <ToggleButton value="planned">
-          <NavLink to="/app/investments/portfolio">Portfolio</NavLink>
-        </ToggleButton>
-        <ToggleButton value="spent">
-          <NavLink to="/app/investments/news">News</NavLink>
-        </ToggleButton>
-      </ToggleButtonGroup>
+        <NavLink to="/app/investments" end>
+          <Tab
+            label="Dashboard"
+            value={0}
+            sx={{ fontSize: "1rem", opacity: "1" }}
+          />
+        </NavLink>
+        <NavLink to="/app/investments/portfolio">
+          <Tab
+            label="Portfolio"
+            value={1}
+            sx={{ fontSize: "1rem", opacity: "1" }}
+          />
+        </NavLink>
+        <NavLink to="/app/investments/news">
+          <Tab label="News" value={2} sx={{ fontSize: "1rem", opacity: "1" }} />
+        </NavLink>
+      </Tabs>
     </nav>
   );
 }
