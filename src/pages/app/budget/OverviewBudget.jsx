@@ -1,7 +1,15 @@
+import BudgetTotals from "../../../components/budget/overview/BudgetTotals";
+import CategorySummaryChart from "../../../components/budget/overview/CategorySummaryChart";
+import MonthSummaryChart from "../../../components/budget/overview/MonthSummaryChart";
+import UpcomingFixedExpenses from "../../../components/budget/overview/UpcomingFixedExpenses";
+
 function OverviewBudget() {
   return (
-    <div className="flex justify-center text-3xl mt-24">
-      <h1>INSERT OVERVIEW PAGE</h1>
+    <div className="flex flex-col justify-center mx-auto mt-4 w-11/12 space-y-4">
+      <BudgetTotals />
+      <MonthSummaryChart />
+      <UpcomingFixedExpenses />
+      <CategorySummaryChart />
     </div>
   );
 }
