@@ -10,12 +10,12 @@ function CategoryTitle({ info, isOpen, setIsOpen }) {
   return (
     <div className="flex justify-between w-full">
       <div className="flex justify-around items-baseline space-x-4">
-        <p className="text-2xl pl-4 capitalize">{categoryName}</p>
+        <p className="text-2xl pl-4 capitalize md:text-3xl">{categoryName}</p>
         <p
           style={{
             color: percentSpent > 100 ? "#D22B2B" : `#48ff00`,
           }}
-          className="text-[#48ff00c2] text-xl"
+          className="text-[#48ff00c2] text-xl md:text-2xl"
         >
           Spent: {formatCurrency(spentAmount)}
         </p>

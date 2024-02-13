@@ -13,7 +13,7 @@ function CategoryAccordian({ category }) {
   const { plannedAmount, spentAmount, expenses2024: expenses } = category;
 
   return (
-    <li className="flex flex-col space-y-2 py-4 items-center bg-[#404040] rounded-xl">
+    <li className="flex flex-col space-y-2 py-4 items-center bg-[#404040] rounded-xl md:w-2/5 md:h-fit">
       <CategoryTitle info={category} isOpen={isOpen} setIsOpen={setIsOpen} />
       <CategoryProgressBar planned={plannedAmount} spent={spentAmount} />
       {isOpen && (
