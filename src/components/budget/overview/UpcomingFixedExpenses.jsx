@@ -8,7 +8,7 @@ function UpcomingFixedExpenses() {
     { categoryName: "Student", amount: 158, date: "Feb 28" },
   ];
   return (
-    <div className="flex flex-col bg-[#505050] rounded-xl p-4">
+    <div className="flex flex-col bg-[#505050] rounded-xl p-4 md:w-1/3 md:h-fit md:mt-4">
       <p className="text-slate-200 mb-4 text-center text-3xl">
         Upcoming Fixed Expenses
       </p>

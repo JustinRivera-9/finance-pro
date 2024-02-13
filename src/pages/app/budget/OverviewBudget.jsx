@@ -5,7 +5,7 @@ import UpcomingFixedExpenses from "../../../components/budget/overview/UpcomingF
 
 function OverviewBudget() {
   return (
-    <div className="flex flex-col justify-center mx-auto mt-4 w-11/12 space-y-4">
+    <div className="flex flex-col justify-center mx-auto mt-4 w-11/12 space-y-4 md:flex-row md:flex-wrap md:space-y-0 ">
       <BudgetTotals />
       <MonthSummaryChart />
       <UpcomingFixedExpenses />
