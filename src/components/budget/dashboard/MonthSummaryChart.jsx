@@ -38,7 +38,7 @@ function MonthSummaryChart({ expenses }) {
         series={[
           {
             dataKey: "amount",
-            label: "Amount Spent",
+            label: "Amount",
             valueFormatter,
             color: "#48ff00",
           },
