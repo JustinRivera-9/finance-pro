@@ -3,6 +3,7 @@ import CategorySummaryChart from "../../../components/budget/dashboard/CategoryS
 import MonthSummaryChart from "../../../components/budget/dashboard/MonthSummaryChart";
 import UpcomingFixedExpenses from "../../../components/budget/dashboard/UpcomingFixedExpenses";
 import LoadingSpinner from "../../../ui/LoadingSpinner";
+import SetUpMessage from "../../../ui/SetUpMessage";
 
 import { getExpenses } from "../../../services/apiExpenses";
 import { useContext } from "react";
@@ -16,12 +17,23 @@ function DashboardBudget() {
     queryFn: () => getExpenses(userId),
   });
 
+  console.log(data, isLoading, error);
   if (isLoading) {
     return <LoadingSpinner isLoading={isLoading} />;
   }
 
   if (error) {
     return <h2>There was an error: {error.message}</h2>;
+  }
+
+  const containsExpense = data.expenses.some((el) => el.expenses2024.length);
+  if (!containsExpense) {
+    return (
+      <SetUpMessage
+        title="Set up your planned budget!"
+        message="Begin with adding expenses to start tracking your overall spending activity"
+      />
+    );
   }
 
   const expenses = data.expenses;
