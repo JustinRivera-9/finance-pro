@@ -215,3 +215,32 @@ export const prepareExpensesByMonth = (expenses) => {
 
   return monthExpenses;
 };
+
+export const prepareExpensesByCategory = (expenses) => {
+  // Returns array of objects for all expenses
+  const allExpenses = expenses.flatMap((el) => el.expenses2024);
+
+  // Returns an array of objects containing only the category and amount
+  const expensesByCategory = allExpenses.map((el) => {
+    return { categoryName: el.categoryName, amount: +el.amount };
+  });
+
+  // Returns object containing all expenses grouped by category
+  const finalArr = Object.groupBy(
+    expensesByCategory,
+    (expense) => expense.categoryName
+  );
+
+  // Converts object to array of array and reduces the array to a single value
+  const arrKeys = Object.entries(finalArr);
+  arrKeys.forEach((el) => {
+    return (el[1] = reduceArr(el[1]));
+  });
+
+  const categoryExpenses = arrKeys.map((el) => {
+    const [categoryName, amount] = el;
+    return { categoryName, amount: +amount.toFixed(2) };
+  });
+
+  return categoryExpenses;
+};
