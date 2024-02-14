@@ -20,18 +20,22 @@ function NavBarInvesting() {
           <Tab
             label="Dashboard"
             value={0}
-            sx={{ fontSize: "1rem", opacity: "1" }}
+            sx={{ fontSize: "1rem", opacity: "1", borderRadius: "1.5rem" }}
           />
         </NavLink>
         <NavLink to="/app/investments/portfolio">
           <Tab
             label="Portfolio"
             value={1}
-            sx={{ fontSize: "1rem", opacity: "1" }}
+            sx={{ fontSize: "1rem", opacity: "1", borderRadius: "1.5rem" }}
           />
         </NavLink>
         <NavLink to="/app/investments/news">
-          <Tab label="News" value={2} sx={{ fontSize: "1rem", opacity: "1" }} />
+          <Tab
+            label="News"
+            value={2}
+            sx={{ fontSize: "1rem", opacity: "1", borderRadius: "1.5rem" }}
+          />
         </NavLink>
       </Tabs>
     </nav>
