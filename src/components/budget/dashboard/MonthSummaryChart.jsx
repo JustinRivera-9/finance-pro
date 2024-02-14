@@ -20,7 +20,6 @@ const valueFormatter = (value) => `$${value}`;
 
 function MonthSummaryChart({ expenses }) {
   const chartData = prepareExpensesByMonth(expenses);
-  console.log(chartData);
 
   return (
     <div className="flex flex-col w-full mx-auto text-3xl bg-[#505050] rounded-xl p-4 md:w-fit md:py-4 md:pr-0 ">
