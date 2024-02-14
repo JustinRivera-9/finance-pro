@@ -163,3 +163,29 @@ export const monthArr = [
   "Nov",
   "Dec",
 ];
+
+export const prepareAverageSpend = (expenses) => {
+  // Returns array of objects for all expenses
+  const allExpenses = expenses.flatMap((el) => el.expenses2024);
+
+  // Returns an array of objects containing only the Month and amount
+  const expensesByMonth = allExpenses.map((el) => {
+    return { month: el.date.split(" ")[0], amount: +el.amount };
+  });
+
+  // Returns object containing all expenses grouped by month
+  const finalArr = Object.groupBy(expensesByMonth, (expense) =>
+    expense.month.toLowerCase()
+  );
+
+  // Converts object to array of array and reduces the array to a single value
+  const arrKeys = Object.entries(finalArr);
+  arrKeys.forEach((el) => {
+    return (el[1] = reduceArr(el[1]));
+  });
+
+  const totalSpend = arrKeys.reduce((acc, cur) => acc + cur[1], 0);
+  const averageSpend = totalSpend / arrKeys.length;
+
+  return averageSpend;
+};
