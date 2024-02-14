@@ -17,7 +17,6 @@ function DashboardBudget() {
     queryFn: () => getExpenses(userId),
   });
 
-  console.log(data, isLoading, error);
   if (isLoading) {
     return <LoadingSpinner isLoading={isLoading} />;
   }
