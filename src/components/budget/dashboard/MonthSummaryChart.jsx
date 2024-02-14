@@ -1,5 +1,5 @@
 import { BarChart, axisClasses } from "@mui/x-charts";
-import { monthArr } from "../../../utils/helperFunctions";
+import { prepareExpensesByMonth } from "../../../utils/helperFunctions";
 
 const chartSetting = {
   yAxis: [
@@ -11,30 +11,38 @@ const chartSetting = {
   height: 300,
   sx: {
     [`.${axisClasses.left} .${axisClasses.label}`]: {
-      transform: "translate(-5px, 0)",
+      transform: "translate(-10px, 0px)",
     },
   },
 };
 
 const valueFormatter = (value) => `$${value}`;
 
-function MonthSummaryChart() {
-  const tempChartData = [
-    4235, 4561, 2156, 5612, 2356, 4596, 3549, 3498, 5894, 4156, 4357, 3987,
-  ];
+function MonthSummaryChart({ expenses }) {
+  const chartData = prepareExpensesByMonth(expenses);
+  console.log(chartData);
 
   return (
     <div className="flex flex-col w-full mx-auto text-3xl bg-[#505050] rounded-xl p-4 md:w-fit md:py-4 md:pr-0 ">
       <p className="text-center">Expenses by Month</p>
       <BarChart
+        dataset={chartData}
         xAxis={[
           {
             scaleType: "band",
-            data: monthArr,
-            categoryGapRatio: 0.4,
+            dataKey: "month",
+            categoryGapRatio: 0.5,
+            barGapRatio: 0.2,
           },
         ]}
-        series={[{ data: tempChartData, valueFormatter, color: "#48ff00" }]}
+        series={[
+          {
+            dataKey: "amount",
+            label: "Amount Spent",
+            valueFormatter,
+            color: "#48ff00",
+          },
+        ]}
         {...chartSetting}
       />
     </div>
