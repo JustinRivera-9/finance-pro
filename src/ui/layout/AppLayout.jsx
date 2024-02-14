@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Dashboard from "../../pages/app/Dashboard.jsx";
-import OverviewBudget from "../../pages/app/budget/OverviewBudget.jsx";
+import DashboardBudget from "../../pages/app/budget/DashboardBudget.jsx";
 import Spent from "../../pages/app/budget/Spent.jsx";
 import Planned from "../../pages/app/budget/Planned.jsx";
 import CalendarLayout from "../layout/CalendarLayout.jsx";
@@ -41,7 +41,7 @@ function AppLayout() {
       <Routes>
         <Route index element={<Dashboard />} />
         <Route path="budget-tracking" element={<BudgetLayout />}>
-          <Route index element={<OverviewBudget />} />
+          <Route index element={<DashboardBudget />} />
           <Route path="planned" element={<Planned />} />
           <Route path="spent" element={<Spent />} />
           <Route path="calendar" element={<CalendarLayout />} />
