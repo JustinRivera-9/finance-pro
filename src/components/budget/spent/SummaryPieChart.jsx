@@ -2,6 +2,10 @@ import { PieChart, pieArcLabelClasses } from "@mui/x-charts";
 import { prepareSpentPieChartData } from "../../../utils/helperFunctions";
 
 function SummaryPieChart({ expenses }) {
+  const containsNonFixedExpense = expenses.some((el) => !el.isFixed);
+
+  if (!containsNonFixedExpense) return null;
+
   const chartData = prepareSpentPieChartData(expenses);
 
   return (

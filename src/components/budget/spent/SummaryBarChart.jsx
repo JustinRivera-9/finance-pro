@@ -19,6 +19,9 @@ const chartSetting = {
 const valueFormatter = (value) => `$${value}`;
 
 export default function SummaryBarChart({ expenses }) {
+  const containsNonFixedExpense = expenses.some((el) => !el.isFixed);
+  if (!containsNonFixedExpense) return null;
+
   const chartData = prepareSpentBarChartData(expenses);
 
   return (
