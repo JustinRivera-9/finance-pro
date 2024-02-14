@@ -1,4 +1,5 @@
 import { BarChart, axisClasses } from "@mui/x-charts";
+import { prepareExpensesByCategory } from "../../../utils/helperFunctions";
 
 const chartSetting = {
   yAxis: [
@@ -17,21 +18,29 @@ const chartSetting = {
 
 const valueFormatter = (value) => `$${value}`;
 
-function CategorySummaryChart() {
-  const tempChartData = [4235, 4561, 2156, 5612, 2356];
+function CategorySummaryChart({ expenses }) {
+  const chartData = prepareExpensesByCategory(expenses);
 
   return (
     <div className="flex flex-col w-full mx-auto text-3xl bg-[#505050] rounded-xl p-4 md:w-fit">
       <p className="text-center">Expenses by Category</p>
       <BarChart
+        dataset={chartData}
         xAxis={[
           {
             scaleType: "band",
-            data: ["Date Night", "Beer", "Zoe", "Groceries", "Zyns"],
+            dataKey: "categoryName",
             categoryGapRatio: 0.4,
           },
         ]}
-        series={[{ data: tempChartData, valueFormatter, color: "#48ff00" }]}
+        series={[
+          {
+            dataKey: "amount",
+            label: "Amount",
+            valueFormatter,
+            color: "#48ff00",
+          },
+        ]}
         {...chartSetting}
       />
     </div>
