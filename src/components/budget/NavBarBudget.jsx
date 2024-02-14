@@ -20,21 +20,21 @@ function NavBarBudget() {
           <Tab
             label="Dashboard"
             value={0}
-            sx={{ fontSize: "1rem", opacity: "1" }}
+            sx={{ fontSize: "1rem", opacity: "1", borderRadius: "1.5rem" }}
           />
         </NavLink>
         <NavLink to="/app/budget-tracking/planned">
           <Tab
             label="Planned"
             value={1}
-            sx={{ fontSize: "1rem", opacity: "1" }}
+            sx={{ fontSize: "1rem", opacity: "1", borderRadius: "1.5rem" }}
           />
         </NavLink>
         <NavLink to="/app/budget-tracking/spent">
           <Tab
             label="Spent"
             value={2}
-            sx={{ fontSize: "1rem", opacity: "1" }}
+            sx={{ fontSize: "1rem", opacity: "1", borderRadius: "1.5rem" }}
           />
         </NavLink>
       </Tabs>
