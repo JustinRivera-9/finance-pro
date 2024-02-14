@@ -28,10 +28,10 @@ function DashboardBudget() {
 
   return (
     <div className="flex flex-col justify-center mx-auto mt-4 w-11/12 space-y-4 md:flex-row md:flex-wrap md:space-y-0 ">
-      <BudgetTotals expenses={expenses} />
+      <CategorySummaryChart expenses={expenses} />
       <MonthSummaryChart expenses={expenses} />
       <UpcomingFixedExpenses expenses={expenses} />
-      <CategorySummaryChart expenses={expenses} />
+      <BudgetTotals expenses={expenses} />
     </div>
   );
 }
