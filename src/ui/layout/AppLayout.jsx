@@ -4,7 +4,7 @@ import DashboardBudget from "../../pages/app/budget/DashboardBudget.jsx";
 import Spent from "../../pages/app/budget/Spent.jsx";
 import Planned from "../../pages/app/budget/Planned.jsx";
 import CalendarLayout from "../layout/CalendarLayout.jsx";
-import OverviewPortfolio from "../../pages/app/investing/OverviewPortfolio.jsx";
+import DashboardInvesting from "../../pages/app/investing/DashboardInvesting.jsx";
 import Portfolio from "../../pages/app/investing/Portfolio.jsx";
 import NewsPortfolio from "../../pages/app/investing/NewsPortfolio.jsx";
 import Account from "../../pages/app/Account.jsx";
@@ -47,7 +47,7 @@ function AppLayout() {
           <Route path="calendar" element={<CalendarLayout />} />
         </Route>
         <Route path="investments" element={<InvestingLayout />}>
-          <Route index element={<OverviewPortfolio />} />
+          <Route index element={<DashboardInvesting />} />
           <Route path="portfolio" element={<Portfolio />} />
           <Route path="news" element={<NewsPortfolio />} />
         </Route>
