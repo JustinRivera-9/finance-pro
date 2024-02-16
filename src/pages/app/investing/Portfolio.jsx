@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-import AccordianList from "../../../components/investing/portfolio/AccordianList";
+import AccordionList from "../../../components/investing/portfolio/AccordionList";
 
 const tempData = [
   {
@@ -117,7 +117,7 @@ const tempData = [
 function Portfolio() {
   return (
     <div className="flex justify-center text-3xl mt-6">
-      <AccordianList data={tempData} />
+      <AccordionList data={tempData} />
     </div>
   );
 }

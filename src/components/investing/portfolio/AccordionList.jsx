@@ -1,6 +1,6 @@
 import PortfolioAccordian from "./PortfolioAccordian";
 
-function AccordianList({ data }) {
+function AccordionList({ data }) {
   return (
     <ul className="flex flex-col space-y-4 px-6 md:flex-row md:flex-wrap md:justify-center md:space-x-4 w-full">
       {data.map((el) => (
@@ -10,4 +10,4 @@ function AccordianList({ data }) {
   );
 }
 
-export default AccordianList;
+export default AccordionList;
