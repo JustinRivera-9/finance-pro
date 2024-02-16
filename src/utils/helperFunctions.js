@@ -2,11 +2,22 @@ import { v4 as uuidv4 } from "uuid";
 
 export const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
-export const formatCurrency = (value) => {
-  return new Intl.NumberFormat("en", {
-    style: "currency",
-    currency: "USD",
-  }).format(value);
+export const formatCurrency = (value, rounded = false) => {
+  if (rounded) {
+    const number = +value;
+
+    return new Intl.NumberFormat("en", {
+      style: "currency",
+      currency: "USD",
+      maximumFractionDigits: 0,
+      minimumFractionDigits: 0,
+    }).format(number);
+  } else {
+    return new Intl.NumberFormat("en", {
+      style: "currency",
+      currency: "USD",
+    }).format(value);
+  }
 };
 
 export const shuffleArray = (arr) => {
