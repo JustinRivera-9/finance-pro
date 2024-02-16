@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from "uuid";
 import AccordianList from "../../../components/investing/portfolio/AccordianList";
 
 const tempData = [
@@ -8,6 +9,7 @@ const tempData = [
     valueChange: { dollarChange: 420.69, percentChange: 3.21 },
     stocks: [
       {
+        id: uuidv4(),
         logo: "LOGO",
         name: "Tesla",
         ticker: "TSLA",
@@ -21,6 +23,7 @@ const tempData = [
         },
       },
       {
+        id: uuidv4(),
         logo: "LOGO",
         name: "Apple",
         ticker: "APPL",
@@ -43,6 +46,7 @@ const tempData = [
     valueChange: { dollarChange: -648.65, percentChange: -6.91 },
     stocks: [
       {
+        id: uuidv4(),
         logo: "LOGO",
         name: "Tesla",
         ticker: "TSLA",
@@ -56,6 +60,7 @@ const tempData = [
         },
       },
       {
+        id: uuidv4(),
         logo: "LOGO",
         name: "Apple",
         ticker: "APPL",
@@ -78,6 +83,7 @@ const tempData = [
     valueChange: { dollarChange: 420.69, percentChange: 3.21 },
     stocks: [
       {
+        id: uuidv4(),
         logo: "LOGO",
         name: "Tesla",
         ticker: "TSLA",
@@ -91,6 +97,7 @@ const tempData = [
         },
       },
       {
+        id: uuidv4(),
         logo: "LOGO",
         name: "Apple",
         ticker: "APPL",
