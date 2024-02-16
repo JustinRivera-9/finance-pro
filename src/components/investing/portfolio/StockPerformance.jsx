@@ -1,7 +1,6 @@
 import { formatCurrency } from "../../../utils/helperFunctions";
 
 function StockPerformance({ investmentData }) {
-  console.log(investmentData);
   const { stockChange, dayChange, totalChange } = investmentData;
 
   return (
