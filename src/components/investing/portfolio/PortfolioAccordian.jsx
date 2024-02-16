@@ -16,12 +16,8 @@ function PortfolioAccordian({ data }) {
     brokerage,
     value,
     valueChange: { dollarChange, percentChange },
-    stocks,
   } = data;
 
-  console.log(dollarChange);
-
-  // console.log(data);
   return (
     <li className="flex flex-col space-y-2 py-4 items-center bg-[#404040] rounded-xl md:w-2/5 md:h-fit">
       <div className="flex justify-between w-full">
