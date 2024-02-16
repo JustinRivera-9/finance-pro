@@ -8,7 +8,6 @@ import { useState } from "react";
 
 function PortfolioAccordian({ portfolio }) {
   // Data is a portfolio
-  const [formOpen, setFormOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   const {
@@ -60,11 +59,7 @@ function PortfolioAccordian({ portfolio }) {
           </div>
         </div>
         <button onClick={() => setIsOpen((show) => !show)} className="pr-4">
-          {isOpen ? (
-            <RemoveCircleIcon color="secondary" />
-          ) : (
-            <AddCircleIcon color="primary" />
-          )}
+          {isOpen ? <RemoveCircleIcon /> : <AddCircleIcon color="secondary" />}
         </button>
       </div>
       {isOpen && (
@@ -74,7 +69,6 @@ function PortfolioAccordian({ portfolio }) {
           ))}
         </ul>
       )}
-      {formOpen && <h1>Form Open</h1>}
     </li>
   );
 }
