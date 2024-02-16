@@ -7,14 +7,18 @@ import ExpenseForm from "./ExpenseForm";
 
 import { useState } from "react";
 
-function CategoryAccordian({ category }) {
+function AccordianCard({ data }) {
+  // data should be obj --> This component is the return from the parent component looping through an array
+
   const [formOpen, setFormOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const { plannedAmount, spentAmount, expenses2024: expenses } = category;
+
+  // Update destructured variable names
+  const { plannedAmount, spentAmount, expenses2024: expenses } = data;
 
   return (
     <li className="flex flex-col space-y-2 py-4 items-center bg-[#404040] rounded-xl md:w-2/5 md:h-fit">
-      <CategoryTitle info={category} isOpen={isOpen} setIsOpen={setIsOpen} />
+      <CategoryTitle info={data} isOpen={isOpen} setIsOpen={setIsOpen} />
       <CategoryProgressBar planned={plannedAmount} spent={spentAmount} />
       {isOpen && (
         <ul className="flex flex-col space-y-2 w-full px-4">
@@ -42,7 +46,7 @@ function CategoryAccordian({ category }) {
       )}
       {formOpen && (
         <ExpenseForm
-          categoryName={category.categoryName}
+          categoryName={data.categoryName}
           formOpen={formOpen}
           setFormOpen={setFormOpen}
         />
@@ -51,4 +55,4 @@ function CategoryAccordian({ category }) {
   );
 }
 
-export default CategoryAccordian;
+export default AccordianCard;

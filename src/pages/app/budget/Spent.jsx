@@ -1,4 +1,4 @@
-import CategoryList from "../../../components/budget/spent/CategoryList";
+import AccordianList from "../../../components/budget/spent/AccordianList";
 import SetUpMessage from "../../../ui/SetUpMessage";
 import LoadingSpinner from "../../../ui/LoadingSpinner";
 import SummaryPieChart from "../../../components/budget/spent/SummaryPieChart";
@@ -51,7 +51,7 @@ function Spent() {
               <SummaryBarChart expenses={expenses} />
             </div>
           )}
-          <CategoryList categories={expenses} />
+          <AccordianList data={expenses} />
         </>
       ) : (
         <SetUpMessage
