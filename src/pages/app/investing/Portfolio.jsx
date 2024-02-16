@@ -116,7 +116,7 @@ const tempData = [
 
 function Portfolio() {
   return (
-    <div className="flex justify-center text-3xl mt-24">
+    <div className="flex justify-center text-3xl mt-6">
       <AccordianList data={tempData} />
     </div>
   );
