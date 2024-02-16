@@ -4,6 +4,9 @@ import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import { useState } from "react";
 
 import { formatCurrency } from "../../../utils/helperFunctions";
+import StockCard from "./StockCard";
+import StockPerformance from "./StockPerformance";
+import { Button } from "@mui/material";
 
 function StockAccordion({ stock }) {
   const [formOpen, setFormOpen] = useState(false);
@@ -13,25 +16,36 @@ function StockAccordion({ stock }) {
 
   // console.log(stock);
   return (
-    <li className="flex items-center justify-between text-center bg-[#292929] px-4 py-2 rounded-xl">
-      <div className="flex items-center space-x-6">
-        <div className="text-2xl">{logo}</div>
-        <div className="flex flex-col text-left">
-          <p className="text-2xl text-slate-200">
-            {name} <span className="text-xl text-slate-400">({ticker})</span>
-          </p>
-          <p className="text-2xl text-[#FFF500]">
-            {formatCurrency(investment.totalPosition, true)}
-          </p>
-          <p className="text-xl text-slate-200">
-            {investment.numShares} | {formatCurrency(investment.costBasis)}
-            <span className="text-xl">/share</span>
-          </p>
-        </div>
+    <li className="flex flex-col text-center bg-[#292929] px-4 py-2 rounded-xl">
+      <div className="flex items-center justify-between">
+        <StockCard data={stock} />
+        <button onClick={() => setIsOpen((show) => !show)}>
+          {isOpen ? (
+            <RemoveCircleIcon fontSize="large" />
+          ) : (
+            <AddCircleIcon color="secondary" fontSize="large" />
+          )}
+        </button>
       </div>
-      <button onClick={() => setIsOpen((show) => !show)}>
-        {isOpen ? <RemoveCircleIcon /> : <AddCircleIcon color="secondary" />}
-      </button>
+      {isOpen && (
+        <>
+          <StockPerformance investmentData={investment} />
+          <Button
+            size="large"
+            color="secondary"
+            variant="contained"
+            sx={{
+              fontSize: "1rem",
+              width: "fit-content",
+              margin: "0.5rem auto",
+              padding: ".5rem 1.25rem",
+              borderRadius: "3rem",
+            }}
+          >
+            Update
+          </Button>
+        </>
+      )}
     </li>
   );
 }
