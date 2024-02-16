@@ -14,7 +14,7 @@ function AccordianList({ data }) {
     <ul className="flex flex-col space-y-4 px-6 md:flex-row md:flex-wrap md:justify-center md:space-x-4 w-full">
       {/* Each element is a different portfolio */}
       {data.map((el) => (
-        <PortfolioAccordian key={el.portfolioName} data={el} />
+        <PortfolioAccordian key={el.portfolioName} portfolio={el} />
       ))}
     </ul>
   );
