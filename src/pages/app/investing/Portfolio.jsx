@@ -1,10 +1,9 @@
 import { useContext } from "react";
-import AccordionList from "../../../components/investing/portfolio/AccordionList";
+import PortfolioAccordian from "../../../components/investing/portfolio/PortfolioAccordian";
 import { AuthContext } from "../../../utils/context";
 import { useQuery } from "@tanstack/react-query";
 import { getPortfolio } from "../../../services/apiPortfolio";
 import LoadingSpinner from "../../../ui/LoadingSpinner";
-import PortfolioAccordian from "../../../components/investing/portfolio/PortfolioAccordian";
 
 // const tempData = [
 //   {
