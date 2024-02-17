@@ -14,6 +14,7 @@ const tempData = [
         name: "Tesla",
         ticker: "TSLA",
         investment: {
+          sharePrice: 189.59,
           totalPosition: 12825,
           numShares: 52,
           costBasis: 158.67,
@@ -28,6 +29,7 @@ const tempData = [
         name: "Apple",
         ticker: "APPL",
         investment: {
+          sharePrice: 243.75,
           totalPosition: 8546,
           numShares: 85,
           costBasis: 84.32,
@@ -51,6 +53,7 @@ const tempData = [
         name: "Tesla",
         ticker: "TSLA",
         investment: {
+          sharePrice: 243.75,
           totalPosition: 12825,
           numShares: 52,
           costBasis: 158.67,
@@ -65,6 +68,7 @@ const tempData = [
         name: "Apple",
         ticker: "APPL",
         investment: {
+          sharePrice: 243.75,
           totalPosition: 8546,
           numShares: 85,
           costBasis: 84.32,
@@ -88,6 +92,7 @@ const tempData = [
         name: "Tesla",
         ticker: "TSLA",
         investment: {
+          sharePrice: 189.51,
           totalPosition: 12825,
           numShares: 52,
           costBasis: 158.67,
@@ -102,6 +107,7 @@ const tempData = [
         name: "Apple",
         ticker: "APPL",
         investment: {
+          sharePrice: 243.75,
           totalPosition: 8546,
           numShares: 85,
           costBasis: 84.32,
