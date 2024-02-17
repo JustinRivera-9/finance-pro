@@ -11,6 +11,8 @@ function PortfolioCard({ data, isOpen, setIsOpen }) {
     valueChange: { dollarChange, percentChange },
   } = data;
 
+  const isPositive = Number(dollarChange) > 0;
+
   return (
     <div className="flex justify-between w-full">
       <div className="flex flex-col justify-around items-baseline space-x-4 space-y-2 w-full pr-8">
@@ -22,31 +24,20 @@ function PortfolioCard({ data, isOpen, setIsOpen }) {
             {brokerage}
           </p>
         </div>
-        <div className="flex justify-between w-full">
-          <p
-            className={`text-[${
-              Number(dollarChange) > 0 ? "#48ff00c2" : "#ff5656c2"
-            }] text-2xl md:text-2xl`}
-          >
-            {`${Number(dollarChange) > 0 ? "+" : ""}${formatCurrency(
-              value,
-              true
-            )}`}
+        <div
+          className={`flex justify-between w-full text-${
+            isPositive ? "[#48ff00c2]" : "red-400"
+          }`}
+        >
+          <p className="text-[#FFF500] text-2xl">
+            {formatCurrency(value, true)}
           </p>
           <div className="flex space-x-2 items-baseline">
-            <p
-              className={`text-[${
-                Number(dollarChange) > 0 ? "#48ff00c2" : "#ff5656c2"
-              }] text-2xl md:text-2xl`}
-            >
-              {formatCurrency(dollarChange)}
+            <p className="text-2xl">
+              {`${isPositive ? "+" : ""}${formatCurrency(dollarChange)}`}
             </p>
-            <p
-              className={`text-[${
-                Number(dollarChange) > 0 ? "#48ff00c2" : "#ff5656c2"
-              }] text-xl md:text-2xl`}
-            >
-              {`(${Number(dollarChange) > 0 ? "+" : ""}${percentChange}%)`}
+            <p className="text-xl">
+              {`(${isPositive ? "+" : ""}${percentChange}%)`}
             </p>
           </div>
         </div>
