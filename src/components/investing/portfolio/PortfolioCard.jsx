@@ -25,17 +25,18 @@ function PortfolioCard({ data, isOpen, setIsOpen }) {
             {brokerage}
           </p>
         </div>
-        <div className={`flex justify-between w-full text-${textColor}`}>
+        <div
+          className={`flex justify-between items-baseline w-full text-${textColor}`}
+        >
           <p className="text-[#eaeaea] text-2xl">
             {formatCurrency(value, true)}
           </p>
-          <div className="flex space-x-2 items-baseline">
-            <p className="text-2xl">
-              {`${isPositive ? "+" : ""}${formatCurrency(dollarChange)}`}
-            </p>
+          <div className="flex space-x-1 items-baseline">
+            <p className="text-lg">All-Time: </p>
             <p className="text-xl">
-              {`(${isPositive ? "+" : ""}${percentChange}%)`}
+              {`${isPositive ? "+" : ""}${formatCurrency(dollarChange, true)}`}
             </p>
+            <p className="text-lg">{`(${percentChange}%)`}</p>
           </div>
         </div>
       </div>

@@ -13,13 +13,12 @@ function StockCard({ data }) {
           {name} <span className="text-xl text-slate-300">({ticker})</span>
         </p>
         <div className="flex space-x-2 items-baseline">
-          <p className="text-2xl text-[#FFF500]">
+          <p className="text-2xl text-slate-200">
             {formatCurrency(investment.totalPosition, true)}
           </p>
           <p className={`text-${textColor} text-xl`}>
             {`${positiveDay ? "+" : ""}${formatCurrency(
-              investment.dayChange.dollarChange,
-              true
+              investment.dayChange.dollarChange
             )}`}
           </p>
         </div>
