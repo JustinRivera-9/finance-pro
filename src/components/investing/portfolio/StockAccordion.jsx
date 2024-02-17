@@ -20,9 +20,9 @@ function StockAccordion({ stock }) {
         <StockCard data={stock} />
         <button onClick={() => setIsOpen((show) => !show)}>
           {isOpen ? (
-            <RemoveCircleIcon fontSize="large" />
+            <RemoveCircleIcon fontSize="medium" />
           ) : (
-            <AddCircleIcon color="secondary" fontSize="large" />
+            <AddCircleIcon color="secondary" fontSize="medium" />
           )}
         </button>
       </div>
