@@ -14,7 +14,6 @@ function StockAccordion({ stock }) {
 
   const { id, investment, logo, name, ticker } = stock;
 
-  // console.log(stock);
   return (
     <li className="flex flex-col text-center bg-[#292929] px-4 py-2 rounded-xl">
       <div className="flex items-center justify-between">
@@ -30,20 +29,26 @@ function StockAccordion({ stock }) {
       {isOpen && (
         <>
           <StockPerformance investmentData={investment} />
-          <Button
-            size="large"
-            color="secondary"
-            variant="contained"
-            sx={{
-              fontSize: "1rem",
-              width: "fit-content",
-              margin: "0.5rem auto",
-              padding: ".5rem 1.25rem",
-              borderRadius: "3rem",
-            }}
-          >
-            Update
-          </Button>
+          <div className="flex justify-between items-center py-2 px-1">
+            <p className="text-2xl text-slate-200">
+              {formatCurrency(investment.costBasis)}
+              <span className="text-xl">/share</span>
+            </p>
+            <Button
+              size="large"
+              color="secondary"
+              variant="contained"
+              sx={{
+                fontSize: "1rem",
+                width: "fit-content",
+                // margin: "0.5rem auto",
+                padding: ".5rem 1.25rem",
+                borderRadius: "3rem",
+              }}
+            >
+              Update
+            </Button>
+          </div>
         </>
       )}
     </li>
