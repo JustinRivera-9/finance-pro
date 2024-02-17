@@ -1,4 +1,10 @@
+import { useContext } from "react";
 import AccordionList from "../../../components/investing/portfolio/AccordionList";
+import { AuthContext } from "../../../utils/context";
+import { useQuery } from "@tanstack/react-query";
+import { getPortfolio } from "../../../services/apiPortfolio";
+import LoadingSpinner from "../../../ui/LoadingSpinner";
+import PortfolioAccordian from "../../../components/investing/portfolio/PortfolioAccordian";
 
 // const tempData = [
 //   {
@@ -120,9 +126,28 @@ import AccordionList from "../../../components/investing/portfolio/AccordionList
 // ];
 
 function Portfolio() {
+  const userId = useContext(AuthContext);
+
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["portfolio", userId],
+    queryFn: () => getPortfolio(userId),
+  });
+
+  if (isLoading) {
+    return <LoadingSpinner isLoading={isLoading} />;
+  }
+
+  if (error) {
+    return <h2>There was an error: {error.message}</h2>;
+  }
+
   return (
     <div className="flex justify-center text-3xl mt-6">
-      <AccordionList />
+      <ul className="flex flex-col space-y-4 px-6 md:flex-row md:flex-wrap md:justify-center md:space-x-4 w-full">
+        {data.map((el) => (
+          <PortfolioAccordian key={el.portfolioName} portfolio={el} />
+        ))}
+      </ul>
     </div>
   );
 }
