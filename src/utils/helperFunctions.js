@@ -2,9 +2,9 @@ import { v4 as uuidv4 } from "uuid";
 
 export const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
-export const formatCurrency = (value, rounded = false) => {
+export const formatCurrency = (value, rounded) => {
   if (rounded) {
-    const number = +value;
+    const number = Math.round(+value);
 
     return new Intl.NumberFormat("en", {
       style: "currency",
