@@ -1,78 +1,66 @@
 import { formatCurrency } from "../../../utils/helperFunctions";
 
 function StockPerformance({ investmentData }) {
-  const { stockChange, dayChange, totalChange } = investmentData;
+  const { stockChange, dayChange, totalChange, sharePrice } = investmentData;
+  const positiveDay = stockChange.dollarChange > 0;
+  const positiveTotal = totalChange.dollarChange > 0;
 
   return (
     <div className="flex justify-around text-center py-2 space-x-2">
-      <div className="bg-[#404040] rounded-xl p-2">
-        <p className="text-xl">Stock</p>
+      <div className="p-2">
+        <p className="text-xl">{formatCurrency(sharePrice)}</p>
         <p
           className={`text-[${
-            Number(stockChange.dollarChange) > 0 ? "#48ff00c2" : "#ff5656c2"
+            positiveDay ? "#48ff00c2" : "#ff5656c2"
           }] text-xl`}
         >
-          {`${Number(stockChange.dollarChange) > 0 ? "+" : ""}${formatCurrency(
+          {`${positiveDay ? "+" : ""}${formatCurrency(
             stockChange.dollarChange
           )}`}
         </p>
         <p
           className={`text-[${
-            Number(stockChange.percentChange) > 0 ? "#48ff00c2" : "#ff5656c2"
+            positiveDay ? "#48ff00c2" : "#ff5656c2"
           }] text-xl`}
         >
-          (
-          {`${Number(stockChange.dollarChange) > 0 ? "+" : ""}${
-            stockChange.percentChange
-          }%`}
-          )
+          ({`${positiveDay ? "+" : ""}${stockChange.percentChange}%`})
         </p>
       </div>
-      <div className="bg-[#404040] rounded-xl p-2">
+      <div className="bg-[#404040] rounded-xl p-2 w-2/5">
         <p className="text-xl">Day</p>
         <p
           className={`text-[${
-            Number(dayChange.dollarChange) > 0 ? "#48ff00c2" : "#ff5656c2"
+            positiveDay ? "#48ff00c2" : "#ff5656c2"
           }] text-xl`}
         >
-          {`${Number(dayChange.dollarChange) > 0 ? "+" : ""}${formatCurrency(
-            dayChange.dollarChange
-          )}`}
+          {`${positiveDay ? "+" : ""}${formatCurrency(dayChange.dollarChange)}`}
         </p>
         <p
           className={`text-[${
-            Number(dayChange.percentChange) > 0 ? "#48ff00c2" : "#ff5656c2"
+            positiveDay ? "#48ff00c2" : "#ff5656c2"
           }] text-xl`}
         >
-          (
-          {`${Number(dayChange.dollarChange) > 0 ? "+" : ""}${
-            dayChange.percentChange
-          }%`}
-          )
+          ({`${positiveDay ? "+" : ""}${dayChange.percentChange}%`})
         </p>
       </div>
-      <div className="bg-[#404040] rounded-xl p-2">
+      <div className="bg-[#404040] rounded-xl p-2 w-2/5">
         <p className="text-xl">Total</p>
         <p
           className={`text-[${
-            Number(totalChange.dollarChange) > 0 ? "#48ff00c2" : "#ff5656c2"
+            positiveTotal ? "#48ff00c2" : "#ff5656c2"
           }] text-xl`}
         >
-          {`${Number(totalChange.dollarChange) > 0 ? "+" : ""}${formatCurrency(
+          {`${positiveDay ? "+" : ""}${formatCurrency(
             totalChange.dollarChange,
             true
           )}`}
         </p>
         <p
           className={`text-[${
-            Number(totalChange.percentChange) > 0 ? "#48ff00c2" : "#ff5656c2"
+            positiveTotal ? "#48ff00c2" : "#ff5656c2"
           }] text-xl`}
         >
-          (
-          {`${Number(totalChange.dollarChange) > 0 ? "+" : ""}${
-            totalChange.percentChange
-          }%`}
-          )
+          ({`${positiveDay ? "+" : ""}${totalChange.percentChange}%`})
         </p>
       </div>
     </div>
