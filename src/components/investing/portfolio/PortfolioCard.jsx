@@ -14,8 +14,6 @@ function PortfolioCard({ data, isOpen, setIsOpen }) {
   const isPositive = Number(dollarChange) > 0;
   const textColor = isPositive ? "[#48ff00c2]" : "red-400";
 
-  console.log(value);
-
   return (
     <div className="flex justify-between w-full">
       <div className="flex flex-col justify-around items-baseline space-x-4 space-y-2 w-full pr-8">
