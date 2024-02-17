@@ -6,11 +6,11 @@ function StockPerformance({ investmentData }) {
   return (
     <div className="flex justify-around text-center py-2 space-x-2">
       <div className="bg-[#404040] rounded-xl p-2">
-        <p className="text-xl">Stock Change</p>
+        <p className="text-xl">Stock</p>
         <p
           className={`text-[${
             Number(stockChange.dollarChange) > 0 ? "#48ff00c2" : "#ff5656c2"
-          }] text-2xl`}
+          }] text-xl`}
         >
           {`${Number(stockChange.dollarChange) > 0 ? "+" : ""}${formatCurrency(
             stockChange.dollarChange
@@ -29,11 +29,11 @@ function StockPerformance({ investmentData }) {
         </p>
       </div>
       <div className="bg-[#404040] rounded-xl p-2">
-        <p className="text-xl">Day Change</p>
+        <p className="text-xl">Day</p>
         <p
           className={`text-[${
             Number(dayChange.dollarChange) > 0 ? "#48ff00c2" : "#ff5656c2"
-          }] text-2xl`}
+          }] text-xl`}
         >
           {`${Number(dayChange.dollarChange) > 0 ? "+" : ""}${formatCurrency(
             dayChange.dollarChange
@@ -52,11 +52,11 @@ function StockPerformance({ investmentData }) {
         </p>
       </div>
       <div className="bg-[#404040] rounded-xl p-2">
-        <p className="text-xl">Total Change</p>
+        <p className="text-xl">Total</p>
         <p
           className={`text-[${
             Number(totalChange.dollarChange) > 0 ? "#48ff00c2" : "#ff5656c2"
-          }] text-2xl`}
+          }] text-xl`}
         >
           {`${Number(totalChange.dollarChange) > 0 ? "+" : ""}${formatCurrency(
             totalChange.dollarChange,
