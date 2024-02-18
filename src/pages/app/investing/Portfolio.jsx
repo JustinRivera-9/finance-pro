@@ -1,9 +1,12 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import PortfolioAccordian from "../../../components/investing/portfolio/PortfolioAccordian";
 import { AuthContext } from "../../../utils/context";
 import { useQuery } from "@tanstack/react-query";
 import { getPortfolio } from "../../../services/apiPortfolio";
 import LoadingSpinner from "../../../ui/LoadingSpinner";
+import { Button } from "@mui/material";
+import SearchForm from "../../../components/investing/addStockForm/searchForm";
+import { getSearchResults } from "../../../services/apiStockInfo";
 
 // const tempData = [
 //   {
@@ -125,9 +128,15 @@ import LoadingSpinner from "../../../ui/LoadingSpinner";
 // ];
 
 function Portfolio() {
+  const [formOpen, setFormOpen] = useState(false);
   const userId = useContext(AuthContext);
 
-  const { data, isLoading, error } = useQuery({
+  // Get portfolio from database
+  const {
+    data: portfolios,
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ["portfolio", userId],
     queryFn: () => getPortfolio(userId),
   });
@@ -141,12 +150,25 @@ function Portfolio() {
   }
 
   return (
-    <div className="flex justify-center text-3xl mt-6">
+    <div className="flex flex-col justify-center text-3xl mt-6">
+      {formOpen && <SearchForm formOpen={formOpen} setFormOpen={setFormOpen} />}
       <ul className="flex flex-col space-y-4 px-6 md:flex-row md:flex-wrap md:justify-center md:space-x-4 w-full">
-        {data.map((el) => (
+        {portfolios.map((el) => (
           <PortfolioAccordian key={el.portfolioName} portfolio={el} />
         ))}
       </ul>
+      <Button
+        variant="contained"
+        sx={{
+          fontSize: "1.25rem",
+          width: "fit-content",
+          margin: "1.5rem auto",
+          borderRadius: "2rem",
+        }}
+        onClick={() => setFormOpen((show) => !show)}
+      >
+        Add Stock
+      </Button>
     </div>
   );
 }
