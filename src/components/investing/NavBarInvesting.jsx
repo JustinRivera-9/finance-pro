@@ -16,24 +16,24 @@ function NavBarInvesting() {
         onChange={(e) => handleChange(e.target.value)}
         aria-label="budget navigation"
       >
-        <NavLink to="/app/investments" end>
+        {/* <NavLink to="/app/investments" end>
           <Tab
             label="Dashboard"
             value={0}
             sx={{ fontSize: "1rem", opacity: "1", borderRadius: "1.5rem" }}
           />
-        </NavLink>
+        </NavLink> */}
         <NavLink to="/app/investments/portfolio">
           <Tab
             label="Portfolio"
-            value={1}
+            value={0}
             sx={{ fontSize: "1rem", opacity: "1", borderRadius: "1.5rem" }}
           />
         </NavLink>
         <NavLink to="/app/investments/news">
           <Tab
             label="News"
-            value={2}
+            value={1}
             sx={{ fontSize: "1rem", opacity: "1", borderRadius: "1.5rem" }}
           />
         </NavLink>
