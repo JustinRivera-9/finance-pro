@@ -20,13 +20,13 @@ function NavBarMobile() {
       value={page}
       onChange={(event, newValue) => {
         setPage(newValue);
-        if (newValue === 0) navigate("/app");
-        if (newValue === 1) navigate("/app/budget-tracking");
-        if (newValue === 2) navigate("/app/investments");
-        if (newValue === 3) navigate("/app/account");
+        // if (newValue === 0) navigate("/app");
+        if (newValue === 0) navigate("/app/budget-tracking");
+        if (newValue === 1) navigate("/app/investments");
+        if (newValue === 2) navigate("/app/account");
       }}
     >
-      <BottomNavigationAction label="Dashboard" icon={<HomeRoundedIcon />} />
+      {/* <BottomNavigationAction label="Dashboard" icon={<HomeRoundedIcon />} /> */}
       <BottomNavigationAction label="Budget" icon={<MonetizationOnIcon />} />
       <BottomNavigationAction
         label="Portfolio"
