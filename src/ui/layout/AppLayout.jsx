@@ -47,8 +47,8 @@ function AppLayout() {
           <Route path="calendar" element={<CalendarLayout />} />
         </Route>
         <Route path="investments" element={<InvestingLayout />}>
-          <Route index element={<DashboardInvesting />} />
-          <Route path="portfolio" element={<Portfolio />} />
+          <Route path="portfolio" index element={<Portfolio />} />
+          {/* <Route path="portfolio" element={<Portfolio />} /> */}
           <Route path="news" element={<NewsPortfolio />} />
         </Route>
         <Route path="account" element={<Account />} />

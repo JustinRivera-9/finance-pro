@@ -30,10 +30,13 @@ function StockAccordion({ stock }) {
         <>
           <StockPerformance investmentData={investment} />
           <div className="flex justify-between items-center py-2 px-1">
-            <p className="text-2xl text-slate-200">
-              {formatCurrency(investment.costBasis)}
-              <span className="text-xl">/share</span>
-            </p>
+            <div className="flex flex-col text-left">
+              <p className="text-2xl">{investment.numShares} shares</p>
+              <p className="text-2xl text-slate-200">
+                {formatCurrency(investment.costBasis)}
+                <span className="text-xl">/share</span>
+              </p>
+            </div>
             <Button
               size="large"
               color="secondary"

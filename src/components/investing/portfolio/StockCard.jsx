@@ -5,6 +5,9 @@ function StockCard({ data }) {
   const positiveDay = investment.dayChange.dollarChange > 0;
   const textColor = positiveDay ? "[#48ff00c2]" : "red-400";
 
+  // Calculations
+  const totalPosition = investment.numShares * investment.sharePrice;
+
   return (
     <div className="flex items-center space-x-6">
       <div className="text-2xl">{logo}</div>
@@ -14,7 +17,7 @@ function StockCard({ data }) {
         </p>
         <div className="flex space-x-2 items-baseline">
           <p className="text-2xl text-slate-200">
-            {formatCurrency(investment.totalPosition, true)}
+            {formatCurrency(totalPosition, true)}
           </p>
           <p className={`text-${textColor} text-xl`}>
             {`${positiveDay ? "+" : ""}${formatCurrency(

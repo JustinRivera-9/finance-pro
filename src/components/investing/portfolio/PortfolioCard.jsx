@@ -32,7 +32,7 @@ function PortfolioCard({ data, isOpen, setIsOpen }) {
             {formatCurrency(value, true)}
           </p>
           <div className="flex space-x-1 items-baseline">
-            <p className="text-lg">All-Time: </p>
+            {/* <p className="text-lg">All-Time: </p> */}
             <p className="text-xl">
               {`${isPositive ? "+" : ""}${formatCurrency(dollarChange, true)}`}
             </p>
