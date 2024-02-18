@@ -2,7 +2,7 @@ import { formatCurrency } from "../../../utils/helperFunctions";
 
 function UpcomingFixedExpenses({ expenses }) {
   const fixedExpenses = expenses.filter((el) => el.isFixed);
-  console.log(fixedExpenses);
+
   return (
     <div className="flex flex-col bg-[#505050] rounded-xl p-2 md:w-1/3 md:h-fit md:mt-4">
       <p className="text-slate-200 mb-4 text-center text-3xl">
