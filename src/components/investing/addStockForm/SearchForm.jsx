@@ -3,7 +3,7 @@ import InputBase from "@mui/material/InputBase";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
-import { Backdrop } from "@mui/material";
+import { Backdrop, Button } from "@mui/material";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
@@ -70,6 +70,9 @@ function SearchForm({ formOpen, setFormOpen }) {
               <SearchIcon />
             </IconButton>
           </Paper>
+        </div>
+        <div className="flex mx-auto">
+          <Button onClick={() => setFormOpen(false)}>Close</Button>
         </div>
       </form>
     </Backdrop>
