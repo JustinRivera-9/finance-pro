@@ -4,14 +4,17 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 import dayjs from "dayjs";
 
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../utils/context";
 import { v4 as uuidv4 } from "uuid";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { addExpense } from "../../../services/apiExpenses";
 import toast from "react-hot-toast";
-import { formatExpenseDate } from "../../../utils/helperFunctions";
+import {
+  formatExpenseDate,
+  formatExpenseFormDate,
+} from "../../../utils/helperFunctions";
 
 const defaultFormValues = {
   amount: "",
@@ -35,6 +38,7 @@ function ExpenseForm({
     register,
     handleSubmit,
     reset,
+    control,
     formState: { errors },
   } = useForm({
     defaultValues: expenseToEdit ? expenseToEdit : defaultFormValues,
@@ -72,11 +76,9 @@ function ExpenseForm({
 
   // MUTATE ON SUBMIT
   const onSubmit = (data) => {
-    ////////// console.log(data); // Returning current date. Issue at the register() func
-
     const newExpense = {
       ...data,
-      date: formatExpenseDate(dayjs(data.date).toString()),
+      date: formatExpenseFormDate(data.selectedDate),
       categoryName: categoryName || expenseToEdit.categoryName,
       id: data.id || uuidv4(),
     };
@@ -132,13 +134,22 @@ function ExpenseForm({
           />
 
           {/* DATE PICKER */}
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <MobileDatePicker
-              defaultValue={dayjs()}
-              sx={{ marginTop: "1rem" }}
-              {...register("date")}
-            />
-          </LocalizationProvider>
+          <Controller
+            name="selectedDate"
+            control={control}
+            defaultValue={dayjs()}
+            render={({ field }) => (
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <MobileDatePicker
+                  label="Select Date"
+                  inputFormat="MM/dd/yyyy"
+                  {...field}
+                  sx={{ marginTop: "1rem" }}
+                  renderInput={(params) => <TextField {...params} />}
+                />
+              </LocalizationProvider>
+            )}
+          />
 
           <Button
             // disabled={isAdding}

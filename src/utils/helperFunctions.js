@@ -120,6 +120,8 @@ export const prepareSpentPieChartData = (expenses) => {
     "#1d064e",
   ];
 
+  // console.log(expenses);
+
   const updatedData = expenses.map((category, i) => {
     const categoryObj = {
       id: uuidv4(),
@@ -253,4 +255,10 @@ export const prepareExpensesByCategory = (expenses) => {
   });
 
   return categoryExpenses;
+};
+
+export const formatExpenseFormDate = (date) => {
+  const formattedDate = [monthArr[date.$M], `${date.$D}`].join(" ");
+
+  return formattedDate;
 };

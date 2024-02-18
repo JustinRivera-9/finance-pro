@@ -36,6 +36,8 @@ export const getExpenses = async (userId, monthFilter) => {
 
 export const addExpense = async ({ expenses, newExpense, userId }) => {
   // Find index of category that matches new expense
+  ///////////////////////////////////////////////////////////////////
+  console.log(expenses);
   const categoryIdx = expenses.findIndex(
     (el) => el.categoryName === newExpense.categoryName
   );
