@@ -128,6 +128,7 @@ function Portfolio() {
           margin: "1.5rem auto",
           borderRadius: "2rem",
         }}
+        color="secondary"
         onClick={() => setFormOpen((show) => !show)}
       >
         Add Stock
