@@ -40,11 +40,9 @@ function StockAccordion({ stock }) {
             <Button
               size="large"
               color="secondary"
-              variant="contained"
               sx={{
-                fontSize: "1rem",
+                fontSize: "1.25rem",
                 width: "fit-content",
-                // margin: "0.5rem auto",
                 padding: ".5rem 1.25rem",
                 borderRadius: "3rem",
               }}
