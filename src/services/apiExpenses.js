@@ -14,6 +14,7 @@ export const getExpenses = async (userId, monthFilter) => {
         categoryName: el.category,
         plannedAmount: el.amount,
         spentAmount: null,
+        fixedDate: el.fixedDate,
         expenses2024: [],
       };
     });
@@ -36,8 +37,6 @@ export const getExpenses = async (userId, monthFilter) => {
 
 export const addExpense = async ({ expenses, newExpense, userId }) => {
   // Find index of category that matches new expense
-  ///////////////////////////////////////////////////////////////////
-  console.log(expenses);
   const categoryIdx = expenses.findIndex(
     (el) => el.categoryName === newExpense.categoryName
   );

@@ -8,12 +8,9 @@ import ExpenseForm from "./ExpenseForm";
 import { useState } from "react";
 
 function AccordianCard({ data }) {
-  // data should be obj --> This component is the return from the parent component looping through an array
-
   const [formOpen, setFormOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
-  // Update destructured variable names
   const { plannedAmount, spentAmount, expenses2024: expenses } = data;
 
   return (
@@ -26,7 +23,6 @@ function AccordianCard({ data }) {
             <ExpenseCard key={el.id} expense={el} />
           ))}
           <Button
-            // variant="outlined"
             variant="contained"
             style={{
               width: "fit-content",
