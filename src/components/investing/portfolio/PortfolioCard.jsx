@@ -13,6 +13,7 @@ function PortfolioCard({ data, isOpen, setIsOpen }) {
 
   const isPositive = Number(dollarChange) > 0;
   const textColor = isPositive ? "[#48ff00c2]" : "red-400";
+  console.log(isPositive, textColor);
 
   return (
     <div className="flex justify-between w-full">
@@ -32,7 +33,6 @@ function PortfolioCard({ data, isOpen, setIsOpen }) {
             {formatCurrency(value, true)}
           </p>
           <div className="flex space-x-1 items-baseline">
-            {/* <p className="text-lg">All-Time: </p> */}
             <p className="text-xl">
               {`${isPositive ? "+" : ""}${formatCurrency(dollarChange, true)}`}
             </p>
