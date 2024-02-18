@@ -13,7 +13,7 @@ function SummaryPieChart({ expenses }) {
       series={[
         {
           data: chartData,
-          highlightScope: { faded: "global", highlighted: "category" },
+          highlightScope: { faded: "global", highlighted: "item" },
           faded: { innerRadius: 20, additionalRadius: -20 },
           // arcLabel: (item) => `${formatCurrency(item.value)}`,
           arcLabel: (item) => `${item.label.split(" ")[0]}`,
@@ -21,7 +21,7 @@ function SummaryPieChart({ expenses }) {
           innerRadius: 20,
           paddingAngle: 3,
           cornerRadius: 3,
-          cx: 150,
+          cx: 120,
         },
       ]}
       sx={{
@@ -32,8 +32,15 @@ function SummaryPieChart({ expenses }) {
           textWrap: "wrap",
         },
       }}
-      width={450}
+      width={400}
       height={250}
+      slotProps={{
+        legend: {
+          direction: "column",
+          position: { vertical: "top", horizontal: "right" },
+          padding: 0,
+        },
+      }}
     />
   );
 }
