@@ -29,8 +29,9 @@ function SearchForm({ formOpen, setFormOpen }) {
   const onSubmit = async (formData) => {
     const { query } = formData;
     setQuery(query);
-    const results = await getSearchResults(query);
-    console.log(results);
+    ///////////////////////// Below code currently gets search results
+    // const results = await getSearchResults(query);
+    // console.log(results);
   };
   const onError = (error) => console.log(error.message);
 
@@ -54,6 +55,7 @@ function SearchForm({ formOpen, setFormOpen }) {
               paddingX: "1rem",
             }}
           >
+            {/* SEARCH BAR */}
             <InputBase
               placeholder="Search by ticker or name"
               inputProps={{ "aria-label": "Search by ticker or name" }}
@@ -61,6 +63,8 @@ function SearchForm({ formOpen, setFormOpen }) {
               {...register("query")}
             />
             <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+
+            {/* SEARCH ICON */}
             <IconButton
               color="primary"
               sx={{ p: "10px" }}
@@ -71,6 +75,10 @@ function SearchForm({ formOpen, setFormOpen }) {
             </IconButton>
           </Paper>
         </div>
+
+        {/* LIST OF RESULTS / A CARD WITH STOCK INFO TO SELECT */}
+
+        {/* CLOSE BUTTON */}
         <div className="flex mx-auto">
           <Button onClick={() => setFormOpen(false)}>Close</Button>
         </div>
