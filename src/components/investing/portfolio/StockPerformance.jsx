@@ -10,8 +10,6 @@ function StockPerformance({ investmentData }) {
   const textColorDay = positiveDay ? "[#48ff00c2]" : "red-400";
   const textColorTotal = positiveTotal ? "[#48ff00c2]" : "red-400";
 
-  console.log(positiveTotal);
-
   return (
     <div className="flex justify-around text-center py-2 space-x-2">
       <div className="p-2 bg-[#404040] rounded-xl">
