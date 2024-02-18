@@ -3,12 +3,13 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ExpenseForm from "./ExpenseForm";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteExpense } from "../../../services/apiExpenses";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../../utils/context";
+import CacheNotAvailableError from "../../../ui/CacheNotAvailableError";
 
 const options = ["Edit", "Delete"];
 
@@ -17,19 +18,35 @@ const ITEM_HEIGHT = 48;
 export default function ExpenseCardActions({ expense }) {
   const userId = useContext(AuthContext);
   const [formOpen, setFormOpen] = useState(false);
+  const [alertOpen, setAlertOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
+  const [expenses, setExpenses] = useState(null);
   const open = Boolean(anchorEl);
+  const queryClient = useQueryClient();
+
+  useEffect(() => {
+    const queryCache = queryClient.getQueryCache();
+    const cachedExpenses = queryCache
+      .getAll()
+      .find((query) => query.queryKey[0] === "expenses")?.state?.data?.expenses;
+
+    if (!cachedExpenses) setAlertOpen(true);
+    setExpenses(cachedExpenses);
+  }, [expenses, queryClient]);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const queryClient = useQueryClient();
   // GET EXPENSES FROM CACHE FOR MUTATION
-  const queryCache = queryClient.getQueryCache();
-  const expenses = queryCache
-    .getAll()
-    .find((query) => query.queryKey[0] === "expenses")?.state?.data?.expenses;
+  // const queryCache = queryClient.getQueryCache();
+
+  // let expenses = queryCache
+  //   .getAll()
+  //   .find((query) => query.queryKey[0] === "expenses")?.state?.data?.expenses;
+
+  // if (!expenses) setAlertOpen(true);
+  // console.log(expenses);
 
   const { mutate, isLoading: isDeleting } = useMutation({
     mutationFn: deleteExpense,
@@ -53,6 +70,12 @@ export default function ExpenseCardActions({ expense }) {
 
   return (
     <>
+      {alertOpen && (
+        <CacheNotAvailableError
+          alertOpen={alertOpen}
+          setAlertOpen={setAlertOpen}
+        />
+      )}
       <div>
         <IconButton
           aria-label="more"

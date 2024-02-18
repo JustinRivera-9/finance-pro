@@ -137,7 +137,6 @@ function ExpenseForm({
           <Controller
             name="selectedDate"
             control={control}
-            defaultValue={dayjs()}
             render={({ field }) => (
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <MobileDatePicker
