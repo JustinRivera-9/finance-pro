@@ -133,8 +133,10 @@ function Portfolio() {
       >
         Add Stock
       </Button>
-      <div className="flex flex-col text-center w-4/5 space-y-4 mx-auto my-20 bg-purple-700 p-4 rounded-3xl">
-        <p className="text-2xl font-bold">IMPORTANT: PLEASE READ</p>
+      <div className="flex flex-col text-center w-4/5 space-y-4 mx-auto my-20 bg-[#494949] p-4 rounded-3xl">
+        <p className="text-2xl font-bold text-yellow-400">
+          IMPORTANT: PLEASE READ
+        </p>
         <p className="text-xl">
           The investing fetaure is non-functional as of now. This is to show
           what the UI will look like when completed. All calculations and
