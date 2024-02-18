@@ -2,11 +2,6 @@ import { BarChart, axisClasses } from "@mui/x-charts";
 import { prepareExpensesByMonth } from "../../../utils/helperFunctions";
 
 const chartSetting = {
-  yAxis: [
-    {
-      label: "($)",
-    },
-  ],
   width: 390,
   height: 300,
   sx: {

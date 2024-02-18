@@ -38,11 +38,11 @@ function DashboardBudget() {
   const expenses = data.expenses;
 
   return (
-    <div className="flex flex-col justify-center mx-auto mt-4 w-11/12 space-y-4 md:flex-row md:flex-wrap md:space-y-0 ">
+    <div className="flex flex-col justify-center mx-auto mt-4 w-11/12 space-y-3 md:flex-row md:flex-wrap md:space-y-0 ">
       <CategorySummaryChart expenses={expenses} />
+      <BudgetTotals expenses={expenses} />
       <MonthSummaryChart expenses={expenses} />
       <UpcomingFixedExpenses expenses={expenses} />
-      <BudgetTotals expenses={expenses} />
     </div>
   );
 }

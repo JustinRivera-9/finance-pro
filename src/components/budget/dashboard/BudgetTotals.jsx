@@ -15,7 +15,7 @@ function BudgetTotals({ expenses }) {
   const averageSpend = prepareAverageSpend(expenses);
 
   return (
-    <div className="flex justify-around w-full mx-auto text-center p-2 rounded-xl md:w-fit md:space-x-4 md:h-fit">
+    <div className="flex justify-between w-full text-center p-2 rounded-xl md:w-fit md:space-x-4 md:h-fit">
       <BudgetTotalsCard amount={formatCurrency(monthlyBudget)}>
         Monthly Budget
       </BudgetTotalsCard>
