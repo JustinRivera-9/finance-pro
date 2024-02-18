@@ -66,7 +66,7 @@ function SearchForm({ formOpen, setFormOpen }) {
 
             {/* SEARCH ICON */}
             <IconButton
-              color="primary"
+              color="secondary"
               sx={{ p: "10px" }}
               aria-label="search"
               type="submit"
@@ -80,7 +80,9 @@ function SearchForm({ formOpen, setFormOpen }) {
 
         {/* CLOSE BUTTON */}
         <div className="flex mx-auto">
-          <Button onClick={() => setFormOpen(false)}>Close</Button>
+          <Button color="secondary" onClick={() => setFormOpen(false)}>
+            Close
+          </Button>
         </div>
       </form>
     </Backdrop>
