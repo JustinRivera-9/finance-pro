@@ -14,7 +14,9 @@ function CategoryProgressBar({ spent, planned }) {
           className={`h-5 rounded-xl w-[${percentSpent}%]`}
         ></div>
       </div>
-      <p className="pr-2 text-md text-slate-300">{formatCurrency(planned)}</p>
+      <p className="pr-2 text-md text-slate-300">
+        {formatCurrency(planned, true)}
+      </p>
     </div>
   );
 }
