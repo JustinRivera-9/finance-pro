@@ -24,6 +24,7 @@ export default function ExpenseCardActions({ expense }) {
   const open = Boolean(anchorEl);
   const queryClient = useQueryClient();
 
+  // Checks for query cache. If false returns ChacheErrorMessage component
   useEffect(() => {
     const queryCache = queryClient.getQueryCache();
     const cachedExpenses = queryCache

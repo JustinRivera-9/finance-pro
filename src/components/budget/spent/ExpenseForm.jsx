@@ -11,10 +11,7 @@ import { v4 as uuidv4 } from "uuid";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { addExpense } from "../../../services/apiExpenses";
 import toast from "react-hot-toast";
-import {
-  formatExpenseDate,
-  formatExpenseFormDate,
-} from "../../../utils/helperFunctions";
+import { formatExpenseFormDate } from "../../../utils/helperFunctions";
 
 const defaultFormValues = {
   amount: "",
@@ -41,7 +38,7 @@ function ExpenseForm({
     control,
     formState: { errors },
   } = useForm({
-    defaultValues: expenseToEdit ? expenseToEdit : defaultFormValues,
+    defaultValues: isEdit ? expenseToEdit : defaultFormValues,
   });
 
   const queryClient = useQueryClient();
@@ -51,7 +48,7 @@ function ExpenseForm({
     .getAll()
     .find((query) => query.queryKey[0] === "expenses")?.state?.data?.expenses;
 
-  // QUERY MUTATION -- Maybe refetch ILO invalidate to fix edit query
+  // QUERY MUTATION
   const { mutate, isLoading: isAdding } = useMutation({
     mutationFn: addExpense,
     onSuccess: () => {
@@ -119,7 +116,6 @@ function ExpenseForm({
               },
             })}
           />
-
           {/* DESCRIPTION INPUT */}
           <TextField
             sx={{ marginTop: "1rem" }}
@@ -144,7 +140,7 @@ function ExpenseForm({
                   inputFormat="MM/dd/yyyy"
                   {...field}
                   sx={{ marginTop: "1rem" }}
-                  renderInput={(params) => <TextField {...params} />}
+                  slotProps={{ textField: { variant: "outlined" } }}
                 />
               </LocalizationProvider>
             )}
