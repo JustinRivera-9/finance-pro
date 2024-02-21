@@ -29,41 +29,42 @@ function StockPerformance({ investmentData }) {
   // Used for text colors
   const positiveDay = stockPriceChange.dollarChange > 0;
   const positiveTotal = totalChange.dollarChange > 0;
-  const textColorDay = positiveDay ? "[#48ff00c2]" : "red-400";
-  const textColorTotal = totalChangeDollars > 0 ? "[#48ff00c2]" : "red-400";
+  const textColorDay = positiveDay ? "text-[#48ff00c2]" : "text-red-400";
+  const textColorTotal =
+    totalChangeDollars > 0 ? "text-[#48ff00c2]" : "text-red-400";
 
   return (
     <div className="flex justify-around text-center py-2 space-x-2">
       <div className="p-2 bg-[#404040] rounded-xl">
-        <p className="text-xl">{formatCurrency(sharePrice)}</p>
-        <p className={`text-${textColorDay} text-xl`}>
+        <p className="text-lg">{formatCurrency(sharePrice)}</p>
+        <p className={`${textColorDay} text-base`}>
           {`${positiveDay ? "+" : ""}${formatCurrency(
             stockPriceChange.dollarChange
           )}`}
         </p>
-        <p className={`text-${textColorDay} text-xl`}>
+        <p className={`${textColorDay} text-base`}>
           ({`${stockPriceChange.percentChange}%`})
         </p>
       </div>
       <div className="flex flex-col space-y-2 w-full">
         <div className="flex items-baseline justify-center bg-[#404040] rounded-xl py-2 w-full space-x-2">
-          <p className="text-xl">Day</p>
-          <p className={`text-${textColorDay} text-xl`}>
+          <p className="text-lg">Day</p>
+          <p className={`${textColorDay} text-lg`}>
             {`${positiveDay ? "+" : ""}${formatCurrency(dayChangeDollars)}`}
           </p>
-          <p className={`text-${textColorDay} text-lg`}>
+          <p className={`${textColorDay} text-sm`}>
             ({`${dayChange.percentChange}%`})
           </p>
         </div>
         <div className="flex items-baseline justify-center bg-[#404040] rounded-xl py-2 w-full space-x-2">
-          <p className="text-xl">Total</p>
-          <p className={`text-${textColorTotal} text-xl`}>
+          <p className="text-lg">Total</p>
+          <p className={`${textColorTotal} text-lg`}>
             {`${totalChangeDollars > 0 ? "+" : ""}${formatCurrency(
               totalChangeDollars,
               true
             )}`}
           </p>
-          <p className={`text-${textColorTotal} text-lg`}>
+          <p className={`${textColorTotal} text-sm`}>
             ({`${totalChangePercent}%`})
           </p>
         </div>
