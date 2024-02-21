@@ -2,7 +2,7 @@ import { BarChart, axisClasses } from "@mui/x-charts";
 import { prepareExpensesByMonth } from "../../../utils/helperFunctions";
 
 const chartSetting = {
-  width: 390,
+  width: 367,
   height: 300,
   sx: {
     [`.${axisClasses.left} .${axisClasses.label}`]: {
@@ -17,7 +17,7 @@ function MonthSummaryChart({ expenses }) {
   const chartData = prepareExpensesByMonth(expenses);
 
   return (
-    <div className="flex flex-col w-full mx-auto text-3xl rounded-xl p-4 md:w-fit md:py-4 md:pr-0 ">
+    <div className="flex flex-col w-full mx-auto text-3xl rounded-xl px-1 md:w-fit md:py-4 md:pr-0 ">
       <p className="text-center">Expenses by Month</p>
       <BarChart
         dataset={chartData}
