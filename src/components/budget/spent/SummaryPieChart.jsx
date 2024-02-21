@@ -10,6 +10,7 @@ function SummaryPieChart({ expenses }) {
 
   return (
     <PieChart
+      // margin={{ top: 0, bottom: 0, left: 10, right: 10 }}
       series={[
         {
           data: chartData,
@@ -21,7 +22,7 @@ function SummaryPieChart({ expenses }) {
           innerRadius: 20,
           paddingAngle: 3,
           cornerRadius: 3,
-          cx: 120,
+          cx: 105,
         },
       ]}
       sx={{
@@ -32,13 +33,13 @@ function SummaryPieChart({ expenses }) {
           textWrap: "wrap",
         },
       }}
-      width={400}
-      height={250}
+      width={360}
+      height={225}
       slotProps={{
         legend: {
           direction: "column",
           position: { vertical: "top", horizontal: "right" },
-          padding: 0,
+          padding: { top: 0, bottom: 0, left: 0, right: 0 },
         },
       }}
     />
