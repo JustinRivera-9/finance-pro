@@ -41,7 +41,7 @@ function PlannedCard({ categoryData }) {
   return (
     <>
       <li className="flex flex-wrap rounded-xl justify-between p-4 text-xl font-normal bg-[#404040] text-stone-200">
-        <div className="flex w-1/2 sm:2/3 text-left justify-between">
+        <div className="flex w-3/4 sm:2/3 text-left justify-between">
           <p className="capitalize">{category}</p>
           <p className="">{formatCurrency(amount)}</p>
         </div>
