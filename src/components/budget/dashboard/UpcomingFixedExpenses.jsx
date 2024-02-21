@@ -14,7 +14,7 @@ function UpcomingFixedExpenses({ expenses }) {
             key={item.categoryName}
             className="flex items-center justify-between space-x-2 bg-[#292929] p-4 rounded-xl w-[48%] my-1"
           >
-            <li className="text-xl text-[#48ff00] bg-[#494949] rounded-xl w-[30%] p-2">
+            <li className="text-xl text-center text-[#48ff00] bg-[#494949] rounded-xl w-[30%] p-2">
               {item.fixedDate}
             </li>
             <div className="text-right">

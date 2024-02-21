@@ -2,16 +2,16 @@ import { BarChart, axisClasses } from "@mui/x-charts";
 import { prepareExpensesByCategory } from "../../../utils/helperFunctions";
 
 const chartSetting = {
-  yAxis: [
-    {
-      label: "($)",
-    },
-  ],
+  // yAxis: [
+  //   {
+  //     label: "($)",
+  //   },
+  // ],
   width: 372,
   height: 300,
   sx: {
     [`.${axisClasses.left} .${axisClasses.label}`]: {
-      transform: "translate(-5px, 0)",
+      transform: "translate(0, 0)",
     },
   },
 };

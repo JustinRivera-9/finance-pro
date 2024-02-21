@@ -18,7 +18,7 @@ function SummaryPieChart({ expenses }) {
           faded: { innerRadius: 20, additionalRadius: -20 },
           // arcLabel: (item) => `${formatCurrency(item.value)}`,
           arcLabel: (item) => `${item.label.split(" ")[0]}`,
-          arcLabelMinAngle: 30,
+          arcLabelMinAngle: 35,
           innerRadius: 20,
           paddingAngle: 3,
           cornerRadius: 3,
@@ -33,8 +33,8 @@ function SummaryPieChart({ expenses }) {
           textWrap: "wrap",
         },
       }}
-      width={360}
-      height={225}
+      width={350}
+      height={200}
       slotProps={{
         legend: {
           direction: "column",

@@ -7,7 +7,7 @@ const chartSetting = {
       label: "($)",
     },
   ],
-  width: 375,
+  width: 350,
   height: 300,
   // sx: {
   //   [`.${axisClasses.left} .${axisClasses.label}`]: {
