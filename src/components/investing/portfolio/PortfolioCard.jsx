@@ -19,28 +19,28 @@ function PortfolioCard({ data, isOpen, setIsOpen }) {
     <div className="flex justify-between w-full">
       <div className="flex flex-col justify-around items-baseline space-x-4 space-y-2 w-full pr-8">
         <div className="flex space-x-4 items-baseline">
-          <p className="text-3xl capitalize md:text-3xl text-slate-200">
+          <p className="text-2xl capitalize md:text-3xl text-slate-200">
             {portfolioName}
           </p>
-          <p className="text-xl capitalize md:text-3xl text-slate-400">
+          <p className="text-lg capitalize md:text-3xl text-slate-400">
             {brokerage}
           </p>
         </div>
         <div
           className={`flex justify-between items-baseline w-full text-${textColor}`}
         >
-          <p className="text-[#eaeaea] text-2xl">
+          <p className="text-[#eaeaea] text-xl">
             {formatCurrency(value, true)}
           </p>
           <div className="flex space-x-1 items-baseline">
-            <p className="text-xl">
+            <p className="text-lg">
               {`${isPositive ? "+" : ""}${formatCurrency(dollarChange, true)}`}
             </p>
-            <p className="text-lg">{`(${percentChange}%)`}</p>
+            <p className="text-base">{`(${percentChange}%)`}</p>
           </div>
         </div>
       </div>
-      <button onClick={() => setIsOpen((show) => !show)} className="pr-4">
+      <button onClick={() => setIsOpen((show) => !show)} className="pr-2">
         {isOpen ? (
           <RemoveCircleIcon fontSize="large" />
         ) : (
