@@ -8,7 +8,7 @@ function PlannedSummary({ income, expenses, fixed }) {
 
   return (
     <>
-      <div className="flex mx-auto my-2 px-6 py-2 justify-between items-center w-10/12 md:w-1/2 bg-[#404040] rounded-xl">
+      <div className="flex mx-auto my-2 px-4 py-2 justify-between w-[93%] items-center md:w-1/2 bg-[#404040] rounded-xl">
         <div className="text-center">
           <p className="text-green-300">Total Income</p>
           <p>{formatCurrency(totalIncome)}</p>
@@ -21,7 +21,9 @@ function PlannedSummary({ income, expenses, fixed }) {
         <p className="text-2xl">=</p>
         <div className="text-center">
           <p className="text-blue-500">Net Income</p>
-          <p>{formatCurrency(net)}</p>
+          <p className={`${net > 0 ? "text-green-500" : "text-red-400"}`}>
+            {formatCurrency(net)}
+          </p>
         </div>
       </div>
       <h2 className="h-[1px] mx-auto bg-stone-500 w-11/12 my-4"></h2>
